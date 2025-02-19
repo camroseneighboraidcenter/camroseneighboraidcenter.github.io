@@ -39,14 +39,9 @@ body {
 
 body {
   font-family: var(--font-body);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-light) 0%,
-    var(--color-primary) 100%
-  );
+  background: var(--color-primary-dark);
   margin: 0;
   padding: clamp(1rem, 3vw, 2rem);
-  min-height: 100vh;
   line-height: 1.6;
   color: var(--color-text);
   box-sizing: border-box;
@@ -160,15 +155,39 @@ h3 {
   background-color: var(--color-surface-hover);
 }
 
+a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+a:hover {
+  color: white;
+}
+
+a:focus {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .contact-row a {
   color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  padding: 0.2em 0.4em;
+  margin: -0.2em -0.4em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .contact-row a:hover {
   color: var(--color-primary-dark);
-  text-decoration: underline;
+  background-color: var(--color-surface-hover);
+}
+
+.contact-row a:active {
+  transform: translateY(1px);
 }
 
 .hours-container {
@@ -255,9 +274,7 @@ footer {
   .contact-row .value {
     padding-left: 0.5rem;
   }
-}
 
-@media (width <= 480px) {
   .hours-list li {
     flex-direction: column;
     align-items: flex-start;
