@@ -1,0 +1,154 @@
+---
+import {
+  formatPhoneNumber,
+  formatFaxNumber,
+  getFormattedAddress,
+} from "../../data/contact";
+import SocialIcons from "./SocialIcons.astro";
+import { contactInfo } from "../../data/contact";
+
+interface Props {
+  showSocial?: boolean;
+  className?: string;
+}
+
+const { showSocial = true, className = "" } = Astro.props;
+
+const { hours, phone, fax, email } = contactInfo;
+const address = getFormattedAddress();
+---
+
+<div class={`contact-info-section ${className}`}>
+  <div class="contact-group">
+    <h3 class="contact-heading">Address</h3>
+    <address class="contact-text">
+      {
+        address && (
+          <>
+            <p>{address.street}</p>
+            <p>{address.cityProvince}</p>
+            <p>{address.postalCode}</p>
+          </>
+        )
+      }
+    </address>
+  </div>
+
+  <div class="contact-group">
+    <h3 class="contact-heading">Hours of Operation</h3>
+    <p class="contact-text">
+      Monday: {hours.monday}<br />
+      Tuesday: {hours.tuesday}<br />
+      Wednesday: {hours.wednesday}<br />
+      Thursday: {hours.thursday}<br />
+      Friday: {hours.friday}<br />
+      Saturday: {hours.saturday}<br />
+      Sunday: {hours.sunday}
+    </p>
+  </div>
+
+  <div class="contact-group">
+    <h3 class="contact-heading">Contact Information</h3>
+    <div class="contact-text">
+      {
+        phone && (
+          <p>
+            Phone:{" "}
+            <a href={`tel:${phone}`} class="contact-link">
+              {formatPhoneNumber(phone)}
+            </a>
+          </p>
+        )
+      }
+      {
+        fax && (
+          <p>
+            Fax: <span class="contact-detail">{formatFaxNumber(fax)}</span>
+          </p>
+        )
+      }
+      {
+        email && (
+          <p>
+            Email:{" "}
+            <a href={`mailto:${email}`} class="contact-link">
+              {email}
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </div>
+
+  {
+    showSocial && (
+      <div class="contact-group">
+        <h3 class="contact-heading">Connect With Us</h3>
+        <SocialIcons className="contact-social" justify="start" />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .contact-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    min-width: fit-content;
+  }
+
+  .contact-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .contact-heading {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-text {
+    font-style: normal;
+    line-height: 1.6;
+    color: var(--color-text-light);
+  }
+
+  .contact-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-normal);
+  }
+
+  .contact-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  .contact-detail {
+    color: var(--color-text);
+  }
+
+  /* Custom styles for social icons in contact info */
+  :global(.contact-social.social-links) {
+    justify-content: flex-start;
+    gap: var(--space-4);
+  }
+
+  :global(.contact-social .social-icon) {
+    padding: var(--space-2);
+  }
+
+  @media (min-width: 768px) {
+    .contact-info-section {
+      padding: var(--space-8);
+    }
+  }
+</style>

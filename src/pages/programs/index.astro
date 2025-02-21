@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import ProgramHeroCard from "../../components/ui/ProgramHeroCard.astro";
+import { programs } from "../../data/programs";
+
+const title = "Our Programs";
+---
+
+<BaseLayout
+  title={`${title} | Camrose Neighbor Aid Center`}
+  description="Explore the various programs and services offered by Camrose Neighbor Aid Center to support our community."
+>
+  <Header />
+
+  <main class="programs-page">
+    <h1 class="page-title">{title}</h1>
+
+    <div class="programs-grid">
+      {programs.map((program) => <ProgramHeroCard {...program} />)}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .programs-page {
+    padding: var(--space-16) 0;
+    min-height: 100vh;
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-16);
+    padding: 0 var(--space-4);
+  }
+
+  .programs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    padding-bottom: var(--space-16);
+  }
+
+  @media (max-width: 768px) {
+    .programs-page {
+      padding: var(--space-12) 0;
+    }
+
+    .page-title {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-12);
+    }
+
+    .programs-grid {
+      gap: var(--space-12);
+      padding-bottom: var(--space-12);
+    }
+  }
+</style>

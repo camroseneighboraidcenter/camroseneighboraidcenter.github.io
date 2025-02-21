@@ -1,0 +1,104 @@
+---
+import type { Program } from '../../data/programs';
+import ProgramCard from './ProgramCard.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  programs: Program[];
+  variant?: 'featured' | 'full';
+  showFeaturedOnly?: boolean;
+}
+
+const { 
+  title = "Our Programs",
+  subtitle = "Supporting our community through various initiatives",
+  programs,
+  variant = 'featured',
+  showFeaturedOnly = false
+} = Astro.props;
+
+const displayPrograms = showFeaturedOnly ? programs.filter(p => p.featured) : programs;
+---
+
+<section class:list={["program-section", variant]} aria-labelledby="programs-title">
+  <div class="program-container">
+    {(title || subtitle) && (
+      <div class="program-header">
+        <h2 id="programs-title" class="section-title">{title}</h2>
+        {subtitle && <p class="section-subtitle">{subtitle}</p>}
+      </div>
+    )}
+    
+    <div class:list={["program-grid", variant]} role="list">
+      {displayPrograms.map(program => (
+        <ProgramCard {...program} variant={variant} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .program-section {
+    width: 100%;
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .program-container {
+    max-width: var(--max-width-7xl);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .program-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-subtitle {
+    color: var(--color-text-light);
+    font-size: var(--text-lg);
+  }
+
+  .program-grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  /* Featured variant */
+  .program-grid.featured {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  /* Full variant */
+  .program-grid.full {
+    grid-template-columns: 1fr;
+    max-width: var(--max-width-4xl);
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .program-section {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .program-header {
+      margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+
+    .program-grid {
+      gap: var(--space-6);
+    }
+  }
+</style>

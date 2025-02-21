@@ -1,0 +1,193 @@
+---
+import {
+  contactInfo,
+  getFormattedAddress,
+  formatPhoneNumber,
+} from "../../data/contact";
+import SocialIcons from "../ui/SocialIcons.astro";
+import ThemeToggle from "../ui/ThemeToggle.astro";
+
+const currentYear = new Date().getFullYear();
+const address = getFormattedAddress();
+---
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Organization Info -->
+      <div class="footer-section" id="footer-contacts">
+        <h2 class="footer-heading">Camrose Neighbor Aid Center</h2>
+        {
+          address && (
+            <address class="contact-info">
+              <p>{address.street}</p>
+              <p>{address.cityProvince}</p>
+              <p>{address.postalCode}</p>
+            </address>
+          )
+        }
+        {
+          contactInfo.email && (
+            <a href={`mailto:${contactInfo.email}`} class="contact-link">
+              {contactInfo.email}
+            </a>
+          )
+        }
+        {
+          contactInfo.phone && (
+            <a href={`tel:${contactInfo.phone}`} class="contact-link">
+              {formatPhoneNumber(contactInfo.phone)}
+            </a>
+          )
+        }
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section" id="footer-quick-links">
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul class="footer-links" role="list">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/programs">Our Programs</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Social and Contact -->
+      <div class="footer-section" id="footer-social">
+        <h2 class="footer-heading">Connect With Us</h2>
+        <SocialIcons />
+      </div>
+
+      <div class="footer-section" id="footer-theme">
+        <h2 class="footer-heading">Light/Dark Mode</h2>
+        <ThemeToggle />
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>
+          &copy; {currentYear} Camrose Neighbor Aid Center. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-surface);
+    padding: var(--space-12) 0 var(--space-6);
+    margin-top: var(--space-16);
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+  }
+
+  .footer-heading {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+  }
+
+  .contact-info {
+    font-style: normal;
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-info p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  .contact-link {
+    display: block;
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-top: var(--space-2);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-link:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-links a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+
+  #footer-contacts {
+    text-align: left;
+  }
+
+  #footer-quick-links {
+    text-align: center;
+  }
+
+  #footer-social {
+    text-align: center;
+  }
+
+  #footer-theme {
+    text-align: right;
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 1200px) {
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #footer-contacts,
+    #footer-quick-links,
+    #footer-social,
+    #footer-theme {
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .footer-links {
+      align-items: center;
+    }
+  }
+</style>

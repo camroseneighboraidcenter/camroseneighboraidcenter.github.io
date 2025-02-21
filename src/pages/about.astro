@@ -1,0 +1,258 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/ui/Hero.astro";
+import TeamGrid from "../components/ui/TeamGrid.astro";
+import CallToAction from "../components/ui/CallToAction.astro";
+
+const values = [
+  {
+    title: "Faith-Based Service",
+    description: "We serve all people with Christ-like love and compassion.",
+  },
+  {
+    title: "Community Focus",
+    description:
+      "We build strong relationships within our community to better serve those in need.",
+  },
+  {
+    title: "Dignity & Respect",
+    description:
+      "We treat everyone with dignity and respect, recognizing their inherent worth.",
+  },
+  {
+    title: "Collaboration",
+    description:
+      "We work together with churches, organizations, and individuals to maximize our impact.",
+  },
+  {
+    title: "Responsiveness",
+    description: "We act swiftly in times of crisis and need.",
+  },
+];
+---
+
+<BaseLayout title="About Us | Camrose Neighbor Aid Center">
+  <Header />
+
+  <main class="about-page">
+    <Hero
+      title="About Us"
+      ctaText="Get Involved"
+      ctaLink="/contact#contact-form?subject=volunteer"
+    />
+
+    <div class="content-wrapper">
+      <section class="intro-section">
+        <div class="content-container">
+          <p class="lead-text">
+            Camrose Neighbor Aid Center began as a collaboration between six
+            evangelical churches and has grown into a network supported by 20
+            local churches. Our mission is rooted in faith and service, ensuring
+            that no one in our community goes without basic needs.
+          </p>
+        </div>
+      </section>
+
+      <section class="motto-section">
+        <div class="content-container">
+          <h2 class="section-title">Our Motto</h2>
+          <p class="motto">We care, we listen, we respond.</p>
+        </div>
+      </section>
+
+      <section class="values-section">
+        <div class="content-container">
+          <h2 class="section-title">Our Values</h2>
+          <div class="values-grid">
+            {
+              values.map(({ title, description }) => (
+                <div class="value-card">
+                  <h3 class="value-title">{title}</h3>
+                  <p class="value-description">{description}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="belief-section">
+        <div class="content-container">
+          <h2 class="section-title">Our Beliefs</h2>
+          <div class="beliefs-grid">
+            <div class="belief-card">
+              <p class="belief-text">
+                We believe all things are possible through Christ.
+                <span class="verse">Matthew 19:26</span>
+              </p>
+              <p class="belief-text">
+                We believe that Christians working together glorify God and make
+                a difference.
+                <span class="verse">John 17:21-22</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="team-section">
+        <div class="content-container">
+          <h2 class="section-title">Our Team</h2>
+          <p class="section-description">
+            Meet the dedicated individuals who work tirelessly to serve our
+            community.
+          </p>
+          <TeamGrid />
+        </div>
+      </section>
+
+      <CallToAction
+        title="Join Our Mission"
+        description="Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."
+        primaryCta={{
+          text: "Volunteer With Us",
+          href: "/contact#contact-form?subject=volunteer",
+        }}
+        secondaryCta={{
+          text: "Support Our Mission",
+          href: "/donate",
+        }}
+      />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: var(--space-16);
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-16) 0;
+  }
+
+  .content-container {
+    max-width: var(--max-width-5xl);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    width: 100%;
+  }
+
+  .intro-section {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .lead-text {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    max-width: 70ch;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+    text-align: center;
+  }
+
+  .section-description {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-8);
+  }
+
+  .motto-section {
+    text-align: center;
+  }
+
+  .motto {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .value-card {
+    background-color: var(--color-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .value-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .value-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .belief-card {
+    background-color: var(--color-surface);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .belief-text {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .verse {
+    display: block;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      gap: var(--space-12);
+      padding: var(--space-12) 0;
+    }
+
+    .lead-text {
+      font-size: var(--text-lg);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+
+    .motto {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

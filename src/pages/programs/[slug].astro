@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Hero from "../../components/ui/Hero.astro";
+import CallToAction from "../../components/ui/CallToAction.astro";
+import { programs } from "../../data/programs";
+
+export function getStaticPaths() {
+  return programs.map((program) => ({
+    params: { slug: program.slug },
+    props: { program },
+  }));
+}
+
+const { program } = Astro.props;
+---
+
+<BaseLayout title={`${program.title} | Camrose Neighbor Aid Center`}>
+  <Header />
+
+  <main class="program-page">
+    <Hero title={program.title} backgroundImage={program.image} />
+
+    <div class="content-wrapper">
+      <article class="program-content">
+        <!-- <p class="program-description">{program.description}</p> -->
+        <div class="program-details" set:html={program.detailedDescription} />
+      </article>
+
+      <CallToAction
+        title="Interested in this program?"
+        description="Contact us to learn more about how you can participate or support this initiative."
+        primaryCta={{
+          text: "Contact Us",
+          href: `/contact#contact-form?subject=${encodeURIComponent(program.title)}`,
+        }}
+      />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .program-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    flex: 1;
+    padding: var(--space-16) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    width: 70vw;
+    margin: 0 auto;
+  }
+
+  .program-content {
+    max-width: var(--max-width-3xl);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .program-content h1 {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: var(--space-8) 0 var(--space-4);
+  }
+
+  .program-content h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: var(--space-8) 0 var(--space-4);
+  }
+
+  .program-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .program-content p {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .program-content ul,
+  .program-content ol {
+    margin: var(--space-4) 0;
+    padding-left: var(--space-8);
+  }
+
+  .program-content li {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-2);
+  }
+
+  .program-content ul li {
+    list-style-type: disc;
+  }
+
+  .program-content ol li {
+    list-style-type: decimal;
+  }
+
+  .program-content ul ul,
+  .program-content ol ol,
+  .program-content ul ol,
+  .program-content ol ul {
+    margin: var(--space-2) 0;
+  }
+
+  .program-description {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+
+  .program-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+  }
+
+  .program-details .lead {
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+  }
+
+  .program-details h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+  }
+
+  .program-details h2:first-child {
+    margin-top: 0;
+  }
+
+  .program-details p {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .program-details ul {
+    list-style-type: disc;
+    padding-left: var(--space-8);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .program-details li {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-2);
+  }
+
+  .program-details li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: var(--space-12) var(--space-4);
+      gap: var(--space-12);
+    }
+
+    .program-content {
+      width: 100%;
+      padding: 0 var(--space-4);
+    }
+
+    .program-content h1 {
+      font-size: var(--text-3xl);
+      margin: var(--space-6) 0 var(--space-3);
+    }
+
+    .program-content h2 {
+      font-size: var(--text-xl);
+      margin: var(--space-6) 0 var(--space-3);
+    }
+
+    .program-content h3 {
+      font-size: var(--text-lg);
+      margin: var(--space-4) 0 var(--space-2);
+    }
+
+    .program-content ul,
+    .program-content ol {
+      padding-left: var(--space-6);
+    }
+
+    .program-description {
+      font-size: var(--text-lg);
+    }
+
+    .program-details {
+      padding: 0 var(--space-4);
+    }
+
+    .program-details .lead {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-6);
+    }
+
+    .program-details h2 {
+      font-size: var(--text-xl);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+
+    .program-details ul {
+      padding-left: var(--space-6);
+    }
+
+    .program-details li {
+      padding-left: var(--space-1);
+    }
+  }
+</style>

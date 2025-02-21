@@ -1,0 +1,122 @@
+---
+import { getActiveSocialMedia } from "../../data/contact";
+
+interface Props {
+  className?: string;
+  justify?: "start" | "center" | "end";
+}
+
+const { className = "", justify = "center" } = Astro.props;
+const activeSocialMedia = getActiveSocialMedia();
+---
+
+{
+  activeSocialMedia.length > 0 && (
+    <div
+      class={`social-links ${className}`}
+      aria-label="Social media links"
+      data-justify={justify}
+    >
+      {activeSocialMedia.map(({ platform, url, label }) => (
+        <a
+          href={url}
+          class={`social-icon ${platform}`}
+          aria-label={label}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {platform === "facebook" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z" />
+            </svg>
+          )}
+          {platform === "instagram" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
+            </svg>
+          )}
+          {platform === "linkedin" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" />
+              <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z" />
+              <path d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11.5 16 13.5V18C16 18.5523 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V13.5C19 9.5 13 9 13 13V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z" />
+            </svg>
+          )}
+          {platform === "x" && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          )}
+          <span class="sr-only">{label}</span>
+        </a>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .social-links {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  /* Justify content variations */
+  .social-links[data-justify="start"] {
+    justify-content: flex-start;
+  }
+
+  .social-links[data-justify="center"] {
+    justify-content: center;
+  }
+
+  .social-links[data-justify="end"] {
+    justify-content: flex-end;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transition: all var(--transition-fast);
+  }
+
+  .social-icon:hover {
+    background-color: var(--color-surface-hover);
+    transform: translateY(-1px);
+  }
+
+  .social-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+</style>

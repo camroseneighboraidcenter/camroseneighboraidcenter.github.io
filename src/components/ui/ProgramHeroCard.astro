@@ -1,0 +1,136 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+}
+
+const { title, description, image, slug } = Astro.props;
+
+---
+
+<article class="program-hero-card">
+  <div class="card-background">
+    <img 
+      src={image} 
+      alt="" 
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      width="1920"
+      height="1080"
+    />
+    <div class="overlay"></div>
+  </div>
+  
+  <div class="card-content">
+    <h2 class="card-title">{title}</h2>
+    <p class="card-description">{description}</p>
+    <a href={`/programs/${slug}`} class="card-button">
+      Learn More
+      <span class="sr-only">about {title}</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .program-hero-card {
+    position: relative;
+    width: 80%;
+    height: min(50vh, 600px);
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .card-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .card-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+
+  .card-content {
+    height: 100%;
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+  }
+
+  .card-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-description {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+  }
+
+  .card-button {
+    align-self: flex-start;
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: background-color var(--transition-normal);
+  }
+
+  .card-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .card-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+
+  .program-hero-card:hover .card-background img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .program-hero-card {
+      width: 90%;
+      height: min(35vh, 300px);
+    }
+
+    .card-content {
+      padding: var(--space-6);
+    }
+
+    .card-title {
+      font-size: var(--text-2xl);
+    }
+
+    .card-description {
+      font-size: var(--text-base);
+    }
+  }
+</style>

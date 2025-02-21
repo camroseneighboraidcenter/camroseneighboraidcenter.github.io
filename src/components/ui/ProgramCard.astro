@@ -1,0 +1,187 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  detailedDescription?: string;
+  image: string;
+  featured: boolean;
+  slug: string;
+  variant?: 'featured' | 'full';
+}
+
+const { 
+  title, 
+  description, 
+  image, 
+  featured, 
+  slug,
+  variant = 'featured'
+} = Astro.props;
+
+const href = `/programs/${slug}`;
+---
+
+<article 
+  class:list={[
+    'program-card',
+    { featured },
+    variant
+  ]} 
+  role="listitem"
+>
+  {image && (
+    <div class="program-image-wrapper">
+      <img 
+        src={image} 
+        alt="" 
+        class="program-image" 
+        aria-hidden="true"
+        width={variant === 'full' ? '800' : '400'}
+        height={variant === 'full' ? '600' : '300'}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  )}
+  <div class="program-content">
+    <h3 class="program-title">
+      <a href={href} class="program-link">
+        <span class="program-name">{title}</span>
+        <span class="sr-only">Learn more about {title}</span>
+      </a>
+    </h3>
+    <p class="program-description">{description}</p>
+    <a href={href} class="learn-more" aria-label={`Learn more about ${title}`}>
+      Learn More
+      <span class="sr-only">about {title}</span>
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width="20" 
+        height="20" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .program-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .program-image-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .program-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    transition: transform var(--transition-normal);
+  }
+
+  .program-card:hover .program-image {
+    transform: scale(1.05);
+  }
+
+  .program-content {
+    padding: var(--space-6);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .program-link {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .program-link:hover {
+    color: var(--color-primary);
+  }
+
+  .program-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+  }
+
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: auto;
+  }
+
+  .learn-more:hover {
+    color: var(--color-primary-dark);
+  }
+
+  /* Full variant styles */
+  .full {
+    flex-direction: row;
+    gap: var(--space-8);
+    max-width: var(--max-width-4xl);
+    margin: 0 auto;
+  }
+
+  .full .program-image-wrapper {
+    flex: 0 0 40%;
+  }
+
+  .full .program-content {
+    flex: 1;
+    padding: var(--space-8);
+  }
+
+  .full .program-title {
+    font-size: var(--text-2xl);
+  }
+
+  .full .program-description {
+    font-size: var(--text-lg);
+  }
+
+  @media (max-width: 768px) {
+    .full {
+      flex-direction: column;
+    }
+
+    .full .program-image-wrapper {
+      flex: 0 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/ui/Hero.astro";
+
+const title = "Page Not Found";
+---
+
+<BaseLayout title={`${title} | Camrose Neighbor Aid Center`}>
+  <Header />
+
+  <main class="error-page">
+    <Hero title={title} ctaText="Return Home" ctaLink="/" />
+
+    <div class="content-wrapper">
+      <div class="error-content">
+        <div class="error-code">404</div>
+        <p class="error-message">
+          We couldn't find the page you're looking for.
+        </p>
+        <div class="error-actions">
+          <a href="/" class="primary-button">Go to Homepage</a>
+          <a href="/contact" class="secondary-button">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .error-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: var(--space-16);
+  }
+
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: var(--max-width-2xl);
+    padding: var(--space-8);
+  }
+
+  .error-code {
+    font-size: var(--text-7xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+  }
+
+  .error-message {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-8);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+
+  .primary-button,
+  .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+  }
+
+  .primary-button {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .primary-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .secondary-button {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+
+  .secondary-button:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-primary);
+  }
+
+  @media (max-width: 640px) {
+    .error-actions {
+      flex-direction: column;
+    }
+
+    .error-code {
+      font-size: var(--text-6xl);
+    }
+
+    .error-message {
+      font-size: var(--text-lg);
+    }
+  }
+</style>

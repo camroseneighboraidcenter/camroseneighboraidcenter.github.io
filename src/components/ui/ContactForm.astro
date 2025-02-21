@@ -1,0 +1,218 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<form id="contact-form" class={`contact-form ${className}`} action="#" method="POST">
+  <div class="form-header">
+    <h2 class="form-title">Send Us a Message</h2>
+    <p class="form-description">We'll get back to you as soon as possible.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form-input"
+      required
+      aria-required="true"
+      placeholder="Your name"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="form-input"
+      required
+      aria-required="true"
+      placeholder="your.email@example.com"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="phone" class="form-label">Phone (optional)</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      class="form-input"
+      placeholder="(XXX) XXX-XXXX"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="form-label">Subject</label>
+    <select id="subject" name="subject" class="form-select" required aria-required="true">
+      <option value="">Select a subject</option>
+      <option value="general">General Inquiry</option>
+      <option value="volunteer">Volunteering</option>
+      <option value="donate">Donations</option>
+      <option value="programs">Programs</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="message" class="form-label">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      class="form-textarea"
+      required
+      aria-required="true"
+      rows="5"
+      placeholder="Your message here..."
+    ></textarea>
+  </div>
+
+  <button type="submit" class="form-submit">Send Message</button>
+</form>
+
+<script>
+  // Handle URL parameters for pre-selecting subject
+  function handleSubjectParam() {
+    const hash = window.location.hash;
+    if (hash.startsWith('#contact-form')) {
+      const params = new URLSearchParams(hash.split('?')[1]);
+      const subject = params.get('subject');
+      if (subject) {
+        const selectElement = document.getElementById('subject') as HTMLSelectElement;
+        if (selectElement) {
+          selectElement.value = subject;
+        }
+      }
+      // Scroll to form
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Run on page load and when hash changes
+  handleSubjectParam();
+  window.addEventListener('hashchange', handleSubjectParam);
+</script>
+
+<style>
+  .contact-form {
+    background-color: var(--color-surface);
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .form-title {
+    font-size: var(--text-2xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .form-description {
+    color: var(--color-text-light);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-4);
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: var(--space-3);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: border-color var(--transition-normal);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-light);
+    opacity: 0.7;
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+  }
+
+  .form-select:invalid {
+    color: var(--color-text-light);
+    opacity: 0.7;
+  }
+
+  .form-select option {
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  .form-select option:first-child {
+    color: var(--color-text-light);
+    opacity: 0.7;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+  }
+
+  .form-submit:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .form-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary);
+  }
+
+  @media (max-width: 800px) {
+    .contact-form {
+      max-width: 800px;
+    }
+
+    .form-title {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

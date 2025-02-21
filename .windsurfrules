@@ -1,0 +1,37 @@
+<markdown>
+- code should be structured and modular
+- use semantic HTML and CSS, and appropriate attributes
+- clean and well organized
+- use comments to explain code where necessary
+- use the correct capitalization and indentation for the language
+- all code should pass their respective linters and validators
+- use linting and validation tools where necessary
+</markdown>
+
+
+<accessibility>
+- Everything must be accessible.
+- Optimize for accessibility.
+- Use semantic HTML.
+- Use ARIA roles and attributes.
+- Use focus management.
+- Use keyboard navigation.
+</accessibility>
+
+<layout>
+- mobile first
+- responsive design
+- use flex or grid depending on the layout
+</layout>
+
+<styles>
+- use vanilla CSS over frameworks unless otherwise required by the project
+- use CSS variables for colors, fonts, and common values
+- styles should leverage the full cascade instead of !important and over-specificity
+- all styles should pass the W3C validator
+</styles>
+
+<scripts>
+- use vanilla JavaScript over frameworks unless otherwise required by the project
+- modularize the code so that it's easy to maintain
+</scripts>
