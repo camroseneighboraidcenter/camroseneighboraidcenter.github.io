@@ -102,3 +102,5 @@ export function getFormattedAddress(): { street: string; cityProvince: string; p
     postalCode: address.postalCode
   };
 }
+
+export const WEB3FORMS_TOKEN = '8e96c192-1da8-48b3-9df9-e4620106f482';

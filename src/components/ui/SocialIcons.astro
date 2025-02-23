@@ -107,12 +107,16 @@ const activeSocialMedia = getActiveSocialMedia();
     border-radius: var(--radius-md);
     color: var(--color-text);
     background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-fast);
   }
 
   .social-icon:hover {
     background-color: var(--color-surface-hover);
     transform: translateY(-1px);
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
   }
 
   .social-icon svg {

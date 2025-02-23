@@ -1,25 +1,28 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
   title: string;
   description: string;
   image: string;
+  imageTitle: string;
+  imageAlt: string;
   slug: string;
 }
 
-const { title, description, image, slug } = Astro.props;
+const { title, description, image, imageTitle, imageAlt, slug } = Astro.props;
 
 ---
 
 <article class="program-hero-card">
   <div class="card-background">
-    <img 
+    <Image 
       src={image} 
-      alt="" 
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-      width="1920"
-      height="1080"
+      alt={imageAlt}
+      title={imageTitle}
+      width={1920}
+      height={1080}
+      quality={80}
     />
     <div class="overlay"></div>
   </div>

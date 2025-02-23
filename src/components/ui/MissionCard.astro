@@ -30,12 +30,19 @@ const { mission, vision, className = "" } = Astro.props;
   .mission-card {
     background-color: var(--color-surface);
     border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
     padding: var(--space-8);
     margin: var(--space-8) auto;
     max-width: 1200px;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-md);
+    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+  }
+
+  .mission-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
   }
 
   .mission-content {

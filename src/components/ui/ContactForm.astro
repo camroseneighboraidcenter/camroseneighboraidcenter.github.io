@@ -1,4 +1,6 @@
 ---
+import { WEB3FORMS_TOKEN } from '../../data/contact';
+
 interface Props {
   className?: string;
 }
@@ -6,11 +8,23 @@ interface Props {
 const { className = '' } = Astro.props;
 ---
 
-<form id="contact-form" class={`contact-form ${className}`} action="#" method="POST">
+<form 
+  id="contact-form" 
+  class={`contact-form ${className}`} 
+  action="https://api.web3forms.com/submit" 
+  method="POST"
+  novalidate
+>
+  <input type="hidden" name="access_key" value={WEB3FORMS_TOKEN} />
+  <input type="hidden" name="from_name" value="Neighbor Aid Contact Form" />
+  <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
   <div class="form-header">
     <h2 class="form-title">Send Us a Message</h2>
     <p class="form-description">We'll get back to you as soon as possible.</p>
   </div>
+
+  <div id="form-alert" class="form-alert" role="alert" style="display: none;"></div>
 
   <div class="form-group">
     <label for="name" class="form-label">Name</label>
@@ -77,6 +91,11 @@ const { className = '' } = Astro.props;
 </form>
 
 <script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const alert = document.getElementById('form-alert') as HTMLDivElement;
+  const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const originalButtonText = submitButton.textContent;
+
   // Handle URL parameters for pre-selecting subject
   function handleSubjectParam() {
     const hash = window.location.hash;
@@ -90,9 +109,94 @@ const { className = '' } = Astro.props;
         }
       }
       // Scroll to form
-      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+      form.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  function showAlert(message: string, type: 'success' | 'error') {
+    alert.textContent = message;
+    alert.className = `form-alert ${type}`;
+    alert.style.display = 'block';
+    alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function validateForm() {
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+
+    requiredFields.forEach((field) => {
+      if (!(field as HTMLFormElement).value.trim()) {
+        isValid = false;
+        (field as HTMLElement).classList.add('error');
+      } else {
+        (field as HTMLElement).classList.remove('error');
+      }
+    });
+
+    const emailField = form.querySelector('#email') as HTMLInputElement;
+    if (emailField.value && !emailField.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      isValid = false;
+      emailField.classList.add('error');
+    }
+
+    const phoneField = form.querySelector('#phone') as HTMLInputElement;
+    if (phoneField.value && !phoneField.value.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)) {
+      isValid = false;
+      phoneField.classList.add('error');
+    }
+
+    return isValid;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      showAlert('Please fill in all required fields correctly.', 'error');
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const formData = new FormData(form);
+      const subject = formData.get('subject');
+      formData.set('subject', `Contact Form - ${subject} - Neighbor Aid`);
+      
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showAlert('Thank you for your message! We will get back to you soon.', 'success');
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Something went wrong!');
+      }
+    } catch (error) {
+      showAlert(
+        'Sorry, there was an error sending your message. Please try again later.',
+        'error'
+      );
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  });
+
+  // Handle field validation on input
+  form.querySelectorAll('input, textarea, select').forEach((field) => {
+    field.addEventListener('input', () => {
+      field.classList.remove('error');
+      if (alert.classList.contains('error')) {
+        alert.style.display = 'none';
+      }
+    });
+  });
 
   // Run on page load and when hash changes
   handleSubjectParam();
@@ -104,9 +208,15 @@ const { className = '' } = Astro.props;
     background-color: var(--color-surface);
     padding: var(--space-8);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
     max-width: 700px;
     width: 100%;
+    transition: box-shadow var(--transition-normal);
+  }
+
+  .contact-form:hover {
+    box-shadow: var(--shadow-lg);
   }
 
   .form-header {
@@ -199,6 +309,40 @@ const { className = '' } = Astro.props;
 
   .form-submit:hover {
     background-color: var(--color-primary-dark);
+  }
+
+  .form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .form-alert {
+    margin-bottom: var(--space-4);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+  }
+
+  .form-alert.success {
+    background-color: var(--color-success-light);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+  }
+
+  .form-alert.error {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+  }
+
+  .form-input.error,
+  .form-select.error,
+  .form-textarea.error {
+    border-color: var(--color-error);
+  }
+
+  .hidden {
+    display: none;
   }
 
   .form-submit:focus {

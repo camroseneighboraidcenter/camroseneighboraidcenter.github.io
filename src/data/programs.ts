@@ -4,6 +4,8 @@ export interface Program {
   description: string;
   detailedDescription: string;
   image: string;
+  imageTitle: string;
+  imageAlt: string;
   featured: boolean;
   slug: string;
 }
@@ -12,19 +14,43 @@ export const programs: Program[] = [
   {
     id: 'food-bank',
     title: 'Food Bank Services',
-    description: 'Providing essential food supplies to those experiencing food insecurity in our community.',
+    description: 'Providing essential food supplies to those experiencing food insecurity in our community since 1984.',
     detailedDescription: `
-      <p class="lead">Our Food Bank Services program is a cornerstone of our mission to support those in need. 
-      We provide nutritious food supplies to individuals and families experiencing food insecurity.</p>
+    <h2>Food Bank Services</h2>  
+    <p class="lead">Our Food Bank Services program has been a cornerstone of our mission to support those in need 
+      since 1984. We provide nutritious food supplies to individuals and families experiencing food insecurity.</p>
 
-      <h2>How It Works</h2>
-      <p>Through partnerships with local grocery stores, farmers, and generous donors, we maintain a well-stocked 
-      food bank that offers:</p>
+      <h2>Hours of Operation</h2>
       <ul>
-        <li>Non-perishable food items</li>
-        <li>Fresh produce when available</li>
-        <li>Personal care items</li>
-        <li>Baby supplies</li>
+        <li>Hamper Services:
+          <ul>
+            <li>Tuesday-Thursday, 9:00 AM - 11:30 AM</li>
+          </ul>
+        </li>
+        <li>Front Room (extra foods, bread, beans & soups):
+          <ul>
+            <li>Monday & Friday: 9:00 AM - 12:00 PM</li>
+            <li>Tuesday-Thursday: 10:00 AM - 3:00 PM</li>
+          </ul>
+        </li>
+        <li>Additional Bread Distribution:
+          <ul>
+            <li>Monday: Camrose Community Church, 9:00 AM - 12:00 PM</li>
+            <li>Wednesday: Center Point Church, 1:00 PM - 3:00 PM</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Volunteer Activities</h2>
+      <p>Our dedicated volunteers engage in various essential tasks:</p>
+      <ul>
+        <li>Stocking shelves and making hampers</li>
+        <li>Sorting donations</li>
+        <li>Answering phones</li>
+        <li>Cleaning and maintenance</li>
+        <li>Creating schedules</li>
+        <li>Transporting and delivering supplies</li>
+        <li>Bread and soup delivery</li>
       </ul>
 
       <h2>Our Approach</h2>
@@ -35,114 +61,115 @@ export const programs: Program[] = [
         <li>Providing nutritious food options</li>
         <li>Offering guidance on nutrition and cooking</li>
         <li>Creating a welcoming environment</li>
-      </ul>
-
-      <h2>Additional Support</h2>
-      <p>Beyond food assistance, we also provide:</p>
-      <ul>
-        <li>Nutrition education and cooking tips</li>
-        <li>Connection to other community resources</li>
-        <li>Budgeting and meal planning guidance</li>
       </ul>`,
-    image: '/images/home/food-bank.webp',
+    image: '/images/programs/food-bank.webp',
+    imageTitle: 'Food bank volunteers helping sort food.',
+    imageAlt: 'Food bank volunteers helping sort food.',
     featured: true,
     slug: 'food-bank-services'
   },
   {
     id: 'food-for-kids',
     title: 'Food for Kids',
-    description: 'Breakfast clubs in seven local schools ensuring children start their day with a nutritious meal.',
+    description: 'Serving approximately 1,000 children monthly through breakfast clubs in six local schools since 2000.',
     detailedDescription: `
-      <p class="lead">Our Food for Kids program operates in partnership with seven local schools to ensure 
-      that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning meals 
-      that help students focus on learning rather than hunger.</p>
+    <h2>Food for Kids</h2>  
+    <p class="lead">Our Food for Kids program, established in 2000, operates in partnership with six local schools 
+      to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning 
+      meals that help students focus on learning rather than hunger.</p>
 
       <h2>Program Impact</h2>
       <ul>
-        <li>Serves hundreds of children daily</li>
-        <li>Operates in 7 local schools</li>
-        <li>Provides balanced, nutritious meals</li>
+        <li>Serves approximately 1,000 children monthly</li>
+        <li>Operates in 6 local schools</li>
+        <li>Daily breakfast service during school days</li>
         <li>Supports academic success</li>
       </ul>
 
-      <h2>What We Provide</h2>
-      <p>Each breakfast includes:</p>
+      <h2>Participating Schools</h2>
       <ul>
-        <li>Fresh fruits and vegetables</li>
-        <li>Whole grain options</li>
-        <li>Protein-rich foods</li>
-        <li>Dairy products</li>
+        <li>The Comp</li>
+        <li>Chester Ronning</li>
+        <li>Charlie Killiam</li>
+        <li>Jack Stuart</li>
+        <li>Sifton</li>
+        <li>Sparling</li>
       </ul>
 
-      <h2>Our Partners</h2>
-      <p>We work closely with:</p>
+      <h2>Program Operations</h2>
+      <p>Our program runs through:</p>
       <ul>
-        <li>School administrators and staff</li>
-        <li>Nutritionists and dietitians</li>
-        <li>Local food suppliers</li>
-        <li>Community volunteers</li>
+        <li>School-based coordinators organizing volunteer teams</li>
+        <li>Weekly grocery shopping and delivery service</li>
+        <li>Partnership with local businesses for delivery</li>
+        <li>Regular communication with school coordinators</li>
       </ul>`,
-    image: '/images/home/kids-breakfast.webp',
+    image: '/images/programs/kids-breakfast.webp',
+    imageTitle: 'Breakfast club food preparation.',
+    imageAlt: 'Breakfast club food preparation.',
     featured: true,
     slug: 'food-for-kids'
   },
   {
     id: 'marthas-table',
     title: "Martha's Table",
-    description: 'Weekly soup kitchens offering warm meals and community support to those in need.',
+    description: 'Free soup and sandwich program serving 20-400 people twice weekly since 1998.',
     detailedDescription: `
-      <p class="lead">Martha's Table is more than just a soup kitchen - it's a place where community 
-      members can find warm meals and warm hearts. Our weekly gatherings provide nutritious meals in a 
-      dignified, welcoming environment where everyone is treated as family.</p>
+    <h2>Martha's Table</h2>
+      <p class="lead">Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where 
+      community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals 
+      in a dignified, welcoming environment where everyone is treated as family.</p>
 
-      <h2>What We Offer</h2>
+      <h2>Service Schedule</h2>
       <ul>
-        <li>Weekly home-style meals</li>
-        <li>Welcoming, café-style environment</li>
-        <li>Community fellowship</li>
+        <li>Tuesdays at Messiah Lutheran Church, 12:00 PM - 1:00 PM</li>
+        <li>Wednesdays at Camrose United Church, 12:00 PM - 1:00 PM</li>
+      </ul>
+
+      <h2>Volunteer Activities</h2>
+      <p>Our dedicated volunteers:</p>
+      <ul>
+        <li>Create serving schedules</li>
+        <li>Pick up and manage food supplies</li>
+        <li>Prepare soup and sandwiches</li>
+        <li>Set up and serve meals</li>
+        <li>Build relationships with community members</li>
+      </ul>
+
+      <h2>Program Impact</h2>
+      <p>Each service provides:</p>
+      <ul>
+        <li>Meals for 20-400 community members</li>
+        <li>Nutritious soup and sandwich combinations</li>
+        <li>Welcoming, community atmosphere</li>
         <li>Connection to additional resources</li>
-      </ul>
-
-      <h2>Our Impact</h2>
-      <p>Every week, we serve:</p>
-      <ul>
-        <li>Hundreds of nutritious meals</li>
-        <li>Community members from all walks of life</li>
-        <li>Special holiday celebrations</li>
-        <li>Emergency food assistance</li>
-      </ul>
-
-      <h2>Community Support</h2>
-      <p>Our program is made possible through:</p>
-      <ul>
-        <li>Dedicated volunteer teams</li>
-        <li>Local food donations</li>
-        <li>Community partnerships</li>
-        <li>Financial supporters</li>
       </ul>`,
-    image: '/images/home/soup-kitchen.webp',
+    image: '/images/programs/soup-kitchen.webp',
+    imageTitle: 'Soup kitchen volunteer distributing meals.',
+    imageAlt: 'Soup kitchen volunteer distributing meals.',
     featured: true,
     slug: 'marthas-table'
   },
   {
-    id: 'medical-transport',
+    id: 'medical-transportation',
     title: 'Medical Transportation',
-    description: 'Providing essential transportation services for medical appointments and treatments.',
+    description: 'Providing essential transportation services for specialist medical appointments in Edmonton.',
     detailedDescription: `
-      <p class="lead">Our Medical Transportation program ensures that no one misses important medical 
-      appointments due to lack of transportation. We coordinate rides to medical facilities both within 
-      Camrose and to specialized care centers in nearby cities.</p>
+      <h2>Medical Transportation</h2>
+      <p class="lead">Our Medical Transportation program ensures that no one misses important medical appointments 
+        due to lack of transportation. We coordinate rides to specialist appointments in Edmonton for clients who 
+        have no other means of transportation.</p>
 
-      <h2>Service Coverage</h2>
+      <h2>Program Process</h2>
       <ul>
-        <li>Local medical appointments</li>
-        <li>Specialist visits in nearby cities</li>
-        <li>Regular treatment sessions</li>
-        <li>Emergency medical transportation</li>
+        <li>Initial client screening and safety assessment</li>
+        <li>Personal interview process</li>
+        <li>Coordination with volunteer drivers</li>
+        <li>Flexible scheduling based on appointment times</li>
       </ul>
 
       <h2>Our Volunteer Drivers</h2>
-      <p>All our drivers are carefully selected and provide:</p>
+      <p>All our carefully selected drivers provide:</p>
       <ul>
         <li>Safe, reliable transportation</li>
         <li>Door-to-door assistance</li>
@@ -150,54 +177,59 @@ export const programs: Program[] = [
         <li>Flexible scheduling options</li>
       </ul>
 
-      <h2>Program Benefits</h2>
-      <p>This vital service helps:</p>
+      <h2>Service Features</h2>
+      <p>This vital service includes:</p>
       <ul>
-        <li>Seniors maintain independence</li>
-        <li>Reduce missed appointments</li>
-        <li>Ensure continuity of care</li>
-        <li>Provide peace of mind</li>
+        <li>Transportation to specialist appointments</li>
+        <li>Door-to-door service</li>
+        <li>Coordination with medical facilities</li>
+        <li>Follow-up scheduling assistance</li>
       </ul>`,
-    image: '/images/home/medical-transport.webp',
-    featured: false,
+    image: '/images/programs/medical-transport.webp',
+    imageTitle: 'Medical transportation volunteer driving a person to an appointment.',
+    imageAlt: 'Medical transportation volunteer driving a person to an appointment.',
+    featured: true,
     slug: 'medical-transportation'
   },
   {
     id: 'emergency-aid',
     title: 'Emergency Financial Assistance',
-    description: 'Helping those facing urgent financial crises with temporary support and guidance.',
+    description: 'One-time emergency intervention for urgent financial crises, with repayment opportunities.',
     detailedDescription: `
-      <p class="lead">Our Emergency Financial Assistance program provides temporary support to 
-      individuals and families facing unexpected financial hardships. We offer assistance with essential 
-      expenses while also connecting clients with resources for long-term financial stability.</p>
+      <h2>Emergency Financial Assistance</h2>
+      <p class="lead">Our Emergency Financial Assistance program, supported by member churches, provides one-time 
+      emergency intervention for individuals and families facing unexpected financial hardships. We operate as a 
+      Lending Circle, offering recipients the opportunity to repay the assistance.</p>
 
       <h2>Types of Assistance</h2>
       <ul>
-        <li>Utility bill payments</li>
         <li>Rent assistance</li>
-        <li>Medical expense support</li>
-        <li>Emergency food assistance</li>
-      </ul>
-
-      <h2>Support Services</h2>
-      <p>Beyond financial aid, we provide:</p>
-      <ul>
-        <li>Financial counseling</li>
-        <li>Budgeting workshops</li>
-        <li>Resource referrals</li>
-        <li>Long-term planning support</li>
+        <li>Utility bill payments</li>
+        <li>Prescription medication costs</li>
+        <li>Emergency housing for transients</li>
       </ul>
 
       <h2>Our Process</h2>
       <p>We ensure responsible distribution of aid through:</p>
       <ul>
-        <li>Careful needs assessment</li>
+        <li>Thorough needs assessment</li>
+        <li>Validation of emergency situation</li>
         <li>Direct payment to service providers</li>
-        <li>Follow-up support</li>
+        <li>Repayment program coordination</li>
+      </ul>
+
+      <h2>Program Features</h2>
+      <p>Key aspects include:</p>
+      <ul>
+        <li>One-time emergency intervention</li>
+        <li>Lending Circle participation option</li>
+        <li>Flexible repayment opportunities</li>
         <li>Connection to additional resources</li>
       </ul>`,
-    image: '/images/home/emergency-aid.webp',
-    featured: false,
+    image: '/images/programs/emergency-aid.webp',
+    imageTitle: 'Emergency financial assistance volunteer helping a client.',
+    imageAlt: 'Emergency financial assistance volunteer helping a client.',
+    featured: true,
     slug: 'emergency-financial-assistance'
   },
   {
@@ -205,6 +237,7 @@ export const programs: Program[] = [
     title: 'Referral Services',
     description: 'Connecting individuals with additional support resources and community services.',
     detailedDescription: `
+      <h2>Referral Services</h2>
       <p class="lead">Our Referral Services program acts as a bridge between those in need and the 
       various support services available in our community. We maintain strong relationships with local 
       agencies, government services, and other nonprofits to ensure our clients can access all available 
@@ -235,8 +268,10 @@ export const programs: Program[] = [
         <li>Educational institutions</li>
         <li>Community organizations</li>
       </ul>`,
-    image: '/images/home/referral-services.webp',
-    featured: false,
+    image: '/images/programs/referral-services.webp',
+    imageTitle: 'Referral services volunteer helping a client.',
+    imageAlt: 'Referral services volunteer helping a client.',
+    featured: true,
     slug: 'referral-services'
   }
 ];

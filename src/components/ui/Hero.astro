@@ -1,39 +1,38 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   ctaText?: string;
   ctaLink?: string;
   backgroundImage?: string;
+  backgroundImageAlt?: string;
 }
 
 const {
   title,
   ctaText = "Get Involved",
   ctaLink = "/contact",
-  backgroundImage = "/images/home/hero-helping-hands.webp"
+  backgroundImage = "/images/hero-helping-hands.webp",
+  backgroundImageAlt = "Food bank volunteers helping sort food.",
 } = Astro.props;
 ---
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-background">
-    <picture>
-      <source 
-        srcset={backgroundImage}
-        type="image/webp"
-      />
-      <img
-        src={backgroundImage}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async"
-        width="1920"
-        height="1080"
-      />
+    <Image
+      src={backgroundImage}
+      alt={backgroundImageAlt}
+      aria-hidden="true"
+      width={1920}
+      height={1080}
+      quality={90}
+      loading="eager"
+      decoding="auto"
+    />
     <div class="hero-overlay"></div>
-    </picture>
   </div>
-  
+
   <div class="hero-content container">
     <div class="content-wrapper">
       <h1 id="hero-title" class="hero-title">
@@ -43,21 +42,21 @@ const {
         <a href={ctaLink} class="hero-cta">
           {ctaText}
           <span class="sr-only">(Call to action)</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            stroke-width="2" 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             class="cta-icon"
             aria-hidden="true"
           >
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
           </svg>
         </a>
       </div>
@@ -127,20 +126,6 @@ const {
     margin-bottom: var(--space-6);
     color: var(--color-hero);
   }
-
-/*   .title-highlight {
-    background: linear-gradient(
-      45deg,
-      var(--color-primary-light) 0%,
-      white 50%,
-      var(--color-primary-light) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
-    padding: 0 var(--space-2);
-  } */
 
   .cta-wrapper {
     perspective: 1000px;
@@ -214,7 +199,7 @@ const {
     }
 
     .hero-cta {
-      width: 100%;
+      width: 50%;
       justify-content: center;
     }
   }
