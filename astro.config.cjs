@@ -1,10 +1,10 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
+const { defineConfig } = require("astro/config");
+const mdx = require("@astrojs/mdx");
 
-// https://astro.build/config
-export default defineConfig({
-  site: "https://camroseneighboraidcenter.ca", // Update this with your actual domain
+/** @type {import('astro').AstroUserConfig} */
+const config = {
+  site: "https://camroseneighboraidcenter.ca",
   compressHTML: true,
   integrations: [mdx()],
   build: {
@@ -12,7 +12,7 @@ export default defineConfig({
   },
   vite: {
     optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
+      exclude: ["resvg-js"],
     },
     build: {
       cssMinify: true,
@@ -22,4 +22,6 @@ export default defineConfig({
     remotePatterns: [{ protocol: "https" }],
     service: { entrypoint: "astro/assets/services/sharp" },
   },
-});
+};
+
+module.exports = defineConfig(config);
