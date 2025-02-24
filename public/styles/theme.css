@@ -15,13 +15,13 @@
   --color-accent: #41e169;
 
   /* Neutral Colors */
-  --color-background: #ffffff;
-  --color-surface: #ffffff;
+  --color-background: #fff;
+  --color-surface: #fff;
   --color-surface-hover: #f8f9fa;
   --color-text: #1a1a1a;
-  --color-text-light: #666666;
+  --color-text-light: #666;
   --color-border: #e5e7eb;
-  --color-hero: #ffffff;
+  --color-hero: #fff;
 
   /* Semantic Colors */
   --color-success: #28a745;
@@ -83,12 +83,10 @@
   --transition-slow: 350ms ease;
 
   /* Shadows */
-  --shadow-sm:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px -1px rgb(0 0 0 / 10%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 12%), 0 2px 4px -2px rgb(0 0 0 / 10%);
   --shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    0 10px 15px -3px rgb(0 0 0 / 12%), 0 4px 6px -4px rgb(0 0 0 / 10%);
 }
 
 /* Dark mode using data-theme attribute */
@@ -96,7 +94,7 @@
   --color-background: #121212;
   --color-surface: #121212;
   --color-surface-hover: #1a1a1a;
-  --color-text: #ffffff;
+  --color-text: #fff;
   --color-text-light: #a1a1a1;
   --color-border: #383838;
 
@@ -106,13 +104,11 @@
   --color-error: #f44336;
 
   /* Adjust shadows for dark mode - subtle glow effect */
-  --shadow-sm: 0 1px 2px 0 rgba(255, 255, 255, 0.07);
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 7%);
   --shadow-md:
-    0 2px 4px 0 rgba(255, 255, 255, 0.08),
-    0 1px 2px -1px rgba(255, 255, 255, 0.06);
+    0 2px 4px 0 rgb(255 255 255 / 8%), 0 1px 2px -1px rgb(255 255 255 / 6%);
   --shadow-lg:
-    0 4px 6px -1px rgba(255, 255, 255, 0.1),
-    0 2px 4px -2px rgba(255, 255, 255, 0.08);
+    0 4px 6px -1px rgb(255 255 255 / 10%), 0 2px 4px -2px rgb(255 255 255 / 8%);
 }
 
 /* Base styles */

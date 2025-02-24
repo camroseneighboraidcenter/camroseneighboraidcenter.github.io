@@ -1,51 +1,49 @@
 ---
-import TeamMember from './TeamMember.astro';
+import TeamMember from "./TeamMember.astro";
 
-interface TeamMember {
+interface TeamMemberData {
   name: string;
   role: string;
   bio: string;
   imagePath: string;
 }
 
-const teamMembers: TeamMember[] = [
+const teamMembers: TeamMemberData[] = [
   {
     name: "Sarah Thompson",
     role: "Executive Director",
     bio: "Sarah brings over 15 years of nonprofit leadership experience and a passion for community service.",
-    imagePath: "/images/about/temp-person.jpg"
+    imagePath: "../../assets/about/temp-person.jpg",
   },
   {
     name: "Michael Chen",
     role: "Program Coordinator",
     bio: "Michael oversees our food bank and transportation services, ensuring smooth operations and maximum impact.",
-    imagePath: "/images/about/temp-person.jpg"
+    imagePath: "../../assets/about/temp-person.jpg",
   },
   {
     name: "Emily Rodriguez",
     role: "Volunteer Manager",
     bio: "Emily coordinates our dedicated volunteer network and develops training programs for new volunteers.",
-    imagePath: "/images/about/temp-person.jpg"
+    imagePath: "../../assets/about/temp-person.jpg",
   },
   {
     name: "David Wilson",
     role: "Community Outreach",
     bio: "David builds partnerships with local organizations and manages our community engagement initiatives.",
-    imagePath: "/images/about/temp-person.jpg"
+    imagePath: "../../assets/about/temp-person.jpg",
   },
   {
     name: "Grace Anderson",
     role: "Administrative Coordinator",
     bio: "Grace ensures smooth daily operations and provides crucial support to our team and clients.",
-    imagePath: "/images/about/temp-person.jpg"
-  }
+    imagePath: "../../assets/about/temp-person.jpg",
+  },
 ];
 ---
 
 <div class="team-grid">
-  {teamMembers.map((member) => (
-    <TeamMember {...member} />
-  ))}
+  {teamMembers.map((member) => <TeamMember {...member} />)}
 </div>
 
 <style>
@@ -54,7 +52,7 @@ const teamMembers: TeamMember[] = [
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-8);
     width: 100%;
-    max-width: var(--max-width-5xl);
+    max-width: var(--max-width-6xl);
     margin: 0 auto;
   }
 

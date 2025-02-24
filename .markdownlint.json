@@ -1,0 +1,21 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD033": false,
+  "MD041": false,
+  "MD025": false,
+  "MD026": false,
+  "MD036": false,
+  "MD040": false,
+  "MD046": false,
+  "MD024": false,
+  "MD051": false,
+  "MD053": false,
+  "MD045": false,
+  "MD044": {
+    "names": ["Camrose Neighbor Aid Center", "Food Bank Services"]
+  },
+  "MD048": {
+    "style": "backtick"
+  }
+}

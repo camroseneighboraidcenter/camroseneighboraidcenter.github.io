@@ -13,14 +13,14 @@ const activeSocialMedia = getActiveSocialMedia();
 {
   activeSocialMedia.length > 0 && (
     <div
-      class={`social-links ${className}`}
+      class:list={[`social-links`,`${className}`]}
       aria-label="Social media links"
       data-justify={justify}
     >
       {activeSocialMedia.map(({ platform, url, label }) => (
         <a
           href={url}
-          class={`social-icon ${platform}`}
+          class:list={[`social-icon`,`${platform}`]}
           aria-label={label}
           target="_blank"
           rel="noopener noreferrer"

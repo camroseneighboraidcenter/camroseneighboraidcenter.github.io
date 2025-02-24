@@ -1,18 +1,10 @@
 ---
 import { Image } from 'astro:assets';
+import type { Program } from '../../data/programs';
 
-interface Props {
-  id: string;
-  title: string;
-  description: string;
-  detailedDescription?: string;
-  image: string;
-  imageTitle: string;
-  imageAlt: string;
-  featured: boolean;
-  slug: string;
+type Props = Program & {
   variant?: 'featured' | 'full';
-}
+};
 
 const { 
   title, 

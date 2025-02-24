@@ -5,10 +5,12 @@ interface Props {
   primaryCta?: {
     text: string;
     href: string;
+    ariaLabel?: string;
   };
   secondaryCta?: {
     text: string;
     href: string;
+    ariaLabel?: string;
   };
 }
 
@@ -17,12 +19,14 @@ const {
   description = "Through the support of 20 local churches, volunteers, and donors, we're building a stronger, more resilient community.",
   primaryCta = {
     text: "Volunteer With Us",
-    href: "/contact#contact-form?subject=volunteer"
+    href: "/contact#contact-form?subject=volunteer",
+    ariaLabel: "Learn more about volunteering with us",
   },
   secondaryCta = {
     text: "Support Our Mission",
-    href: "/donate"
-  }
+    href: "/donate",
+    ariaLabel: "Make a donation to support our mission",
+  },
 } = Astro.props;
 ---
 
@@ -31,11 +35,11 @@ const {
     <h2 id="cta-title" class="cta-title">{title}</h2>
     <p class="cta-description">{description}</p>
     <div class="cta-buttons">
-      <a href={primaryCta.href} class="cta-button primary">
+      <a href={primaryCta.href} class="cta-button primary" aria-label={primaryCta.ariaLabel}>
         {primaryCta.text}
         <span class="sr-only">(Opens in same tab)</span>
       </a>
-      <a href={secondaryCta.href} class="cta-button secondary">
+      <a href={secondaryCta.href} class="cta-button secondary" aria-label={secondaryCta.ariaLabel}>
         {secondaryCta.text}
         <span class="sr-only">(Opens in same tab)</span>
       </a>
@@ -47,12 +51,10 @@ const {
   .cta-section {
     width: 100%;
     background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-8);
     margin: var(--space-8) 0;
-    box-shadow: var(--shadow-sm);
-    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
   }
 
   .cta-content {

@@ -1,14 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+import type { Program } from '../../data/programs';
 
-interface Props {
-  title: string;
-  description: string;
-  image: string;
-  imageTitle: string;
-  imageAlt: string;
-  slug: string;
-}
+type Props = Program;
 
 const { title, description, image, imageTitle, imageAlt, slug } = Astro.props;
 

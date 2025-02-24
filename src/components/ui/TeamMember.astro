@@ -9,12 +9,14 @@ interface Props {
 }
 
 const { name, role, bio, imagePath } = Astro.props;
+const image = await import(/* @vite-ignore */ imagePath);
+
 ---
 
 <div class="team-member">
   <div class="member-image-container">
     <Image
-      src={imagePath}
+      src={image.default}
       alt={`${name} - ${role}`}
       class="member-image"
       width={200}

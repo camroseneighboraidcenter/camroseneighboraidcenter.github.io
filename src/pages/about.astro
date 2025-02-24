@@ -1,36 +1,19 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/nbaid-logo.webp";
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
+import VisionCard from "../components/ui/VisionCard.astro";
+import ValuesCard from "../components/ui/ValuesCard.astro";
 import TeamGrid from "../components/ui/TeamGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
+import BeliefsCard from "../components/ui/BeliefsCard.astro";
 
-const values = [
-  {
-    title: "Faith-Based Service",
-    description: "We serve all people with Christ-like love and compassion.",
-  },
-  {
-    title: "Community Focus",
-    description:
-      "We build strong relationships within our community to better serve those in need.",
-  },
-  {
-    title: "Dignity & Respect",
-    description:
-      "We treat everyone with dignity and respect, recognizing their inherent worth.",
-  },
-  {
-    title: "Collaboration",
-    description:
-      "We work together with churches, organizations, and individuals to maximize our impact.",
-  },
-  {
-    title: "Responsiveness",
-    description: "We act swiftly in times of crisis and need.",
-  },
-];
+
+
+
 ---
 
 <BaseLayout title="About Us | Camrose Neighbor Aid Center">
@@ -42,7 +25,6 @@ const values = [
       ctaText="Get Involved"
       ctaLink="/contact#contact-form?subject=volunteer"
     />
-
     <div class="content-wrapper">
       <section class="intro-section">
         <div class="content-container">
@@ -55,47 +37,67 @@ const values = [
         </div>
       </section>
 
-      <section class="motto-section">
-        <div class="content-container">
-          <h2 class="section-title">Our Motto</h2>
-          <p class="motto">We care, we listen, we respond.</p>
-        </div>
+      <VisionCard
+        vision="A community where everyone's basic needs are met through Christ-centered service and support."
+      />
+
+      <section
+        class="logo-container"
+        role="img"
+        aria-label="Camrose Neighbor Aid Center Logo"
+      >
+        <Image
+          src={logo}
+          alt="Camrose Neighbor Aid Center Logo - Hands linked in Christ's name to meet the needs of others"
+          width={1000}
+          quality={90}
+          class="logo-image"
+          loading="eager"
+          style="height: auto;"
+          loading="lazy"
+        />
       </section>
 
-      <section class="values-section">
-        <div class="content-container">
-          <h2 class="section-title">Our Values</h2>
-          <div class="values-grid">
-            {
-              values.map(({ title, description }) => (
-                <div class="value-card">
-                  <h3 class="value-title">{title}</h3>
-                  <p class="value-description">{description}</p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </section>
+      <BeliefsCard
+        beliefs={[
+          {
+            text: "We believe all things are possible through Christ.",
+            verse: "Matthew 19:26",
+          },
+          {
+            text: "We believe that Christians working together glorify God and make a difference.",
+            verse: "John 17:21-22",
+          },
+        ]}
+      />
 
-      <section class="belief-section">
-        <div class="content-container">
-          <h2 class="section-title">Our Beliefs</h2>
-          <div class="beliefs-grid">
-            <div class="belief-card">
-              <p class="belief-text">
-                We believe all things are possible through Christ.
-                <span class="verse">Matthew 19:26</span>
-              </p>
-              <p class="belief-text">
-                We believe that Christians working together glorify God and make
-                a difference.
-                <span class="verse">John 17:21-22</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ValuesCard
+        values={[
+          {
+            title: "Faith",
+            description:
+              "Rooted in Christian principles, serving all with compassion and grace.",
+          },
+          {
+            title: "Community",
+            description:
+              "Building strong relationships and fostering a sense of belonging.",
+          },
+          {
+            title: "Service",
+            description: "Dedicated to meeting needs with care and dignity.",
+          },
+          {
+            title: "Collaboration",
+            description:
+              "Working together with churches and organizations for greater impact.",
+          },
+          {
+            title: "Responsiveness",
+            description: "Acting swiftly in times of crisis and need.",
+          },
+        ]}
+      />
 
       <section class="team-section">
         <div class="content-container">
@@ -131,19 +133,19 @@ const values = [
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    gap: var(--space-16);
+    gap: var(--space-4);
   }
 
   .content-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--space-16);
-    padding: var(--space-16) 0;
+    gap: var(--space-2);
+    padding: var(--space-8) 0;
   }
 
   .content-container {
-    max-width: var(--max-width-5xl);
-    margin: 0 auto;
+    max-width: var(--max-width-7xl);
+    margin: var(--space-8) auto;
     padding: 0 var(--space-4);
     width: 100%;
   }
@@ -153,12 +155,53 @@ const values = [
     margin-bottom: var(--space-8);
   }
 
+  /* Logo section styles */
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--space-8) auto;
+    max-width: min(var(--max-width-4xl), 80vw);
+    padding: 0 var(--space-4);
+  }
+
+  .logo-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition:
+      transform var(--transition-normal),
+      box-shadow var(--transition-normal);
+  }
+
+  /* Enhance logo on hover/focus for interactive feedback */
+  .logo-image:hover,
+  .logo-image:focus-visible {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Respect user's reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-image {
+      transition: none;
+    }
+
+    .logo-image:hover,
+    .logo-image:focus-visible {
+      transform: none;
+    }
+  }
+
   .lead-text {
     font-size: var(--text-xl);
     color: var(--color-text-light);
-    max-width: 70ch;
+    max-width: 80ch;
     margin: 0 auto;
     line-height: 1.6;
+    text-align: justify;
   }
 
   .section-title {
@@ -175,68 +218,6 @@ const values = [
     margin-bottom: var(--space-8);
   }
 
-  .motto-section {
-    text-align: center;
-  }
-
-  .motto {
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    color: var(--color-primary);
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-6);
-  }
-
-  .value-card {
-    background-color: var(--color-surface);
-    padding: var(--space-6);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .value-title {
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: var(--space-2);
-  }
-
-  .value-description {
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-
-  .beliefs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-6);
-  }
-
-  .belief-card {
-    background-color: var(--color-surface);
-    padding: var(--space-6);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-  }
-
-  .belief-text {
-    font-size: var(--text-lg);
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-
-  .verse {
-    display: block;
-    color: var(--color-primary);
-    font-size: var(--text-sm);
-    margin-top: var(--space-2);
-  }
-
   @media (max-width: 768px) {
     .content-wrapper {
       gap: var(--space-12);
@@ -249,10 +230,6 @@ const values = [
 
     .section-title {
       font-size: var(--text-2xl);
-    }
-
-    .motto {
-      font-size: var(--text-xl);
     }
   }
 </style>

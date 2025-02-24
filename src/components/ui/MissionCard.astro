@@ -1,27 +1,17 @@
 ---
 interface Props {
-  title?: string;
   mission: string;
-  vision?: string;
   className?: string;
 }
 
-const { mission, vision, className = "" } = Astro.props;
+const { mission, className = "" } = Astro.props;
 ---
 
-<section class={`mission-card ${className}`} aria-labelledby="mission-title">
+<section class:list={[`mission-card`,`${className}`]} aria-labelledby="mission-title">
   <div class="mission-content">
     <h2 id="mission-title" class="mission-title">Our Mission</h2>
     <div class="mission-text">
       <p class="mission-statement">{mission}</p>
-      {
-        vision && (
-          <div class="vision-section">
-            <h2 class="vision-title">Our Vision</h2>
-            <p class="vision-statement">{vision}</p>
-          </div>
-        )
-      }
     </div>
   </div>
 </section>
@@ -37,7 +27,9 @@ const { mission, vision, className = "" } = Astro.props;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+    transition:
+      box-shadow var(--transition-normal),
+      border-color var(--transition-normal);
   }
 
   .mission-card:hover {
@@ -68,26 +60,6 @@ const { mission, vision, className = "" } = Astro.props;
     line-height: 1.6;
     text-align: center;
     font-style: italic;
-    color: var(--color-text);
-  }
-
-  .vision-section {
-    border-top: 2px solid var(--color-primary-light);
-    padding-top: var(--space-6);
-    margin-top: var(--space-6);
-  }
-
-  .vision-title {
-    color: var(--color-primary);
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-4);
-    text-align: center;
-  }
-
-  .vision-statement {
-    font-size: var(--text-lg);
-    line-height: 1.6;
-    text-align: center;
     color: var(--color-text);
   }
 

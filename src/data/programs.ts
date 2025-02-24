@@ -1,9 +1,19 @@
+import type { ImageMetadata } from "astro";
+
+// Import all program images
+import foodBankImage from "../assets/programs/food-bank.webp";
+import kidsBreakfastImage from "../assets/programs/kids-breakfast.webp";
+import soupKitchenImage from "../assets/programs/soup-kitchen.webp";
+import medicalTransportImage from "../assets/programs/medical-transport.webp";
+import emergencyAidImage from "../assets/programs/emergency-aid.webp";
+import referralServicesImage from "../assets/programs/referral-services.webp";
+
 export interface Program {
   id: string;
   title: string;
   description: string;
   detailedDescription: string;
-  image: string;
+  image: ImageMetadata;
   imageTitle: string;
   imageAlt: string;
   featured: boolean;
@@ -12,266 +22,279 @@ export interface Program {
 
 export const programs: Program[] = [
   {
-    id: 'food-bank',
-    title: 'Food Bank Services',
-    description: 'Providing essential food supplies to those experiencing food insecurity in our community since 1984.',
+    id: "food-bank",
+    title: "Food Bank Services",
+    description:
+      "Providing essential food supplies to those experiencing food insecurity in our community.",
     detailedDescription: `
-    <h2>Food Bank Services</h2>  
-    <p class="lead">Our Food Bank Services program has been a cornerstone of our mission to support those in need 
-      since 1984. We provide nutritious food supplies to individuals and families experiencing food insecurity.</p>
+:::overview
+# About Our Food Bank
+Our Food Bank Services program has been a cornerstone of our mission to support those in need since 1984. We provide nutritious food supplies to individuals and families experiencing food insecurity in our community. {.intro-text}
 
-      <h2>Hours of Operation</h2>
-      <ul>
-        <li>Hamper Services:
-          <ul>
-            <li>Tuesday-Thursday, 9:00 AM - 11:30 AM</li>
-          </ul>
-        </li>
-        <li>Front Room (extra foods, bread, beans & soups):
-          <ul>
-            <li>Monday & Friday: 9:00 AM - 12:00 PM</li>
-            <li>Tuesday-Thursday: 10:00 AM - 3:00 PM</li>
-          </ul>
-        </li>
-        <li>Additional Bread Distribution:
-          <ul>
-            <li>Monday: Camrose Community Church, 9:00 AM - 12:00 PM</li>
-            <li>Wednesday: Center Point Church, 1:00 PM - 3:00 PM</li>
-          </ul>
-        </li>
-      </ul>
+Through our Food Bank Services, we aim to:
 
-      <h2>Volunteer Activities</h2>
-      <p>Our dedicated volunteers engage in various essential tasks:</p>
-      <ul>
-        <li>Stocking shelves and making hampers</li>
-        <li>Sorting donations</li>
-        <li>Answering phones</li>
-        <li>Cleaning and maintenance</li>
-        <li>Creating schedules</li>
-        <li>Transporting and delivering supplies</li>
-        <li>Bread and soup delivery</li>
-      </ul>
+* Provide emergency food assistance to individuals and families in need
+* Ensure access to nutritious and balanced food options
+* Support our community members with dignity and respect
+* Collaborate with local partners to maximize our impact
+:::
 
-      <h2>Our Approach</h2>
-      <p>Our service is designed to be accessible and dignified, ensuring that everyone who comes through our 
-      doors is treated with respect and compassion. We believe in:</p>
-      <ul>
-        <li>Treating everyone with dignity and respect</li>
-        <li>Providing nutritious food options</li>
-        <li>Offering guidance on nutrition and cooking</li>
-        <li>Creating a welcoming environment</li>
-      </ul>`,
-    image: '/images/programs/food-bank.webp',
-    imageTitle: 'Food bank volunteers helping sort food.',
-    imageAlt: 'Food bank volunteers helping sort food.',
+:::services
+## Available Services
+
+### Food Hamper Program
+We provide comprehensive food hampers tailored to your household size and dietary needs. Each hamper includes:
+* Non-perishable staples (rice, pasta, canned goods)
+* Fresh produce when available (fruits, vegetables)
+* Dairy products (milk, cheese)
+* Protein options (canned meat, beans)
+* Personal care items (soap, toothpaste)
+
+### Front Room Services {.highlight}
+Our Front Room offers immediate access to:
+* Fresh bread and pastries from local bakeries
+* Seasonal produce from community gardens
+* Soups and beans for quick meals
+* Emergency supplies for urgent needs
+:::
+
+:::schedule
+## When to Visit
+
+### Hamper Services
+Food hamper pickup available:
+* Tuesday-Thursday: 9:00 AM - 11:30 AM
+* Please arrive at least 30 minutes before closing
+
+### Front Room Services
+Extra foods, bread, beans & soups available:
+* Monday & Friday: 9:00 AM - 12:00 PM
+* Tuesday-Thursday: 10:00 AM - 3:00 PM
+
+### Additional Bread Distribution {.highlight}
+Fresh bread available at partner locations:
+* Monday: Camrose Community Church, 9:00 AM - 12:00 PM
+* Wednesday: Center Point Church, 1:00 PM - 3:00 PM
+:::
+
+:::note
+**Important Information**
+* Please bring valid ID and proof of address when accessing our services
+* Let us know about any dietary restrictions or allergies
+* If you need accommodation for mobility or other needs, please call ahead
+* All services are provided free of charge
+* Delivery may be available for seniors and those with disabilities
+:::
+
+:::requirements
+## Eligibility & Registration
+* Open to all residents of Camrose and surrounding areas
+* No appointment needed for Front Room services
+* Please register at your first visit for hamper services
+* Income assessment may be required for ongoing support
+* We respect your privacy and maintain confidentiality
+:::
+
+## Volunteer Activities
+Our dedicated volunteers engage in various essential tasks:
+
+* Stocking shelves and making hampers
+* Sorting donations
+* Answering phones
+* Cleaning and maintenance
+* Creating schedules
+* Transporting and delivering supplies
+* Bread and soup delivery
+
+## Our Approach
+Our service is designed to be accessible and dignified, ensuring that everyone who comes through our doors is treated with respect and compassion. We believe in:
+
+* Treating everyone with dignity and respect
+`,
+    image: foodBankImage,
+    imageTitle: "Food bank volunteers helping sort food.",
+    imageAlt: "Food bank volunteers helping sort food.",
     featured: true,
-    slug: 'food-bank-services'
+    slug: "food-bank-services",
   },
   {
-    id: 'food-for-kids',
-    title: 'Food for Kids',
-    description: 'Serving approximately 1,000 children monthly through breakfast clubs in six local schools since 2000.',
+    id: "food-for-kids",
+    title: "Food for Kids",
+    description:
+      "Serving approximately 1,000 children monthly through breakfast clubs in local schools.",
     detailedDescription: `
-    <h2>Food for Kids</h2>  
-    <p class="lead">Our Food for Kids program, established in 2000, operates in partnership with six local schools 
-      to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning 
-      meals that help students focus on learning rather than hunger.</p>
+Our Food for Kids program, established in 2000, operates in partnership with six local schools to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning meals that help students focus on learning rather than hunger.
 
-      <h2>Program Impact</h2>
-      <ul>
-        <li>Serves approximately 1,000 children monthly</li>
-        <li>Operates in 6 local schools</li>
-        <li>Daily breakfast service during school days</li>
-        <li>Supports academic success</li>
-      </ul>
+## Program Impact
+* Serves approximately 1,000 children monthly
+* Operates in 6 local schools
+* Daily breakfast service during school days
+* Supports academic success
 
-      <h2>Participating Schools</h2>
-      <ul>
-        <li>The Comp</li>
-        <li>Chester Ronning</li>
-        <li>Charlie Killiam</li>
-        <li>Jack Stuart</li>
-        <li>Sifton</li>
-        <li>Sparling</li>
-      </ul>
+## Participating Schools
+* The Comp
+* Chester Ronning
+* Charlie Killiam
+* Jack Stuart
+* Sifton
+* Sparling
 
-      <h2>Program Operations</h2>
-      <p>Our program runs through:</p>
-      <ul>
-        <li>School-based coordinators organizing volunteer teams</li>
-        <li>Weekly grocery shopping and delivery service</li>
-        <li>Partnership with local businesses for delivery</li>
-        <li>Regular communication with school coordinators</li>
-      </ul>`,
-    image: '/images/programs/kids-breakfast.webp',
-    imageTitle: 'Breakfast club food preparation.',
-    imageAlt: 'Breakfast club food preparation.',
+## Program Operations
+Our program runs through:
+
+* School-based coordinators organizing volunteer teams
+* Weekly grocery shopping and delivery service
+* Partnership with local businesses for delivery
+* Regular communication with school coordinators
+`,
+    image: kidsBreakfastImage,
+    imageTitle: "Breakfast club food preparation.",
+    imageAlt: "Breakfast club food preparation.",
     featured: true,
-    slug: 'food-for-kids'
+    slug: "food-for-kids",
   },
   {
-    id: 'marthas-table',
+    id: "marthas-table",
     title: "Martha's Table",
-    description: 'Free soup and sandwich program serving 20-400 people twice weekly since 1998.',
+    description:
+      "Free soup and sandwich program serving 20-400 people twice weekly since 1998.",
     detailedDescription: `
-    <h2>Martha's Table</h2>
-      <p class="lead">Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where 
-      community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals 
-      in a dignified, welcoming environment where everyone is treated as family.</p>
+Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals in a dignified, welcoming environment where everyone is treated as family.
 
-      <h2>Service Schedule</h2>
-      <ul>
-        <li>Tuesdays at Messiah Lutheran Church, 12:00 PM - 1:00 PM</li>
-        <li>Wednesdays at Camrose United Church, 12:00 PM - 1:00 PM</li>
-      </ul>
+## Service Schedule
+* Tuesdays at Messiah Lutheran Church, 12:00 PM - 1:00 PM
+* Wednesdays at Camrose United Church, 12:00 PM - 1:00 PM
 
-      <h2>Volunteer Activities</h2>
-      <p>Our dedicated volunteers:</p>
-      <ul>
-        <li>Create serving schedules</li>
-        <li>Pick up and manage food supplies</li>
-        <li>Prepare soup and sandwiches</li>
-        <li>Set up and serve meals</li>
-        <li>Build relationships with community members</li>
-      </ul>
+## Volunteer Activities
+Our dedicated volunteers:
 
-      <h2>Program Impact</h2>
-      <p>Each service provides:</p>
-      <ul>
-        <li>Meals for 20-400 community members</li>
-        <li>Nutritious soup and sandwich combinations</li>
-        <li>Welcoming, community atmosphere</li>
-        <li>Connection to additional resources</li>
-      </ul>`,
-    image: '/images/programs/soup-kitchen.webp',
-    imageTitle: 'Soup kitchen volunteer distributing meals.',
-    imageAlt: 'Soup kitchen volunteer distributing meals.',
+* Create serving schedules
+* Pick up and manage food supplies
+* Prepare soup and sandwiches
+* Set up and serve meals
+* Build relationships with community members
+
+## Program Impact
+Each service provides:
+
+* Nutritious soup and sandwich combinations
+* Welcoming, community atmosphere
+* Connection to additional resources
+`,
+    image: soupKitchenImage,
+    imageTitle: "Soup kitchen volunteer distributing meals.",
+    imageAlt: "Soup kitchen volunteer distributing meals.",
     featured: true,
-    slug: 'marthas-table'
+    slug: "marthas-table",
   },
   {
-    id: 'medical-transportation',
-    title: 'Medical Transportation',
-    description: 'Providing essential transportation services for specialist medical appointments in Edmonton.',
+    id: "medical-transportation",
+    title: "Medical Transportation",
+    description:
+      "Providing essential transportation services for specialist medical appointments in Edmonton.",
     detailedDescription: `
-      <h2>Medical Transportation</h2>
-      <p class="lead">Our Medical Transportation program ensures that no one misses important medical appointments 
-        due to lack of transportation. We coordinate rides to specialist appointments in Edmonton for clients who 
-        have no other means of transportation.</p>
+Our Medical Transportation program ensures that no one misses important medical appointments due to lack of transportation. We coordinate rides to specialist appointments in Edmonton for clients who have no other means of transportation.
 
-      <h2>Program Process</h2>
-      <ul>
-        <li>Initial client screening and safety assessment</li>
-        <li>Personal interview process</li>
-        <li>Coordination with volunteer drivers</li>
-        <li>Flexible scheduling based on appointment times</li>
-      </ul>
+## Program Process
+* Initial client screening and safety assessment
+* Personal interview process
+* Coordination with volunteer drivers
+* Flexible scheduling based on appointment times
 
-      <h2>Our Volunteer Drivers</h2>
-      <p>All our carefully selected drivers provide:</p>
-      <ul>
-        <li>Safe, reliable transportation</li>
-        <li>Door-to-door assistance</li>
-        <li>Companionship during trips</li>
-        <li>Flexible scheduling options</li>
-      </ul>
+## Our Volunteer Drivers
+All our carefully selected drivers provide:
 
-      <h2>Service Features</h2>
-      <p>This vital service includes:</p>
-      <ul>
-        <li>Transportation to specialist appointments</li>
-        <li>Door-to-door service</li>
-        <li>Coordination with medical facilities</li>
-        <li>Follow-up scheduling assistance</li>
-      </ul>`,
-    image: '/images/programs/medical-transport.webp',
-    imageTitle: 'Medical transportation volunteer driving a person to an appointment.',
-    imageAlt: 'Medical transportation volunteer driving a person to an appointment.',
+* Safe, reliable transportation
+* Door-to-door assistance
+* Companionship during trips
+* Flexible scheduling options
+
+## Service Features
+This vital service includes:
+
+* Transportation to specialist appointments
+* Door-to-door service
+* Coordination with medical facilities
+* Follow-up scheduling assistance
+`,
+    image: medicalTransportImage,
+    imageTitle:
+      "Medical transportation volunteer driving a person to an appointment.",
+    imageAlt:
+      "Medical transportation volunteer driving a person to an appointment.",
     featured: true,
-    slug: 'medical-transportation'
+    slug: "medical-transportation",
   },
   {
-    id: 'emergency-aid',
-    title: 'Emergency Financial Assistance',
-    description: 'One-time emergency intervention for urgent financial crises, with repayment opportunities.',
+    id: "emergency-aid",
+    title: "Emergency Financial Assistance",
+    description:
+      "One-time emergency intervention for urgent financial crises, with repayment opportunities.",
     detailedDescription: `
-      <h2>Emergency Financial Assistance</h2>
-      <p class="lead">Our Emergency Financial Assistance program, supported by member churches, provides one-time 
-      emergency intervention for individuals and families facing unexpected financial hardships. We operate as a 
-      Lending Circle, offering recipients the opportunity to repay the assistance.</p>
+Our Emergency Financial Assistance program, supported by member churches, provides one-time emergency intervention for individuals and families facing unexpected financial hardships. We operate as a Lending Circle, offering recipients the opportunity to repay the assistance.
 
-      <h2>Types of Assistance</h2>
-      <ul>
-        <li>Rent assistance</li>
-        <li>Utility bill payments</li>
-        <li>Prescription medication costs</li>
-        <li>Emergency housing for transients</li>
-      </ul>
+## Types of Assistance
+* Rent assistance
+* Utility bill payments
+* Prescription medication costs
+* Emergency housing for transients
 
-      <h2>Our Process</h2>
-      <p>We ensure responsible distribution of aid through:</p>
-      <ul>
-        <li>Thorough needs assessment</li>
-        <li>Validation of emergency situation</li>
-        <li>Direct payment to service providers</li>
-        <li>Repayment program coordination</li>
-      </ul>
+## Our Process
+We ensure responsible distribution of aid through:
 
-      <h2>Program Features</h2>
-      <p>Key aspects include:</p>
-      <ul>
-        <li>One-time emergency intervention</li>
-        <li>Lending Circle participation option</li>
-        <li>Flexible repayment opportunities</li>
-        <li>Connection to additional resources</li>
-      </ul>`,
-    image: '/images/programs/emergency-aid.webp',
-    imageTitle: 'Emergency financial assistance volunteer helping a client.',
-    imageAlt: 'Emergency financial assistance volunteer helping a client.',
+* Thorough needs assessment
+* Validation of emergency situation
+* Direct payment to service providers
+* Repayment program coordination
+
+## Program Features
+Key aspects include:
+
+* One-time emergency intervention
+* Lending Circle participation option
+* Flexible repayment opportunities
+* Connection to additional resources
+`,
+    image: emergencyAidImage,
+    imageTitle: "Emergency financial assistance volunteer helping a client.",
+    imageAlt: "Emergency financial assistance volunteer helping a client.",
     featured: true,
-    slug: 'emergency-financial-assistance'
+    slug: "emergency-financial-assistance",
   },
   {
-    id: 'referral-services',
-    title: 'Referral Services',
-    description: 'Connecting individuals with additional support resources and community services.',
+    id: "referral-services",
+    title: "Referral Services",
+    description:
+      "Connecting individuals with additional support resources and community services.",
     detailedDescription: `
-      <h2>Referral Services</h2>
-      <p class="lead">Our Referral Services program acts as a bridge between those in need and the 
-      various support services available in our community. We maintain strong relationships with local 
-      agencies, government services, and other nonprofits to ensure our clients can access all available 
-      resources.</p>
+Our Referral Services program acts as a bridge between those in need and the various support services available in our community. We maintain strong relationships with local agencies, government services, and other nonprofits to ensure our clients can access all available resources.
 
-      <h2>Available Resources</h2>
-      <ul>
-        <li>Government assistance programs</li>
-        <li>Mental health services</li>
-        <li>Employment support</li>
-        <li>Housing assistance</li>
-      </ul>
+## Available Resources
+* Government assistance programs
+* Mental health services
+* Employment support
+* Housing assistance
 
-      <h2>How We Help</h2>
-      <p>Our experienced staff provides:</p>
-      <ul>
-        <li>Personalized needs assessment</li>
-        <li>Application assistance</li>
-        <li>Documentation support</li>
-        <li>Follow-up services</li>
-      </ul>
+## How We Help
+Our experienced staff provides:
 
-      <h2>Partner Network</h2>
-      <p>We collaborate with:</p>
-      <ul>
-        <li>Local social services</li>
-        <li>Healthcare providers</li>
-        <li>Educational institutions</li>
-        <li>Community organizations</li>
-      </ul>`,
-    image: '/images/programs/referral-services.webp',
-    imageTitle: 'Referral services volunteer helping a client.',
-    imageAlt: 'Referral services volunteer helping a client.',
+* Personalized needs assessment
+* Application assistance
+* Documentation support
+* Follow-up services
+
+## Partner Network
+We collaborate with:
+
+* Local social services
+* Healthcare providers
+* Educational institutions
+* Community organizations
+`,
+    image: referralServicesImage,
+    imageTitle: "Referral services volunteer helping a client.",
+    imageAlt: "Referral services volunteer helping a client.",
     featured: true,
-    slug: 'referral-services'
-  }
+    slug: "referral-services",
+  },
 ];

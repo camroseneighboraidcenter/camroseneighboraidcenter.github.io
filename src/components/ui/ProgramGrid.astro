@@ -39,13 +39,13 @@ const displayPrograms = showFeaturedOnly
       )
     }
 
-    <div class:list={["program-grid", variant]} role="list">
-      {
-        displayPrograms.map((program) => (
+    <ul class:list={["program-grid", variant]} aria-label="Programs">
+      {displayPrograms.map((program) => (
+        <li class="program-item">
           <ProgramCard {...program} variant={variant} />
-        ))
-      }
-    </div>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
 

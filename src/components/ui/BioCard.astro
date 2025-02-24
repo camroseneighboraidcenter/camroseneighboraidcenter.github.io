@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  motto: string;
+  className?: string;
+}
+
+const { title, description, motto, className = "" } = Astro.props;
+---
+
+<section class:list={["bio-card", className]} aria-labelledby="bio-title">
+  <div class="bio-content">
+    <h2 id="bio-title" class="bio-title">{title}</h2>
+    <p class="bio-description">{description}</p>
+    <p class="bio-motto-intro">We serve with an attitude of:</p>
+    <p class="bio-motto">{motto}</p>
+  </div>
+</section>
+
+<style>
+  .bio-card {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4);
+    margin: var(--space-4) auto;
+    max-width: var(--max-width-7xl);
+    width: 100%;
+  }
+
+  .bio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .bio-title {
+    color: var(--color-primary);
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-6);
+    text-align: center;
+  }
+
+  .bio-description {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-text-light);
+    max-width: 70ch;
+    text-align: justify;
+  }
+
+  .bio-motto-intro {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin-top: var(--space-4);
+  }
+
+  .bio-motto {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .bio-card {
+      padding: var(--space-6);
+    }
+
+    .bio-title {
+      font-size: var(--text-xl);
+    }
+
+    .bio-description,
+    .bio-motto-intro {
+      font-size: var(--text-base);
+    }
+
+    .bio-motto {
+      font-size: var(--text-lg);
+    }
+  }
+</style>

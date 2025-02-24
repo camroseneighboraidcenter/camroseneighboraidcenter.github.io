@@ -1,20 +1,22 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import defaultHeroImage from "../../assets/hero/hero-helping-hands.webp";
 
 interface Props {
   title: string;
   ctaText?: string;
   ctaLink?: string;
-  backgroundImage?: string;
-  backgroundImageAlt?: string;
+  backgroundImage?: ImageMetadata;
+  imageAlt?: string;
 }
 
 const {
   title,
   ctaText = "Get Involved",
   ctaLink = "/contact",
-  backgroundImage = "/images/hero-helping-hands.webp",
-  backgroundImageAlt = "Food bank volunteers helping sort food.",
+  backgroundImage = defaultHeroImage,
+  imageAlt = "Food bank volunteers helping sort food.",
 } = Astro.props;
 ---
 
@@ -22,7 +24,7 @@ const {
   <div class="hero-background">
     <Image
       src={backgroundImage}
-      alt={backgroundImageAlt}
+      alt={imageAlt}
       aria-hidden="true"
       width={1920}
       height={1080}
@@ -199,7 +201,7 @@ const {
     }
 
     .hero-cta {
-      width: 50%;
+      width: 75%;
       justify-content: center;
     }
   }

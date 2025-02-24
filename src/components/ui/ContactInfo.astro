@@ -18,7 +18,7 @@ const { hours, phone, fax, email } = contactInfo;
 const address = getFormattedAddress();
 ---
 
-<div class={`contact-info-section ${className}`}>
+<div class:list={[`contact-info-section`,`${className}`]}>
   <div class="contact-group">
     <h3 class="contact-heading">Address</h3>
     <address class="contact-text">
