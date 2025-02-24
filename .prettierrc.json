@@ -17,7 +17,9 @@
       "options": {
         "parser": "mdx",
         "proseWrap": "preserve",
-        "printWidth": 120
+        "printWidth": 120,
+        "htmlWhitespaceSensitivity": "strict",
+        "bracketSameLine": true
       }
     }
   ]
