@@ -1,9 +1,7 @@
-// @ts-check
-const { defineConfig } = require("astro/config");
-const mdx = require("@astrojs/mdx");
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
 
-/** @type {import('astro').AstroUserConfig} */
-const config = {
+export default defineConfig({
   site: "https://camroseneighboraidcenter.ca",
   compressHTML: true,
   integrations: [mdx()],
@@ -22,6 +20,4 @@ const config = {
     remotePatterns: [{ protocol: "https" }],
     service: { entrypoint: "astro/assets/services/sharp" },
   },
-};
-
-module.exports = defineConfig(config);
+});

@@ -49,10 +49,11 @@ const title = "Server Error";
   .error-content {
     text-align: center;
     max-width: var(--max-width-2xl);
+    padding: var(--space-8);
   }
 
   .error-code {
-    font-size: 6rem;
+    font-size: var(--text-7xl);
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1;
@@ -60,7 +61,8 @@ const title = "Server Error";
   }
 
   .error-message {
-    font-size: 1.25rem;
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
     margin-bottom: var(--space-8);
   }
 
@@ -68,5 +70,50 @@ const title = "Server Error";
     display: flex;
     gap: var(--space-4);
     justify-content: center;
+  }
+
+  .primary-button,
+  .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+  }
+
+  .primary-button {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .primary-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .secondary-button {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+
+  .secondary-button:hover {
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-primary);
+  }
+
+  @media (max-width: 640px) {
+    .error-actions {
+      flex-direction: column;
+    }
+
+    .error-code {
+      font-size: var(--text-6xl);
+    }
+
+    .error-message {
+      font-size: var(--text-lg);
+    }
   }
 </style>

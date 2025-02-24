@@ -1,4 +1,7 @@
 module.exports = {
+  env: {
+    node: true,
+  },
   extends: [
     "eslint:recommended",
     "plugin:astro/recommended",
@@ -50,6 +53,27 @@ module.exports = {
       parserOptions: {
         sourceType: "module",
         project: null,
+      },
+    },
+    {
+      files: ["*.mjs", "*.js"],
+      env: {
+        node: true,
+        es2020: true,
+      },
+      parserOptions: {
+        sourceType: "module",
+        ecmaVersion: 2020,
+      },
+    },
+    {
+      files: ["*.cjs"],
+      env: {
+        node: true,
+      },
+      parserOptions: {
+        sourceType: "script",
+        ecmaVersion: 2020,
       },
     },
   ],
