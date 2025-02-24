@@ -1,22 +1,22 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   name: string;
   role: string;
   bio: string;
-  imagePath: string;
+  image: ImageMetadata;
 }
 
-const { name, role, bio, imagePath } = Astro.props;
-const image = await import(/* @vite-ignore */ imagePath);
+const { name, role, bio, image } = Astro.props;
 
 ---
 
 <div class="team-member">
   <div class="member-image-container">
     <Image
-      src={image.default}
+      src={image}
       alt={`${name} - ${role}`}
       class="member-image"
       width={200}

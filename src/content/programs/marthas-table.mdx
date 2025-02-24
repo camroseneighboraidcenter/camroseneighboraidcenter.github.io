@@ -1,0 +1,94 @@
+---
+title: "Martha's Table"
+description: "Free soup and sandwich program serving 20-400 people twice weekly since 1998."
+featured: true
+order: 2
+---
+
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import Schedule from "../../components/Schedule.astro";
+
+<Section type="overview">
+# About Martha's Table
+Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals in a dignified, welcoming environment where everyone is treated as family.
+
+## Our Mission
+- Provide nutritious meals to those in need
+- Create a welcoming community atmosphere
+- Foster connections and support networks
+- Serve with dignity and respect
+</Section>
+
+<Section type="schedule">
+  ## Service Schedule
+  <Schedule
+    mainTitle="Meal Service Hours"
+    sections={[
+      {
+        title: "Weekly Schedule",
+        items: [
+          {
+            days: "Tuesday",
+            hours: "12:00 PM - 1:00 PM",
+            location: "Messiah Lutheran Church",
+          },
+          {
+            days: "Wednesday",
+            hours: "12:00 PM - 1:00 PM",
+            location: "Camrose United Church",
+          },
+        ],
+      },
+    ]}
+  />
+</Section>
+
+<Section type="services">
+  ## Our Services
+
+<ServiceCard title="Community Meal Service">
+- Hot, nutritious soup made fresh daily
+- Fresh sandwiches and sides
+- Coffee, tea, and refreshments
+- Welcoming, dignified dining environment
+</ServiceCard>
+
+<ServiceCard title="Additional Support">
+- Connection to other community resources
+- Friendly conversation and community building
+- Information about other CNAC programs
+- Seasonal celebrations and special events
+</ServiceCard>
+</Section>
+
+<Section type="process">
+## How We Operate
+Our dedicated volunteers work together to:
+
+- Create and manage serving schedules
+- Source and manage food supplies
+- Prepare fresh soups and sandwiches
+- Set up welcoming dining spaces
+- Serve meals with care and respect
+- Build relationships with community members
+</Section>
+
+<Section type="impact">
+## Program Impact
+Each service provides:
+
+- Nutritious meals for 20-400 community members
+- Welcoming, community atmosphere
+- Opportunities for social connection
+- Access to additional support resources
+- Regular, reliable meal service since 1998
+</Section>
+
+<Section type="contact">
+## Get Involved
+- To volunteer, please contact our office
+- No registration required to attend
+- All are welcome
+- For special dietary needs, please let us know in advance
+</Section>

@@ -8,5 +8,17 @@
   "singleQuote": false,
   "tabWidth": 2,
   "trailingComma": "all",
-  "useTabs": false
+  "useTabs": false,
+  "proseWrap": "preserve",
+  "embeddedLanguageFormatting": "off",
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "options": {
+        "parser": "mdx",
+        "proseWrap": "preserve",
+        "printWidth": 120
+      }
+    }
+  ]
 }

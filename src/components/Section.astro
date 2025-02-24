@@ -1,0 +1,72 @@
+---
+interface Props {
+  type?: 'overview' | 'details' | 'requirements' | 'contact';
+  id?: string;
+  class?: string;
+}
+
+const { type, id, class: className } = Astro.props;
+
+---
+
+<section
+  id={id}
+  class:list={[
+    'content-section',
+    { [`section-${type}`]: type },
+    className
+  ]}>
+  <div class="section-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .content-section {
+    width: 100%;
+    max-width: var(--max-width-3xl);
+    margin: 0 auto;
+    padding: var(--spacing-md);
+  }
+
+  .section-content {
+    width: 100%;
+  }
+
+  /* Section type styles */
+  .section-overview {
+    background-color: var(--color-bg-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .section-details {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .section-requirements {
+    background-color: var(--color-bg-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .section-contact {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+
+  /* Responsive styles */
+  @media (min-width: 768px) {
+    .content-section {
+      padding: var(--spacing-lg);
+    }
+
+    .section-overview,
+    .section-requirements,
+    .section-contact {
+      padding: var(--spacing-xl);
+    }
+  }
+</style>

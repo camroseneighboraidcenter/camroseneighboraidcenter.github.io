@@ -1,0 +1,124 @@
+---
+title: "Program Title"
+description: "A concise description of the program and its main impact."
+# Optional frontmatter fields
+featured: false # If this is a featured program
+order: 1 # For controlling display order
+contact: # Optional contact information
+  email: "example@example.com"
+  phone: "(123) 456-7890"
+  hours: "Monday-Friday, 9 AM - 5 PM"
+---
+
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import Schedule from "../../components/Schedule.astro";
+
+{/* Overview Section - Required */}
+
+<Section type="overview">
+# About Our Program
+A comprehensive introduction to the program, its history, and its significance in the community.
+
+## Program Goals
+- Goal 1
+- Goal 2
+- Goal 3
+</Section>
+
+{/* Services Section - Optional */}
+
+<Section type="services">
+## Our Services
+
+<ServiceCard title="Primary Service">
+- Key point 1
+- Key point 2
+- Key point 3
+</ServiceCard>
+
+<ServiceCard title="Additional Service">
+- Feature 1
+- Feature 2
+- Feature 3
+</ServiceCard>
+</Section>
+
+{/* Schedule Section - Optional */}
+
+<Section type="schedule">
+  ## Program Schedule
+  <Schedule
+    sections={[
+      {
+        title: "Service Hours",
+        items: [
+          { days: "Monday-Friday", hours: "9:00 AM - 5:00 PM" },
+          { days: "Saturday", hours: "10:00 AM - 2:00 PM" },
+        ],
+      },
+      {
+        title: "Special Services",
+        items: [
+          {
+            days: "Tuesday",
+            hours: "1:00 PM - 3:00 PM",
+            location: "Main Office",
+          },
+        ],
+      },
+    ]}
+  />
+</Section>
+
+{/* Requirements Section - Optional */}
+
+<Section type="requirements">
+## Program Requirements
+- Requirement 1
+- Requirement 2
+- Requirement 3
+</Section>
+
+{/* Process Section - Optional */}
+
+<Section type="process">
+## How It Works
+
+1. Step 1
+   - Detail point
+   - Detail point
+
+2. Step 2
+   - Detail point
+   - Detail point
+
+3. Step 3
+   - Detail point
+   - Detail point
+</Section>
+
+{/* Impact Section - Optional */}
+
+<Section type="impact">
+## Program Impact
+- Impact metric 1
+- Impact metric 2
+- Impact metric 3
+</Section>
+
+{/* Additional Information - Optional */}
+
+<Section type="additional">
+## Additional Information
+Any other relevant information about the program.
+</Section>
+
+{/* Contact Information - Optional */}
+
+<Section type="contact">
+## Contact Us
+- How to reach us
+- When to reach us
+- Where to find us
+</Section>

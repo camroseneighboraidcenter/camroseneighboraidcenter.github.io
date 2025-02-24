@@ -5,251 +5,245 @@ import Footer from "../../components/layout/Footer.astro";
 import Hero from "../../components/ui/Hero.astro";
 import CallToAction from "../../components/ui/CallToAction.astro";
 import { programs } from "../../data/programs";
-import { parseMarkdown } from "../../utils/markdown";
+import { getCollection, type CollectionEntry } from 'astro:content';
 
-export function getStaticPaths() {
-  return programs.map((program) => ({
-    params: { slug: program.slug },
-    props: { program },
-  }));
+export async function getStaticPaths() {
+  const programEntries = await getCollection('programs');
+  return programs.map((program) => {
+    const mdxEntry = programEntries.find((entry: CollectionEntry<'programs'>) => entry.slug === program.slug);
+    if (!mdxEntry) {
+      throw new Error(`No MDX content found for program: ${program.slug}`);
+    }
+    return {
+      params: { slug: program.slug },
+      props: { program, entry: mdxEntry },
+    };
+  });
 }
 
-const { program } = Astro.props;
+interface Props {
+  program: (typeof programs)[number];
+  entry: CollectionEntry<'programs'>;
+}
 
-// Process markdown content
-const processedContent = await parseMarkdown(program.detailedDescription);
+const { program, entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
 <BaseLayout title={`${program.title} | Camrose Neighbor Aid Center`}>
   <Header />
 
-  <main class="program-page">
-    <Hero 
-      title={program.title} 
+  <main id="main-content" class="program-page">
+    <Hero
+      title={program.title}
       backgroundImage={program.image}
       imageAlt={program.imageAlt}
     />
+    <article class="program-content" aria-labelledby="program-title">
+      <h1 id="program-title" class="sr-only">{program.title}</h1>
+      <div class="content-wrapper">
+        {Content && <Content />}
+      </div>
+    </article>
 
-    <div class="content-wrapper">
-      <article 
-        class="program-content" 
-        aria-labelledby="program-title"
-        itemscope 
-        itemtype="https://schema.org/Service"
-      >
-        <header class="program-header">
-          <h1 id="program-title" class="program-title" itemprop="name">
-            About {program.title}
-          </h1>
-          <p class="program-description" itemprop="description">
-            {program.description}
-          </p>
-        </header>
-        
-        <div 
-          class="program-details" 
-          set:html={processedContent}
-          itemprop="serviceType"
-        />
-      </article>
-
-      <aside class="program-cta" aria-label="Contact information">
-        <CallToAction
-          title="Interested in this program?"
-          description="Contact us to learn more about how you can participate or support this initiative."
-          primaryCta={{
-            text: "Contact Us",
-            href: `/contact#contact-form?subject=${encodeURIComponent(program.title)}`,
-            ariaLabel: `Contact us about ${program.title}`,
-          }}
-        />
-      </aside>
-    </div>
+    <section class="program-cta" aria-labelledby="cta-title">
+      <CallToAction
+        title="Interested in this program?"
+        description="Contact us to learn more about how you can participate or support this initiative."
+        primaryCta={{
+          text: "Contact Us",
+          href: `/contact#contact-form?subject=${encodeURIComponent(program.title)}`,
+          ariaLabel: `Contact us about ${program.title} program`,
+        }}
+      />
+    </section>
   </main>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  /* Layout */
+  /* Screen reader only utility class */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Mobile-first layout styles */
   .program-page {
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-xl);
     min-height: 100vh;
+    background-color: var(--color-background);
+  }
+
+  .program-content {
     width: 100%;
+    max-width: var(--max-width-3xl);
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
   }
 
   .content-wrapper {
-    flex: 1;
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: var(--space-2xl) var(--space-m);
-    display: grid;
-    gap: var(--space-3xl);
-  }
-
-  /* Article content */
-  .program-content {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xl);
-  }
-
-  .program-header {
-    text-align: center;
-    margin-bottom: var(--space-xl);
-  }
-
-  .program-title {
-    color: var(--color-primary);
-    font-size: var(--text-4xl);
-    font-weight: 600;
-    margin-bottom: var(--space-m);
-    line-height: 1.2;
-  }
-
-  .program-description {
-    font-size: var(--text-xl);
-    color: var(--color-text-muted);
-    text-align: justify;
-    max-width: 65ch;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-
-  .program-details {
     width: 100%;
   }
 
-  /* Call to action */
-  .program-cta {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  /* Markdown content styles */
-  .program-details :global(.overview) {
-    background-color: var(--color-bg-offset);
+  /* Section styles */
+  .content-wrapper :global(section) {
+    background: var(--color-background-offset);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    margin-bottom: var(--space-2xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
     box-shadow: var(--shadow-sm);
   }
 
-  .program-details :global(.services),
-  .program-details :global(.schedule),
-  .program-details :global(.requirements) {
-    margin-bottom: var(--space-2xl);
-  }
-
-  .program-details :global(h2) {
-    color: var(--color-primary);
+  /* Typography styles with accessible color contrast */
+  .content-wrapper :global(h2) {
+    color: var(--color-text-heading);
     font-size: var(--text-2xl);
     font-weight: 600;
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border);
     line-height: 1.3;
   }
 
-  .program-details :global(h3) {
-    color: var(--color-text);
+  .content-wrapper :global(h3) {
+    color: var(--color-text-heading);
     font-size: var(--text-xl);
     font-weight: 500;
-    margin-bottom: var(--space-m);
+    margin: var(--spacing-lg) 0 var(--spacing-md);
     line-height: 1.4;
   }
 
-  .program-details :global(p) {
-    margin-bottom: var(--space-m);
+  .content-wrapper :global(p) {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+    max-width: 70ch; /* Improve readability */
+  }
+
+  /* Card styles */
+  .content-wrapper :global(.service-card) {
+    background: var(--color-background);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* List styles with sufficient spacing for touch targets */
+  .content-wrapper :global(ul),
+  .content-wrapper :global(ol) {
+    margin: var(--spacing-md) 0 var(--spacing-lg);
+    padding-left: var(--spacing-xl);
+  }
+
+  .content-wrapper :global(li) {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
     line-height: 1.6;
+    padding: var(--spacing-xs) 0; /* Increase touch target size */
   }
 
-  .program-details :global(ul),
-  .program-details :global(ol) {
-    margin-bottom: var(--space-l);
-    padding-left: var(--space-l);
-    list-style-position: outside;
-  }
-
-  .program-details :global(li) {
-    margin-bottom: var(--space-s);
-    line-height: 1.5;
-    padding-left: var(--space-xs);
-  }
-
-  .program-details :global(.highlight) {
+  .content-wrapper :global(ul li::marker) {
     color: var(--color-primary);
+  }
+
+  .content-wrapper :global(ol) {
+    counter-reset: list-counter;
+  }
+
+  .content-wrapper :global(ol li) {
+    counter-increment: list-counter;
+  }
+
+  .content-wrapper :global(ol li::marker) {
+    content: counter(list-counter) ".";
+    color: var(--color-primary);
+  }
+
+  /* Schedule styles */
+  .content-wrapper :global(.schedule) {
+    background: var(--color-background);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .content-wrapper :global(.schedule-section) {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .content-wrapper :global(.schedule-title) {
+    color: var(--color-text-heading);
     font-weight: 500;
+    margin-bottom: var(--spacing-sm);
   }
 
-  .program-details :global(.note) {
-    background-color: var(--color-bg-muted);
-    border-left: 4px solid var(--color-primary);
-    padding: var(--space-m);
-    margin: var(--space-l) 0;
-    font-size: var(--text-sm);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  }
-
-  /* Focus styles */
-  .program-details :global(a:focus),
-  .program-details :global(button:focus) {
+  /* Focus styles for keyboard navigation */
+  .content-wrapper :global(a:focus),
+  .content-wrapper :global(button:focus) {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-    border-radius: var(--radius-sm);
   }
 
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .content-wrapper {
-      padding: var(--space-xl) var(--space-m);
-      gap: var(--space-2xl);
+  /* Program CTA section */
+  .program-cta {
+    background: var(--color-background-offset);
+    padding: var(--spacing-2xl) var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+
+  /* Tablet and desktop styles */
+  @media (min-width: 768px) {
+    .program-page {
+      gap: var(--spacing-2xl);
     }
 
-    .program-title {
+    .program-content {
+      padding: var(--spacing-2xl) var(--spacing-xl);
+    }
+
+    .content-wrapper :global(section) {
+      padding: var(--spacing-2xl);
+    }
+
+    .content-wrapper :global(.service-card) {
+      padding: var(--spacing-xl);
+    }
+
+    .content-wrapper :global(h2) {
       font-size: var(--text-3xl);
     }
 
-    .program-description {
-      font-size: var(--text-lg);
-    }
-
-    .program-details :global(h2) {
-      font-size: var(--text-xl);
-    }
-
-    .program-details :global(h3) {
-      font-size: var(--text-lg);
-    }
-
-    .program-details :global(.overview) {
-      padding: var(--space-l);
-    }
-
-    .program-details :global(ul),
-    .program-details :global(ol) {
-      padding-left: var(--space-m);
-    }
-  }
-
-  /* Print styles */
-  @media print {
-    .program-page {
-      min-height: auto;
-    }
-
-    .program-details :global(.overview) {
-      box-shadow: none;
-      border: 1px solid var(--color-border);
+    .content-wrapper :global(h3) {
+      font-size: var(--text-2xl);
     }
 
     .program-cta {
-      display: none;
+      padding: var(--spacing-3xl) var(--spacing-xl);
     }
   }
+
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    .content-wrapper :global(section) {
+      background: var(--color-background-offset-dark);
+    }
+
+    .content-wrapper :global(.service-card),
+    .content-wrapper :global(.schedule) {
+      background: var(--color-background-dark);
+    }
   }
 </style>

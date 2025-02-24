@@ -1,0 +1,125 @@
+---
+title: "Food Bank Services"
+description: "Providing essential food supplies to those experiencing food insecurity in our community."
+featured: true
+order: 0
+---
+
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import Schedule from "../../components/Schedule.astro";
+
+<Section type="overview">
+# About Our Food Bank
+Our Food Bank Services program has been a cornerstone of our mission to support those in need since 1984. We provide nutritious food supplies to individuals and families experiencing food insecurity in our community.
+
+## Program Goals
+
+- Provide emergency food assistance to those in need
+- Ensure access to nutritious and balanced food options
+- Support our community members with dignity and respect
+- Collaborate with local partners to maximize our impact
+  </Section>
+
+<Section type="services">
+## Available Services
+
+<ServiceCard title="Food Hamper Program">
+- Comprehensive food hampers tailored to household size
+- Non-perishable staples (rice, pasta, canned goods)
+- Fresh produce when available
+- Dairy products and protein options
+- Personal care items
+</ServiceCard>
+
+<ServiceCard title="Front Room Services">
+- Fresh bread and pastries from local bakeries
+- Seasonal produce from community gardens
+- Soups and beans for quick meals
+- Emergency supplies for urgent needs
+</ServiceCard>
+</Section>
+
+<Section type="schedule">
+  ## When to Visit
+  <Schedule
+    mainTitle="Service Hours"
+    sections={[
+      {
+        title: "Food Hamper Services",
+        items: [{ days: "Tuesday-Thursday", hours: "9:00 AM - 11:30 AM" }],
+      },
+      {
+        title: "Front Room Services",
+        items: [
+          { days: "Monday & Friday", hours: "9:00 AM - 12:00 PM" },
+          { days: "Tuesday-Thursday", hours: "10:00 AM - 3:00 PM" },
+        ],
+      },
+      {
+        title: "Bread Pickup Locations",
+        items: [
+          {
+            days: "Monday",
+            hours: "9:00 AM - 12:00 PM",
+            location: "Camrose Community Church",
+          },
+          {
+            days: "Wednesday",
+            hours: "1:00 PM - 3:00 PM",
+            location: "Center Point Church",
+          },
+        ],
+      },
+    ]}
+  />
+</Section>
+
+<Section type="requirements">
+## Eligibility & Registration
+- Open to all residents of Camrose and surrounding areas
+- Valid ID and proof of address required
+- No appointment needed for Front Room services
+- Registration required for hamper services
+- Income assessment for ongoing support
+- Accommodation available for mobility needs
+</Section>
+
+<Section type="process">
+  ## How It Works
+
+1. First Visit
+
+   - Bring ID and proof of address
+   - Complete registration (for hampers)
+   - Discuss any dietary needs
+
+2. Getting Assistance
+
+   - Front Room: Drop in during hours
+   - Hampers: Schedule pickup time
+   - Special needs: Arrange accommodation
+
+3. Ongoing Support
+   - Regular hamper schedule
+   - Access to all services
+   - Connection to other programs
+</Section>
+
+<Section type="impact">
+## Program Impact
+- Thousands of individuals served annually
+- Regular access to nutritious food
+- Emergency food security support
+- Community partnership network
+- Volunteer engagement opportunities
+</Section>
+
+<Section type="contact">
+## Contact Information
+- For hamper services: Call ahead
+- Front Room: Drop in during hours
+- Dietary restrictions: Inform staff
+- Delivery requests: 24-hour notice
+- Emergency assistance: Contact office
+</Section>

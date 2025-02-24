@@ -1,0 +1,70 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'success' | 'note';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const typeClasses = {
+  info: 'info-box-info',
+  warning: 'info-box-warning',
+  success: 'info-box-success',
+  note: 'info-box-note',
+};
+---
+
+<div class:list={['info-box', typeClasses[type]]} role="complementary">
+  {title && <h4 class="info-box-title">{title}</h4>}
+  <div class="info-box-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .info-box {
+    width: 100%;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  .info-box-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .info-box-content {
+    font-size: var(--text-base);
+    line-height: 1.6;
+  }
+
+  /* Type-specific styles */
+  .info-box-info {
+    background-color: var(--color-bg-info);
+    border: 1px solid var(--color-info);
+  }
+
+  .info-box-warning {
+    background-color: var(--color-bg-warning);
+    border: 1px solid var(--color-warning);
+  }
+
+  .info-box-success {
+    background-color: var(--color-bg-success);
+    border: 1px solid var(--color-success);
+  }
+
+  .info-box-note {
+    background-color: var(--color-bg-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 768px) {
+    .info-box {
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+title: "Food for Kids"
+description: "Serving approximately 1,000 children monthly through breakfast clubs in local schools."
+featured: true
+order: 1
+---
+
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import Schedule from "../../components/Schedule.astro";
+
+<Section type="overview">
+# About Food for Kids
+Our Food for Kids program, established in 2000, operates in partnership with six local schools to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning meals that help students focus on learning rather than hunger.
+
+## Program Goals
+- Ensure no child starts school hungry
+- Support academic success through nutrition
+- Create welcoming breakfast environments
+- Build community partnerships
+</Section>
+
+<Section type="services">
+## Our Services
+
+<ServiceCard title="School Breakfast Program">
+- Nutritious morning meals
+- Welcoming breakfast environment
+- Inclusive and accessible service
+- Available every school day
+</ServiceCard>
+
+<ServiceCard title="Program Support">
+- Weekly food delivery to schools
+- Volunteer coordination
+- Menu planning assistance
+- Equipment and supplies
+</ServiceCard>
+</Section>
+
+<Section type="schedule">
+  ## Program Schedule
+  <Schedule
+    mainTitle="Breakfast Service"
+    sections={[
+      {
+        title: "School Year Schedule",
+        items: [
+          {
+            days: "Monday-Friday",
+            hours: "Before School Hours",
+            note: "During regular school days",
+          },
+        ],
+      },
+      {
+        title: "Participating Schools",
+        items: [
+          { days: "Daily Service", location: "The Comp" },
+          { days: "Daily Service", location: "Chester Ronning" },
+          { days: "Daily Service", location: "Charlie Killiam" },
+          { days: "Daily Service", location: "Jack Stuart" },
+          { days: "Daily Service", location: "Sifton" },
+          { days: "Daily Service", location: "Sparling" },
+        ],
+      },
+    ]}
+  />
+</Section>
+
+<Section type="process">
+## How We Operate
+Our program functions through:
+
+- School-based coordinators managing local programs
+- Dedicated volunteer teams at each school
+- Weekly grocery shopping and delivery service
+- Partnership with local businesses
+- Regular communication with school staff
+- Ongoing program evaluation
+</Section>
+
+<Section type="impact">
+## Program Impact
+
+- Serves approximately 1,000 children monthly
+- Operates in 6 local schools
+- Provides daily breakfast during school days
+- Supports improved academic focus
+- Creates positive morning routines
+- Builds community connections
+</Section>
+
+<Section type="contact">
+## Get Involved
+- Schools interested in joining the program, please contact us
+- Volunteers always welcome
+- Food and supply donations accepted
+- Financial contributions appreciated
+- For more information, contact our office
+</Section>

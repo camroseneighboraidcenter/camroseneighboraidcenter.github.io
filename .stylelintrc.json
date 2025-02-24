@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-standard",
+  "ignoreFiles": ["dist/**/*"],
   "rules": {
     "block-no-empty": true,
     "color-no-invalid-hex": true,

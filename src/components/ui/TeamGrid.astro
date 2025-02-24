@@ -1,11 +1,14 @@
 ---
 import TeamMember from "./TeamMember.astro";
+import tempPersonImage from "../../assets/about/temp-person.jpg";
+
+import type { ImageMetadata } from 'astro';
 
 interface TeamMemberData {
   name: string;
   role: string;
   bio: string;
-  imagePath: string;
+  image: ImageMetadata;
 }
 
 const teamMembers: TeamMemberData[] = [
@@ -13,31 +16,31 @@ const teamMembers: TeamMemberData[] = [
     name: "Sarah Thompson",
     role: "Executive Director",
     bio: "Sarah brings over 15 years of nonprofit leadership experience and a passion for community service.",
-    imagePath: "../../assets/about/temp-person.jpg",
+    image: tempPersonImage,
   },
   {
     name: "Michael Chen",
     role: "Program Coordinator",
     bio: "Michael oversees our food bank and transportation services, ensuring smooth operations and maximum impact.",
-    imagePath: "../../assets/about/temp-person.jpg",
+    image: tempPersonImage,
   },
   {
     name: "Emily Rodriguez",
     role: "Volunteer Manager",
     bio: "Emily coordinates our dedicated volunteer network and develops training programs for new volunteers.",
-    imagePath: "../../assets/about/temp-person.jpg",
+    image: tempPersonImage,
   },
   {
     name: "David Wilson",
     role: "Community Outreach",
     bio: "David builds partnerships with local organizations and manages our community engagement initiatives.",
-    imagePath: "../../assets/about/temp-person.jpg",
+    image: tempPersonImage,
   },
   {
     name: "Grace Anderson",
     role: "Administrative Coordinator",
     bio: "Grace ensures smooth daily operations and provides crucial support to our team and clients.",
-    imagePath: "../../assets/about/temp-person.jpg",
+    image: tempPersonImage,
   },
 ];
 ---
