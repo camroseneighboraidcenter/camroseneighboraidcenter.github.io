@@ -13,18 +13,15 @@ interface ScheduleSection {
 
 interface Props {
   sections: ScheduleSection[];
-  mainTitle?: string;
 }
 
-const { sections = [], mainTitle = "Schedule" } = Astro.props;
+const { sections = [] } = Astro.props;
 ---
 
 <div class="schedule">
-  <h3 class="title">{mainTitle}</h3>
-  
   {sections.map(({ title, items }) => (
-    <div class="schedule-section">
-      <h4 class="subtitle">{title}</h4>
+    <section class="schedule-section">
+      <h3 class="subtitle">{title}</h3>
       <ul class="schedule-list">
         {items.map(({ days, hours, location, note }) => (
           <li class="schedule-item">
@@ -34,62 +31,61 @@ const { sections = [], mainTitle = "Schedule" } = Astro.props;
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   ))}
 </div>
 
 <style>
   .schedule {
-    width: 100%;
-    max-width: var(--max-width-xl);
-    margin: var(--spacing-lg) 0;
-  }
-
-  .title {
-    color: var(--color-text);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
+    display: contents;
   }
 
   .subtitle {
-    color: var(--color-text);
-    font-size: var(--text-lg);
-    font-weight: 500;
-    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
   }
 
   .schedule-section {
-    margin-bottom: var(--spacing-xl);
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    transition:
+      box-shadow var(--transition-normal),
+      border-color var(--transition-normal);
   }
 
-  .schedule-section:last-child {
-    margin-bottom: 0;
+  .schedule-section:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
   }
 
   .schedule-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
     overflow: hidden;
   }
 
   .schedule-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
+    gap: var(--space-6);
+    padding: var(--space-6);
+    transition: var(--transition-normal);
+  }
+
+  .schedule-item:not(:last-child) {
     border-bottom: 1px solid var(--color-border);
   }
 
   .schedule-item:last-child {
     border-bottom: none;
-  }
-
-  .schedule-item:nth-child(odd) {
-    background-color: var(--color-bg-muted);
   }
 
   .day {
@@ -104,13 +100,12 @@ const { sections = [], mainTitle = "Schedule" } = Astro.props;
     grid-column: 1 / -1;
     font-size: var(--text-sm);
     color: var(--color-text-muted);
-    margin-top: var(--spacing-xs);
+    margin-top: var(--space-1);
   }
 
   @media (min-width: 768px) {
     .schedule-item {
-      grid-template-columns: 2fr 3fr;
-      padding: var(--spacing-lg);
+      padding: var(--space-6);
     }
 
     .title {

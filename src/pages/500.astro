@@ -10,7 +10,7 @@ const title = "Server Error";
 <BaseLayout title={`${title} | Camrose Neighbor Aid Center`}>
   <Header />
 
-  <main class="error-page">
+  <div class="error-page">
     <Hero title={title} ctaText="Return Home" ctaLink="/" />
 
     <div class="content-wrapper">
@@ -21,11 +21,11 @@ const title = "Server Error";
         </p>
         <div class="error-actions">
           <a href="/" class="primary-button">Go to Homepage</a>
-          <a href="/contact" class="secondary-button">Report Issue</a>
+          <a href="/contact#contact-form?subject=general" class="secondary-button">Report Issue</a>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <Footer />
 </BaseLayout>

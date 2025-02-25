@@ -8,11 +8,11 @@ import Section from "../../components/Section.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 import Schedule from "../../components/Schedule.astro";
 
-<Section type="overview">
-# About Our Food Bank
+<Section type="full">
+## About Our Program
 Our Food Bank Services program has been a cornerstone of our mission to support those in need since 1984. We provide nutritious food supplies to individuals and families experiencing food insecurity in our community.
 
-## Program Goals
+### How We Can Help
 - Provide emergency food assistance to those in need
 - Ensure access to nutritious and balanced food options
 - Support our community members with dignity and respect
@@ -41,7 +41,7 @@ Our Food Bank Services program has been a cornerstone of our mission to support 
 <Section type="schedule">
 ## When to Visit
 <Schedule
-    mainTitle="Service Hours"
+
     sections={[
       {
         title: "Food Hamper Services",
@@ -73,7 +73,7 @@ Our Food Bank Services program has been a cornerstone of our mission to support 
   />
 </Section>
 
-<Section type="requirements">
+<Section type="full">
 ## Eligibility & Registration
 - Open to all residents of Camrose and surrounding areas
 - Valid ID and proof of address required
@@ -83,7 +83,7 @@ Our Food Bank Services program has been a cornerstone of our mission to support 
 - Accommodation available for mobility needs
 </Section>
 
-<Section type="process">
+<Section type="grid">
 ## How It Works
 
 1. First Visit
@@ -102,7 +102,7 @@ Our Food Bank Services program has been a cornerstone of our mission to support 
    - Connection to other programs
 </Section>
 
-<Section type="impact">
+<Section type="bordered">
 ## Program Impact
 - Thousands of individuals served annually
 - Regular access to nutritious food
@@ -111,7 +111,7 @@ Our Food Bank Services program has been a cornerstone of our mission to support 
 - Volunteer engagement opportunities
 </Section>
 
-<Section type="contact">
+<Section type="full">
 ## Contact Information
 - For hamper services: Call ahead
 - Front Room: Drop in during hours

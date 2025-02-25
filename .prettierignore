@@ -1,1 +1,21 @@
+# Build output
+dist
+
+# Dependencies
+node_modules
+
+# Generated files
+.astro
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Lockfiles
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# MDX files (handled by mdx plugin)
 *.mdx

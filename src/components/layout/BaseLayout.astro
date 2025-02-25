@@ -11,8 +11,8 @@ const {
   image = "/images/og-image.jpg" // Add default OG image later
 } = Astro.props;
 
-// Construct full title
-const fullTitle = `${title} | Camrose Neighbor Aid`;
+// Construct full title - keep it under 70 characters
+const fullTitle = title.length > 40 ? title : `${title} | Camrose Neighbor Aid`;
 ---
 
 <!DOCTYPE html>
@@ -68,11 +68,13 @@ const fullTitle = `${title} | Camrose Neighbor Aid`;
   </head>
   <body>
     <a href="#main-content" class="skip-to-main-content">Skip to main content</a>
-    <slot name="header" />
-    <main id="main-content" aria-label="Main content">
-      <slot />
-    </main>
-    <slot name="footer" />
+    <div id="page-wrapper">
+      <slot name="header" />
+      <main id="main-content">
+        <slot />
+      </main>
+      <slot name="footer" />
+    </div>
   </body>
 </html>
 

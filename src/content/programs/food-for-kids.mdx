@@ -8,8 +8,8 @@ import Section from "../../components/Section.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 import Schedule from "../../components/Schedule.astro";
 
-<Section type="overview">
-# About Food for Kids
+<Section type="full">
+## About Food for Kids
 Our Food for Kids program, established in 2000, operates in partnership with six local schools to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning meals that help students focus on learning rather than hunger.
 
 ## Program Goals
@@ -40,7 +40,7 @@ Our Food for Kids program, established in 2000, operates in partnership with six
 <Section type="schedule">
   ## Program Schedule
   <Schedule
-    mainTitle="Breakfast Service"
+
     sections={[
       {
         title: "School Year Schedule",
@@ -67,7 +67,7 @@ Our Food for Kids program, established in 2000, operates in partnership with six
   />
 </Section>
 
-<Section type="process">
+<Section type="full">
 ## How We Operate
 Our program functions through:
 
@@ -79,7 +79,7 @@ Our program functions through:
 - Ongoing program evaluation
 </Section>
 
-<Section type="impact">
+<Section type="bordered">
 ## Program Impact
 
 - Serves approximately 1,000 children monthly
@@ -90,7 +90,7 @@ Our program functions through:
 - Builds community connections
 </Section>
 
-<Section type="contact">
+<Section type="full">
 ## Get Involved
 - Schools interested in joining the program, please contact us
 - Volunteers always welcome

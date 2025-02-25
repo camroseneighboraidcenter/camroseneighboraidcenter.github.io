@@ -30,34 +30,33 @@ const { program, entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout title={`${program.title} | Camrose Neighbor Aid Center`}>
+<BaseLayout title={program.title}>
   <Header />
-
-  <main id="main-content" class="program-page">
+  <div class="program-page">
     <Hero
       title={program.title}
       backgroundImage={program.image}
-      imageAlt={program.imageAlt}
     />
-    <article class="program-content" aria-labelledby="program-title">
-      <h1 id="program-title" class="sr-only">{program.title}</h1>
+    <article class="program-content">
+      <h2 id="program-title">About {program.title}</h2>
       <div class="content-wrapper">
         {Content && <Content />}
       </div>
     </article>
 
-    <section class="program-cta" aria-labelledby="cta-title">
+    <section class="program-cta">
+      <h2 id="cta-heading" class="sr-only">Get Involved</h2>
       <CallToAction
         title="Interested in this program?"
         description="Contact us to learn more about how you can participate or support this initiative."
         primaryCta={{
           text: "Contact Us",
-          href: `/contact#contact-form?subject=${encodeURIComponent(program.title)}`,
-          ariaLabel: `Contact us about ${program.title} program`,
+          href: `/contact#contact-form?subject=programs`,
+          srText: `Contact us about ${program.title}`,
         }}
       />
     </section>
-  </main>
+  </div>
 
   <Footer />
 </BaseLayout>
@@ -78,116 +77,31 @@ const { Content } = await entry.render();
 
   /* Mobile-first layout styles */
   .program-page {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xl);
     min-height: 100vh;
     background-color: var(--color-background);
+  }
+
+  #program-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
   }
 
   .program-content {
     width: 100%;
     max-width: var(--max-width-3xl);
     margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: 0 var(--space-4);
+    margin-top: var(--space-12);
+    padding: 0 var(--space-4);
+    margin-top: var(--space-12);
+    position: relative;
   }
 
   .content-wrapper {
     width: 100%;
-  }
-
-  /* Section styles */
-  .content-wrapper :global(section) {
-    background: var(--color-background-offset);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    margin-bottom: var(--spacing-2xl);
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* Typography styles with accessible color contrast */
-  .content-wrapper :global(h2) {
-    color: var(--color-text-heading);
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--color-border);
-    line-height: 1.3;
-  }
-
-  .content-wrapper :global(h3) {
-    color: var(--color-text-heading);
-    font-size: var(--text-xl);
-    font-weight: 500;
-    margin: var(--spacing-lg) 0 var(--spacing-md);
-    line-height: 1.4;
-  }
-
-  .content-wrapper :global(p) {
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.8;
-    max-width: 70ch; /* Improve readability */
-  }
-
-  /* Card styles */
-  .content-wrapper :global(.service-card) {
-    background: var(--color-background);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    margin: var(--spacing-md) 0;
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* List styles with sufficient spacing for touch targets */
-  .content-wrapper :global(ul),
-  .content-wrapper :global(ol) {
-    margin: var(--spacing-md) 0 var(--spacing-lg);
-    padding-left: var(--spacing-xl);
-  }
-
-  .content-wrapper :global(li) {
-    color: var(--color-text);
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.6;
-    padding: var(--spacing-xs) 0; /* Increase touch target size */
-  }
-
-  .content-wrapper :global(ul li::marker) {
-    color: var(--color-primary);
-  }
-
-  .content-wrapper :global(ol) {
-    counter-reset: list-counter;
-  }
-
-  .content-wrapper :global(ol li) {
-    counter-increment: list-counter;
-  }
-
-  .content-wrapper :global(ol li::marker) {
-    content: counter(list-counter) ".";
-    color: var(--color-primary);
-  }
-
-  /* Schedule styles */
-  .content-wrapper :global(.schedule) {
-    background: var(--color-background);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    margin: var(--spacing-lg) 0;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .content-wrapper :global(.schedule-section) {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .content-wrapper :global(.schedule-title) {
-    color: var(--color-text-heading);
-    font-weight: 500;
-    margin-bottom: var(--spacing-sm);
   }
 
   /* Focus styles for keyboard navigation */
@@ -197,29 +111,23 @@ const { Content } = await entry.render();
     outline-offset: 2px;
   }
 
-  /* Program CTA section */
-  .program-cta {
-    background: var(--color-background-offset);
-    padding: var(--spacing-2xl) var(--spacing-md);
-    margin-top: var(--spacing-xl);
-  }
-
   /* Tablet and desktop styles */
   @media (min-width: 768px) {
     .program-page {
-      gap: var(--spacing-2xl);
+      gap: var(--space-12);
     }
 
     .program-content {
-      padding: var(--spacing-2xl) var(--spacing-xl);
+      padding: var(--space-8) var(--space-8);
+      max-width: var(--max-width-7xl);
     }
 
     .content-wrapper :global(section) {
-      padding: var(--spacing-2xl);
+      padding: var(--space-8);
     }
 
     .content-wrapper :global(.service-card) {
-      padding: var(--spacing-xl);
+      padding: var(--space-8);
     }
 
     .content-wrapper :global(h2) {
@@ -228,10 +136,6 @@ const { Content } = await entry.render();
 
     .content-wrapper :global(h3) {
       font-size: var(--text-2xl);
-    }
-
-    .program-cta {
-      padding: var(--spacing-3xl) var(--spacing-xl);
     }
   }
 

@@ -5,12 +5,12 @@ interface Props {
   primaryCta?: {
     text: string;
     href: string;
-    ariaLabel?: string;
+    srText?: string;
   };
   secondaryCta?: {
     text: string;
     href: string;
-    ariaLabel?: string;
+    srText?: string;
   };
 }
 
@@ -20,12 +20,12 @@ const {
   primaryCta = {
     text: "Volunteer With Us",
     href: "/contact#contact-form?subject=volunteer",
-    ariaLabel: "Learn more about volunteering with us",
+    srText: "Learn more about volunteering with us",
   },
   secondaryCta = {
     text: "Support Our Mission",
-    href: "/donate",
-    ariaLabel: "Make a donation to support our mission",
+    href: "/contact#contact-form?subject=donate",
+    srText: "Make a donation to support our mission",
   },
 } = Astro.props;
 ---
@@ -35,13 +35,13 @@ const {
     <h2 id="cta-title" class="cta-title">{title}</h2>
     <p class="cta-description">{description}</p>
     <div class="cta-buttons">
-      <a href={primaryCta.href} class="cta-button primary" aria-label={primaryCta.ariaLabel}>
-        {primaryCta.text}
-        <span class="sr-only">(Opens in same tab)</span>
+      <a href={primaryCta.href} class="cta-button primary">
+        <span>{primaryCta.text}</span>
+        {primaryCta.srText && <span class="sr-only">- {primaryCta.srText}</span>}
       </a>
-      <a href={secondaryCta.href} class="cta-button secondary" aria-label={secondaryCta.ariaLabel}>
-        {secondaryCta.text}
-        <span class="sr-only">(Opens in same tab)</span>
+      <a href={secondaryCta.href} class="cta-button secondary">
+        <span>{secondaryCta.text}</span>
+        {secondaryCta.srText && <span class="sr-only">- {secondaryCta.srText}</span>}
       </a>
     </div>
   </div>
@@ -54,7 +54,6 @@ const {
     border-top: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-8);
-    margin: var(--space-8) 0;
   }
 
   .cta-content {

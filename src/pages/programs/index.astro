@@ -14,13 +14,11 @@ const title = "Our Programs";
 >
   <Header />
 
-  <main class="programs-page">
     <h1 class="page-title">{title}</h1>
 
     <div class="programs-grid">
       {programs.map((program) => <ProgramHeroCard {...program} />)}
     </div>
-  </main>
 
   <Footer />
 </BaseLayout>

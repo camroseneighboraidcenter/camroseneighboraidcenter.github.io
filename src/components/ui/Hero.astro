@@ -8,15 +8,13 @@ interface Props {
   ctaText?: string;
   ctaLink?: string;
   backgroundImage?: ImageMetadata;
-  imageAlt?: string;
 }
 
 const {
   title,
   ctaText = "Get Involved",
-  ctaLink = "/contact",
+  ctaLink = "/contact#contact-form",
   backgroundImage = defaultHeroImage,
-  imageAlt = "Food bank volunteers helping sort food.",
 } = Astro.props;
 ---
 
@@ -24,8 +22,7 @@ const {
   <div class="hero-background">
     <Image
       src={backgroundImage}
-      alt={imageAlt}
-      aria-hidden="true"
+      alt=""
       width={1920}
       height={1080}
       quality={90}

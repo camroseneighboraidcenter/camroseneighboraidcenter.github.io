@@ -1,6 +1,6 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": ["dist/**/*"],
+  "ignoreFiles": ["dist/**/*", "node_modules/**/*"],
   "rules": {
     "block-no-empty": true,
     "color-no-invalid-hex": true,
@@ -22,6 +22,23 @@
     "selector-pseudo-class-no-unknown": true,
     "selector-pseudo-element-no-unknown": true,
     "selector-type-no-unknown": true,
-    "unit-no-unknown": true
+    "unit-no-unknown": true,
+    "declaration-property-value-no-unknown": true,
+    "no-invalid-position-at-import-rule": true,
+    "declaration-block-no-redundant-longhand-properties": true,
+    "shorthand-property-no-redundant-values": true,
+    "declaration-block-single-line-max-declarations": 1,
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "selector-id-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "custom-property-pattern": "^[a-z][a-zA-Z0-9-]*$",
+    "value-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "max-nesting-depth": 3,
+    "selector-max-compound-selectors": 3,
+    "selector-max-specificity": "0,3,2",
+    "declaration-no-important": true
   }
 }

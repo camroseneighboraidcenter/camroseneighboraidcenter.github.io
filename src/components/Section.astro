@@ -1,6 +1,6 @@
 ---
 interface Props {
-  type?: 'overview' | 'details' | 'requirements' | 'contact';
+  type?: 'full' | 'schedule' | 'services' | 'bordered' | 'grid';
   id?: string;
   class?: string;
 }
@@ -24,49 +24,138 @@ const { type, id, class: className } = Astro.props;
 <style>
   .content-section {
     width: 100%;
-    max-width: var(--max-width-3xl);
+    max-width: var(--max-width-5xl);
     margin: 0 auto;
-    padding: var(--spacing-md);
+    padding: var(--space-4);
   }
 
   .section-content {
     width: 100%;
   }
 
+  /* Typography styles */
+  .section-content :global(h2) {
+    color: var(--color-primary);
+    font-size: var(--text-3xl);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .section-content :global(h3) {
+    color: var(--color-primary);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    margin: var(--space-6) 0 var(--space-4);
+    line-height: 1.4;
+  }
+
+  .section-content :global(p) {
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+  }
+
+  /* List styles */
+  .section-content :global(ul),
+  .section-content :global(ol) {
+    margin: var(--space-6) 0;
+    padding-left: var(--space-8);
+    list-style-position: outside;
+  }
+
+  .section-content :global(li) {
+    color: var(--color-text);
+    line-height: 1.6;
+    padding: var(--space-1) 0;
+  }
+
+  .section-content :global(ul li::marker) {
+    color: var(--color-primary-light);
+  }
+
+  .section-content :global(ol) {
+    counter-reset: list-counter;
+  }
+
+  .section-content :global(ol li) {
+    counter-increment: list-counter;
+  }
+
+  .section-content :global(ol li::marker) {
+    content: counter(list-counter) ".";
+    color: var(--color-primary-light);
+  }
+
   /* Section type styles */
-  .section-overview {
-    background-color: var(--color-bg-muted);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+  .section-full {
+    
   }
 
-  .section-details {
-    margin: var(--spacing-xl) 0;
+  .section-services .section-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    width: 100%;
   }
 
-  .section-requirements {
-    background-color: var(--color-bg-accent);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
+  .section-services :global(h2) {
+    grid-column: 1 / -1;
+  }
+  
+  .section-services :global(.service-card) {
+    width: 100%;
+    height: 100%;
   }
 
-  .section-contact {
+  .section-schedule .section-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    width: 100%;
+  }
+
+  .section-schedule .section-content :global(h2) {
+    grid-column: 1 / -1;
+  }
+
+  .section-schedule .section-content :global(.schedule-section) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-bordered {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+  }
+
+  .section-bordered:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
   }
 
   /* Responsive styles */
   @media (min-width: 768px) {
     .content-section {
-      padding: var(--spacing-lg);
+      padding: var(--space-6);
     }
 
-    .section-overview,
-    .section-requirements,
-    .section-contact {
-      padding: var(--spacing-xl);
-    }
+    .section-services .section-content {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-8);
   }
+
+  .section-services :global(.service-card) {
+    grid-row-start: 2;
+  }
+
+  .section-schedule .section-content {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-8);
+  }
+  }
+
 </style>

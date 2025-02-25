@@ -55,7 +55,7 @@ const address = getFormattedAddress();
           <p>
             Phone:{" "}
             <a href={`tel:${phone}`} class="contact-link">
-              {formatPhoneNumber(phone)}
+              <span set:html={formatPhoneNumber(phone)} />
             </a>
           </p>
         )

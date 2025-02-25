@@ -10,7 +10,7 @@ const title = "Access Denied";
 <BaseLayout title={`${title} | Camrose Neighbor Aid Center`}>
   <Header />
 
-  <main class="error-page">
+  <div class="error-page">
     <Hero title={title} ctaText="Return Home" ctaLink="/" />
 
     <div class="content-wrapper">
@@ -21,11 +21,11 @@ const title = "Access Denied";
         </p>
         <div class="error-actions">
           <a href="/" class="primary-button">Go to Homepage</a>
-          <a href="/contact" class="secondary-button">Contact Support</a>
+          <a href="/contact#contact-form?subject=general" class="secondary-button">Contact Support</a>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <Footer />
 </BaseLayout>

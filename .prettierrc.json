@@ -11,6 +11,7 @@
   "useTabs": false,
   "proseWrap": "preserve",
   "embeddedLanguageFormatting": "off",
+  "htmlWhitespaceSensitivity": "css",
   "overrides": [
     {
       "files": ["*.mdx"],
@@ -18,7 +19,7 @@
         "parser": "mdx",
         "proseWrap": "preserve",
         "printWidth": 120,
-        "htmlWhitespaceSensitivity": "strict",
+        "htmlWhitespaceSensitivity": "css",
         "bracketSameLine": true
       }
     }

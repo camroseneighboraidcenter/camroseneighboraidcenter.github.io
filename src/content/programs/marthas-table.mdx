@@ -8,8 +8,8 @@ import Section from "../../components/Section.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 import Schedule from "../../components/Schedule.astro";
 
-<Section type="overview">
-# About Martha's Table
+<Section type="full">
+## About Martha's Table
 Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals in a dignified, welcoming environment where everyone is treated as family.
 
 ## Our Mission
@@ -22,7 +22,7 @@ Martha's Table, established in 1998, is more than just a soup kitchen - it's a p
 <Section type="schedule">
   ## Service Schedule
   <Schedule
-    mainTitle="Meal Service Hours"
+
     sections={[
       {
         title: "Weekly Schedule",
@@ -61,7 +61,7 @@ Martha's Table, established in 1998, is more than just a soup kitchen - it's a p
 </ServiceCard>
 </Section>
 
-<Section type="process">
+<Section type="full">
 ## How We Operate
 Our dedicated volunteers work together to:
 
@@ -73,7 +73,7 @@ Our dedicated volunteers work together to:
 - Build relationships with community members
 </Section>
 
-<Section type="impact">
+<Section type="bordered">
 ## Program Impact
 Each service provides:
 
@@ -84,7 +84,7 @@ Each service provides:
 - Regular, reliable meal service since 1998
 </Section>
 
-<Section type="contact">
+<Section type="full">
 ## Get Involved
 - To volunteer, please contact our office
 - No registration required to attend

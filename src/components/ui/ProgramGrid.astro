@@ -24,7 +24,7 @@ const displayPrograms = showFeaturedOnly
 ---
 
 <section
-  class:list={["program-section", variant]}
+  class="program-section"
   aria-labelledby="programs-title"
 >
   <div class="program-container">
@@ -39,7 +39,7 @@ const displayPrograms = showFeaturedOnly
       )
     }
 
-    <ul class:list={["program-grid", variant]} aria-label="Programs">
+    <ul class:list={['program-grid', { 'grid-featured': variant === 'featured', 'grid-full': variant === 'full' }]} aria-label="Programs">
       {displayPrograms.map((program) => (
         <li class="program-item">
           <ProgramCard {...program} variant={variant} />
@@ -84,14 +84,14 @@ const displayPrograms = showFeaturedOnly
   }
 
   /* Featured variant */
-  .program-grid.featured {
+  .program-grid.grid-featured {
     grid-template-columns: repeat(auto-fit, minmax(var(--max-width-xxs), 1fr));
     max-width: var(--max-width-5xl);
     margin: 0 auto;
   }
 
   /* Full variant */
-  .program-grid.full {
+  .program-grid.grid-full {
     grid-template-columns: 1fr;
     max-width: var(--max-width-4xl);
     margin: 0 auto;

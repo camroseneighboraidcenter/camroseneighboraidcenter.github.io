@@ -16,10 +16,10 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
 
 ---
 
-<BaseLayout title="About Us | Camrose Neighbor Aid Center">
+<BaseLayout title="About Us">
   <Header />
 
-  <main class="about-page">
+  <div class="about-page">
     <Hero
       title="About Us"
       ctaText="Get Involved"
@@ -41,19 +41,15 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
         vision="A community where everyone's basic needs are met through Christ-centered service and support."
       />
 
-      <section
-        class="logo-container"
-        role="img"
-        aria-label="Camrose Neighbor Aid Center Logo"
-      >
+      <section class="logo-container">
+        <h2 class="sr-only">Our Logo</h2>
         <Image
           src={logo}
           alt="Camrose Neighbor Aid Center Logo - Hands linked in Christ's name to meet the needs of others"
           width={1000}
+          height={400}
           quality={90}
           class="logo-image"
-          loading="eager"
-          style="height: auto;"
           loading="lazy"
         />
       </section>
@@ -116,14 +112,16 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
         primaryCta={{
           text: "Volunteer With Us",
           href: "/contact#contact-form?subject=volunteer",
+          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center"
         }}
         secondaryCta={{
           text: "Support Our Mission",
-          href: "/donate",
+          href: "/contact#contact-form?subject=donate",
+          srText: "Make a donation to support our community programs"
         }}
       />
     </div>
-  </main>
+  </div>
 
   <Footer />
 </BaseLayout>

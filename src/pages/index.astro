@@ -16,7 +16,7 @@ import { programs } from "../data/programs";
 >
   <Header slot="header" />
 
-  <main class="home-content">
+  <div class="home-content">
     <Hero
       title="Welcome to Camrose Neighbor Aid Center"
       ctaText="Contact Us"
@@ -49,13 +49,15 @@ import { programs } from "../data/programs";
       primaryCta={{
         text: "Get Involved",
         href: "/contact#contact-form?subject=volunteer",
+        srText: "Contact us about volunteering opportunities"
       }}
       secondaryCta={{
         text: "Learn More",
         href: "/about",
+        srText: "Learn more about Camrose Neighbor Aid Center"
       }}
     />
-  </main>
+  </div>
 
   <Footer slot="footer" />
 </BaseLayout>

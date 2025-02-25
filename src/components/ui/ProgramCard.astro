@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import type { Program } from '../../data/programs';
 
-type Props = Program & {
+type Props = Omit<Program, 'featured'> & {
   variant?: 'featured' | 'full';
 };
 
@@ -12,7 +12,6 @@ const {
   image,
   imageTitle,
   imageAlt, 
-  featured, 
   slug,
   variant = 'featured'
 } = Astro.props;
@@ -20,14 +19,13 @@ const {
 const href = `/programs/${slug}`;
 ---
 
-<article 
-  class:list={[
-    'program-card',
-    { featured },
-    variant
-  ]} 
-  role="listitem"
->
+<article class:list={[
+  'program-card',
+  {
+    'card-featured': variant === 'featured',
+    'card-full': variant === 'full'
+  }
+]}>
   {image && (
     <div class="program-image-wrapper">
       <Image 
@@ -154,36 +152,36 @@ const href = `/programs/${slug}`;
   }
 
   /* Full variant styles */
-  .full {
+  .card-full {
     flex-direction: row;
     gap: var(--space-8);
     max-width: var(--max-width-4xl);
     margin: 0 auto;
   }
 
-  .full .program-image-wrapper {
+  .card-full .program-image-wrapper {
     flex: 0 0 40%;
   }
 
-  .full .program-content {
+  .card-full .program-content {
     flex: 1;
     padding: var(--space-8);
   }
 
-  .full .program-title {
+  .card-full .program-title {
     font-size: var(--text-2xl);
   }
 
-  .full .program-description {
+  .card-full .program-description {
     font-size: var(--text-lg);
   }
 
   @media (max-width: 768px) {
-    .full {
+    .card-full {
       flex-direction: column;
     }
 
-    .full .program-image-wrapper {
+    .card-full .program-image-wrapper {
       flex: 0 0 auto;
     }
   }
