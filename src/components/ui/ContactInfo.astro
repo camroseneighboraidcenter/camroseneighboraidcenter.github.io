@@ -63,7 +63,7 @@ const address = getFormattedAddress();
       {
         fax && (
           <p>
-            Fax: <span class="contact-detail">{formatFaxNumber(fax)}</span>
+            Fax: <span class="contact-detail" set:html={formatFaxNumber(fax)} />
           </p>
         )
       }
