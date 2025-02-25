@@ -4,7 +4,7 @@ const programs = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     updatedDate: z.date().optional(),
     featured: z.boolean().default(false),
     order: z.number().optional(),

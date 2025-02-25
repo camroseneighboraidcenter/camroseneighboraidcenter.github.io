@@ -138,16 +138,4 @@ const { Content } = await entry.render();
       font-size: var(--text-2xl);
     }
   }
-
-  /* Dark mode adjustments */
-  @media (prefers-color-scheme: dark) {
-    .content-wrapper :global(section) {
-      background: var(--color-background-offset-dark);
-    }
-
-    .content-wrapper :global(.service-card),
-    .content-wrapper :global(.schedule) {
-      background: var(--color-background-dark);
-    }
-  }
 </style>

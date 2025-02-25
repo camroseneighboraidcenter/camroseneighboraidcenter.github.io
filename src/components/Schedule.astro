@@ -73,9 +73,6 @@ const { sections = [] } = Astro.props;
   }
 
   .schedule-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
     padding: var(--space-6);
     transition: var(--transition-normal);
   }
@@ -92,14 +89,8 @@ const { sections = [] } = Astro.props;
     font-weight: 500;
   }
 
-  .hours {
-    color: var(--color-text-muted);
-  }
-
   .note {
-    grid-column: 1 / -1;
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    font-size: var(--text-md);
     margin-top: var(--space-1);
   }
 

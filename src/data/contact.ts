@@ -79,17 +79,21 @@ export function getAddress(): Address | undefined {
   return contactInfo.address;
 }
 
-export function formatPhoneNumber(phone: string): string {
-  const cleaned = phone.replace(/\D/g, "");
+function formatNumberWithNonBreaking(number: string): string {
+  const cleaned = number.replace(/\D/g, "");
   const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
-    return `(${match[1]}) ${match[2]}-${match[3]}`;
+    return `(${match[1]})&nbsp;${match[2]}&#8209;${match[3]}`;
   }
-  return phone;
+  return number;
+}
+
+export function formatPhoneNumber(phone: string): string {
+  return formatNumberWithNonBreaking(phone);
 }
 
 export function formatFaxNumber(fax: string): string {
-  return formatPhoneNumber(fax);
+  return formatNumberWithNonBreaking(fax);
 }
 
 export function getFormattedAddress():

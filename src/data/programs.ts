@@ -43,7 +43,7 @@ export const programs: Program[] = [
     featured: true,
     slug: "food-for-kids",
     description:
-      "Serving approximately 1,000 children monthly through breakfast clubs in local schools.",
+      "Serving children breakfast through breakfast clubs in 6 local schools.",
     contentPath: "src/content/programs/food-for-kids.mdx",
   },
   {
@@ -54,8 +54,7 @@ export const programs: Program[] = [
     imageAlt: "Soup kitchen volunteer distributing meals.",
     featured: true,
     slug: "marthas-table",
-    description:
-      "Free soup and sandwich program serving 20-400 people twice weekly since 1998.",
+    description: "Serving a hot meal twice weekly.",
     contentPath: "src/content/programs/marthas-table.mdx",
   },
   {
@@ -80,8 +79,7 @@ export const programs: Program[] = [
     imageAlt: "Emergency financial assistance volunteer helping a client.",
     featured: true,
     slug: "emergency-financial-assistance",
-    description:
-      "One-time emergency intervention for urgent financial crises, with repayment opportunities.",
+    description: "One-time emergency intervention for urgent financial crises.",
     contentPath: "src/content/programs/emergency-financial-assistance.mdx",
   },
   {
