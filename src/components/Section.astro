@@ -87,8 +87,35 @@ const { type, id, class: className } = Astro.props;
   }
 
   /* Section type styles */
-  .section-full {
-    
+  .section-grid .section-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .section-grid .section-content :global(ol) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: 0;
+    list-style-position: inside;
+  }
+
+  .section-grid .section-content :global(ol > li) {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+  }
+
+  .section-grid .section-content :global(ol > li:hover) {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+
+  .section-grid .section-content :global(ol > li > ul) {
+    padding-left: var(--space-8);
   }
 
   .section-services .section-content {
@@ -156,6 +183,9 @@ const { type, id, class: className } = Astro.props;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-8);
   }
+  .section-grid .section-content :global(ol) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+}
 
 </style>
