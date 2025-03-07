@@ -43,6 +43,8 @@ export const contactInfo: ContactInfo = {
   },
 };
 
+export const donateEmail: string = "donationnbaid@gmail.com";
+
 export const socialMedia: SocialMedia[] = [
   {
     platform: "facebook",

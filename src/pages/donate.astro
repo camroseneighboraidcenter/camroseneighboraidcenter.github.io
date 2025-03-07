@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/ui/Hero.astro";
+import ValuesCard from "../components/ui/ValuesCard.astro";
+import CallToAction from "../components/ui/CallToAction.astro";
+import { donateEmail } from "../data/contact";
+
+---
+
+<BaseLayout title="Donate">
+  <Header />
+
+  <div class="donate-page">
+    <Hero
+      title="Donate"
+      ctaText="Contact Us"
+      ctaLink="/contact#contact-form?subject=donate"
+    />
+    <div class="content-wrapper">
+      <section class="intro-section">
+        <div class="content-container">
+          <p class="lead-text">
+            Camrose Neighbor Aid Center operates on the generosity of our supporters. Your donation helps us provide essential services to those in need. We are a registered charity and your donation is tax deductible.
+          </p>
+          <p class="donation-methods">
+            We accept donations in a few different ways outlined below:
+          </p>
+        </div>
+      </section>
+
+      <ValuesCard
+        title="Ways to donate"
+        values={[
+          {
+            title: "Cash",
+            description:
+              "You can donate cash in person at Camrose Neighbor Aid Center.",
+          },
+          {
+            title: "Cheque",
+            description:
+              'You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid.',
+          },
+          {
+            title: "E-Transfer",
+            description: `You can donate by E-Transfer to ${donateEmail}.`,
+          },
+        ]}
+      />
+
+      <CallToAction
+        title="Join Our Mission"
+        description="Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."
+        primaryCta={{
+          text: "Volunteer With Us",
+          href: "/contact#contact-form?subject=volunteer",
+          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center"
+        }}
+        secondaryCta={{
+          text: "Get in Touch",
+          href: "/contact#contact-form?subject=general",
+          srText: "Contact Camrose Neighbor Aid Center for more information"
+        }}
+      />
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .donate-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: var(--space-4);
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-8) 0;
+  }
+
+  .content-container {
+    max-width: var(--max-width-7xl);
+    margin: var(--space-8) auto;
+    padding: 0 var(--space-4);
+    width: 100%;
+  }
+
+  .intro-section {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+
+  .lead-text,
+  .donation-methods {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    max-width: 80ch;
+    margin: 0 auto;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .donation-methods {
+    margin-top: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+    text-align: center;
+  }
+
+  .section-description {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-8);
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      gap: var(--space-12);
+      padding: var(--space-12) 0;
+    }
+
+    .lead-text,
+    .donation-methods {
+      font-size: var(--text-lg);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+  }
+</style>
