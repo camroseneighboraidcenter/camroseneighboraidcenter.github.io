@@ -54,7 +54,7 @@ export const socialMedia: SocialMedia[] = [
   },
   {
     platform: "instagram",
-    url: "", // Add URL when available
+    url: "https://www.instagram.com/camroseneighboraid/", // Add URL when available
     icon: "",
     label: "Follow us on Instagram",
   },
@@ -66,7 +66,7 @@ export const socialMedia: SocialMedia[] = [
   },
   {
     platform: "x",
-    url: "https://x.com/neighboraid", // Add URL when available
+    url: "", // Add URL when available
     icon: "",
     label: "Follow us on X",
   },

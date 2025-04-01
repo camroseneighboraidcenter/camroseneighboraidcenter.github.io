@@ -73,21 +73,13 @@ const { type, id, class: className } = Astro.props;
     color: var(--color-primary-light);
   }
 
-  /* If we want the steps to be numbered,
-     remove the list-style: none;
-     and uncomment counter-reset: list-counter; */
   .section-content :global(ol) {
     list-style: none;
-    /* counter-reset: list-counter; */
   }
 
   .section-content :global(ol li) {
-    counter-increment: list-counter;
-  }
-
-  .section-content :global(ol li::marker) {
-    content: counter(list-counter) ".";
-    color: var(--color-primary-light);
+    position: relative;
+    padding-left: 0;
   }
 
   /* Section type styles */
