@@ -5,14 +5,14 @@
   scroll-padding-top: 100px; /* Accounts for fixed header height plus some padding */
 
   /* Colors */
-  --color-primary: #1f28e0;
-  --color-primary-light: #6b8ae8;
-  --color-primary-dark: #2a4ba8;
-  --color-primary-alt: #551fe0;
+  --color-primary: #1f6fa8;
+  --color-primary-light: #66a6cc;
+  --color-primary-dark: #144c72;
+  --color-primary-alt: #1f3ba8;
 
   /* Complementary Colors */
-  --color-secondary: #e1a141;
-  --color-accent: #41e169;
+  --color-secondary: #fdaf18;
+  --color-accent: #6cab7a;
 
   /* Neutral Colors */
   --color-background: #fff;

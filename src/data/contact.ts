@@ -48,7 +48,7 @@ export const donateEmail: string = "donationnbaid@gmail.com";
 export const socialMedia: SocialMedia[] = [
   {
     platform: "facebook",
-    url: "https://www.facebook.com/p/Camrose-Neighbour-Aid-Center-61570470749007", // Add URL when available
+    url: "https://www.facebook.com/people/Neighbor-Aid/pfbid02u3e3N5P6cNTcBY4iQU2XctFUkUAtUZCo3CiFkpNFfqtiPawvjs9n4Z2noP1gnHd9l", // Add URL when available
     icon: "",
     label: "Follow us on Facebook",
   },
