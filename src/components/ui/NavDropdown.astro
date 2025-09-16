@@ -210,7 +210,6 @@ const { label, items } = Astro.props;
         return;
       }
 
-      // Handle click on trigger
       trigger.addEventListener("click", () => {
         const isExpanded = trigger.getAttribute("aria-expanded") === "true";
         trigger.setAttribute("aria-expanded", (!isExpanded).toString());
@@ -222,7 +221,6 @@ const { label, items } = Astro.props;
         }
       });
 
-      // Close menu when clicking outside
       document.addEventListener("click", (e) => {
         const target = e.target;
         if (target instanceof Node && !this.contains(target)) {
@@ -231,7 +229,6 @@ const { label, items } = Astro.props;
         }
       });
 
-      // Handle escape key
       this.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           trigger.setAttribute("aria-expanded", "false");

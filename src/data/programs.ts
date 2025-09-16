@@ -1,6 +1,5 @@
 import type { ImageMetadata } from "astro";
 
-// Import all program images
 import foodBankImage from "../assets/programs/food-bank.webp";
 import kidsBreakfastImage from "../assets/programs/kids-breakfast.webp";
 import soupKitchenImage from "../assets/programs/soup-kitchen.webp";

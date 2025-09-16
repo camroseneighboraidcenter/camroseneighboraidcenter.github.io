@@ -48,31 +48,30 @@ export const donateEmail: string = "donationnbaid@gmail.com";
 export const socialMedia: SocialMedia[] = [
   {
     platform: "facebook",
-    url: "https://www.facebook.com/people/Neighbor-Aid/pfbid02u3e3N5P6cNTcBY4iQU2XctFUkUAtUZCo3CiFkpNFfqtiPawvjs9n4Z2noP1gnHd9l", // Add URL when available
+    url: "https://www.facebook.com/people/Neighbor-Aid/pfbid02u3e3N5P6cNTcBY4iQU2XctFUkUAtUZCo3CiFkpNFfqtiPawvjs9n4Z2noP1gnHd9l",
     icon: "",
     label: "Follow us on Facebook",
   },
   {
     platform: "instagram",
-    url: "https://www.instagram.com/camroseneighboraid/", // Add URL when available
+    url: "https://www.instagram.com/camroseneighboraid/",
     icon: "",
     label: "Follow us on Instagram",
   },
   {
     platform: "linkedin",
-    url: "", // Add URL when available
+    url: "",
     icon: "",
     label: "Connect with us on LinkedIn",
   },
   {
     platform: "x",
-    url: "", // Add URL when available
+    url: "",
     icon: "",
     label: "Follow us on X",
   },
 ];
 
-// Helper function to get active social media links
 export const getActiveSocialMedia = () => {
   return socialMedia.filter((social) => social.url !== "");
 };

@@ -281,7 +281,6 @@ const programNavItems = programs.map((program) => ({
       mobileMenuToggle.setAttribute("aria-expanded", (!isExpanded).toString());
     });
 
-    // Close menu when clicking outside
     document.addEventListener("click", (e) => {
       if (
         !primaryNavigation.contains(e.target instanceof Node ? e.target : null) &&
@@ -291,7 +290,6 @@ const programNavItems = programs.map((program) => ({
       }
     });
 
-    // Close menu on escape key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         mobileMenuToggle.setAttribute("aria-expanded", "false");

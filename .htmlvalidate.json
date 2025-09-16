@@ -4,13 +4,13 @@
     "element-permitted-content": "off",
     "no-dup-id": "error",
     "no-dup-class": "error",
-    "no-trailing-whitespace": "off",
+    "no-trailing-whitespace": "error",
     "no-multiple-main": "error",
     "unique-landmark": "error",
     "prefer-native-element": "error",
     "no-inline-style": "error",
     "attribute-allowed-values": "error",
-    "aria-label-misuse": "off",
+    "aria-label-misuse": "error",
     "heading-level": "error",
     "wcag/h30": "error",
     "wcag/h32": "error",
@@ -18,5 +18,6 @@
     "wcag/h37": "error",
     "wcag/h67": "error",
     "wcag/h71": "error"
-  }
+  },
+  "elements": ["html5"]
 }

@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   # Trigger the workflow every time you push to the `main` branch
   push:
-    branches: [ main ]
+    branches: [main]
   # Allows you to run this workflow manually from the Actions tab on GitHub
   workflow_dispatch:
 
@@ -25,21 +25,22 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          
-      - name: Clean install dependencies
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-      
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies (clean)
+        run: npm ci
+
+      - name: Run linters
+        run: npm run lint
+
       - name: Build Astro site
         run: npm run build
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

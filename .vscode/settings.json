@@ -6,7 +6,9 @@
     "CNAC",
     "Cpolyline",
     "Csvg",
+    "eslintcache",
     "frontmatter",
+    "htmlvalidate",
     "iwloc",
     "Killiam",
     "marthas",
@@ -14,7 +16,9 @@
     "resvg",
     "Ronning",
     "Sifton",
-    "vite"
+    "unspaced",
+    "vite",
+    "wcag"
   ],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#65c89b",

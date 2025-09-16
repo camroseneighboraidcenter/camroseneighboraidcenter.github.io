@@ -103,12 +103,10 @@ const { className = "" } = Astro.props;
 
 <script>
   (() => {
-    // Initialize form elements
     const form = document.getElementById("contact-form");
     const alert = document.getElementById("form-alert");
     const submitButton = form?.querySelector('button[type="submit"]');
 
-    // Validate required elements exist
     if (
       !(form instanceof HTMLFormElement) ||
       !(alert instanceof HTMLDivElement) ||
@@ -118,13 +116,9 @@ const { className = "" } = Astro.props;
       return;
     }
 
-    // Create references with proper type information
     const formElement = form;
     const alertElement = alert;
 
-    /**
-     * Handle subject parameter from URL hash and scroll to form
-     */
     function handleSubjectParam() {
       const hash = window.location.hash;
       if (hash.startsWith("#contact-form")) {
@@ -142,7 +136,6 @@ const { className = "" } = Astro.props;
 
     const validAlertTypes = ['success', 'error', 'info'];
     const showAlert = (message = '', type = 'info') => {
-      // Validate parameters
       if (typeof message !== 'string') {
         console.error('Message must be a string');
         return;
@@ -262,7 +255,6 @@ const { className = "" } = Astro.props;
       }
     });
 
-    // Handle field validation on input
     const fields = form.querySelectorAll("input, textarea, select");
     fields.forEach((field) => {
       field.addEventListener("input", () => {
@@ -273,7 +265,6 @@ const { className = "" } = Astro.props;
       });
     });
 
-    // Run on page load and when hash changes
     handleSubjectParam();
     window.addEventListener("hashchange", handleSubjectParam);
   })();
