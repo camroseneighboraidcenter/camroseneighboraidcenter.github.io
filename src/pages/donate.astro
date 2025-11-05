@@ -14,8 +14,8 @@ import { donateEmail } from "../data/contact";
   <div class="donate-page">
     <Hero
       title="Donate"
-      ctaText="Contact Us"
-      ctaLink="/contact#contact-form?subject=donate"
+      ctaText="Learn More"
+      ctaLink="#ways-to-donate"
     />
     <div class="content-wrapper">
       <section class="intro-section">
@@ -28,27 +28,38 @@ import { donateEmail } from "../data/contact";
           </p>
         </div>
       </section>
-
-      <ValuesCard
-        title="Ways to donate"
-        values={[
-          {
-            title: "Cash",
-            description:
-              "You can donate cash in person at Camrose Neighbor Aid Center.",
-          },
-          {
-            title: "Cheque",
-            description:
-              'You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid.',
-          },
-          {
-            title: "E-Transfer",
-            description: `You can donate by E-Transfer to ${donateEmail}. If you would like a receipt mailed to you, please include your full name and address in the memo.`,
-          },
-        ]}
-      />
-
+      <section id="ways-to-donate">
+        <ValuesCard
+          title="Ways to donate"
+          values={[
+            {
+              title: "Cash",
+              description:
+                "You can donate cash in person at Camrose Neighbor Aid Center.",
+            },
+            {
+              title: "Cheque",
+              description:
+                'You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid.',
+            },
+            {
+              title: "Canada Helps",
+              description:
+                "You can donate online through CanadaHelps.org, a secure platform that allows you to contribute using your credit card.",
+              link: {
+                href: "https://www.canadahelps.org/en/charities/neighbourlink-camrose-inc/",
+                text: "CanadaHelps.org",
+                external: true,
+                srText: "Opens in a new tab",
+              },
+            },
+            {
+              title: "E-Transfer",
+              description: `You can donate by E-Transfer to ${donateEmail}. If you would like a receipt mailed to you, please include your full name and address in the memo.`,
+            },
+          ]}
+        />
+      </section>
       <CallToAction
         title="Join Our Mission"
         description="Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."

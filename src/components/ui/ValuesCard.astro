@@ -2,13 +2,21 @@
 interface Props {
   values: Array<{
     title: string;
+    /** plain text description (no HTML) */
     description: string;
+    /** optional link object to render a safe anchor */
+    link?: {
+      href: string;
+      text: string;
+      external?: boolean;
+      srText?: string;
+    };
   }>;
   title?: string;
   className?: string;
 }
 
-const { values, title = "Our Values", className = "" } = Astro.props;
+const { values, title = "Our Values", className = "" } = Astro.props as Props;
 ---
 
 <section
@@ -19,11 +27,27 @@ const { values, title = "Our Values", className = "" } = Astro.props;
     <h2 id="values-title" class="section-title">{title}</h2>
     <ul class="values-grid">
       {
-        values.map(({ title, description }) => (
+        values.map(({ title, description, link }) => (
           <li class="value-card">
             <button class="value-button" type="button">
               <h3 class="value-title">{title}</h3>
-              <p class="value-description">{description}</p>
+              <p class="value-description">
+                {description}
+                {link ? (
+                  <>
+                    {' '}
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      class="value-link"
+                    >
+                      {link.text}
+                      {link.srText ? <span class="sr-only"> {link.srText}</span> : null}
+                    </a>
+                  </>
+                ) : null}
+              </p>
             </button>
           </li>
         ))
@@ -36,7 +60,18 @@ const { values, title = "Our Values", className = "" } = Astro.props;
   .values-section {
     margin: var(--space-8) 0;
   }
+  .value-link {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  .value-link:hover,
+  .value-link:focus-visible {
+    color: var(--color-link-hover);
+    text-decoration: underline;
 
+  }
+  
   .content-container {
     max-width: var(--max-width-7xl);
     margin: 0 auto;

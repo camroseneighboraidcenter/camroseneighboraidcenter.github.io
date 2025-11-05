@@ -5,6 +5,7 @@ import NavDropdown from "../ui/NavDropdown.astro";
 const mainNavItems = [
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Donate", href: "/donate" },
 ];
 
 const programNavItems = programs.map((program) => ({
@@ -97,7 +98,7 @@ const programNavItems = programs.map((program) => ({
   .logo-text {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
     color: var(--color-text);
     letter-spacing: -0.03em;
     background: linear-gradient(
@@ -202,7 +203,7 @@ const programNavItems = programs.map((program) => ({
       right: 0;
       bottom: 0;
       background-color: var(--color-surface);
-      transform: translateX(100%);
+      transform: translateX(100%);  
       transition: transform var(--transition-normal);
       visibility: hidden;
       z-index: 49;
@@ -265,7 +266,7 @@ const programNavItems = programs.map((program) => ({
 
   @media (max-width: 450px) {
     .logo-text {
-      font-size: var(--text-lg);
+      font-size: var(--text-base);
     }
   }
 </style>
