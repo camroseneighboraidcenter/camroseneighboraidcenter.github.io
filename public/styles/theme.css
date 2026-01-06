@@ -102,7 +102,7 @@
 
   /* Container/Layout Widths */
   --container-padding: var(--space-4);
-  --container-max-width: var(--max-width-7xl);
+  --container-max-width: var(--max-width-6xl);
 
   /*
    * Breakpoints (for reference - use in media queries)
