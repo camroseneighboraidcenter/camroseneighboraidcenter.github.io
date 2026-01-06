@@ -1,0 +1,239 @@
+---
+/**
+ * ContentBlock Component
+ * A flexible content block for displaying text content with optional styling.
+ * Replaces: BioCard, MissionCard, VisionCard, BeliefsCard
+ *
+ * Variants:
+ * - default: Simple centered text block
+ * - card: Bordered card with shadow
+ * - banner: Full-width with border top/bottom
+ * - highlight: Emphasized content with background
+ *
+ * Can display:
+ * - Single content item (title + text + optional citation)
+ * - Multiple items as a list (for beliefs/principles)
+ */
+interface ContentItem {
+  text: string;
+  citation?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  content?: string | ContentItem[];
+  citation?: string;
+  variant?: "default" | "card" | "banner" | "highlight";
+  align?: "left" | "center" | "right";
+  className?: string;
+}
+
+const {
+  title,
+  subtitle,
+  content,
+  citation,
+  variant = "default",
+  align = "center",
+  className = "",
+} = Astro.props;
+
+const isMultipleItems = Array.isArray(content);
+const titleId = title
+  ? `content-block-${Math.random().toString(36).slice(2, 9)}`
+  : undefined;
+---
+
+<section
+  class:list={[
+    "content-block",
+    `content-block--${variant}`,
+    `content-block--align-${align}`,
+    className,
+  ]}
+  aria-labelledby={titleId}
+>
+  <div class="content-block__container">
+    {title && <h2 id={titleId} class="content-block__title">{title}</h2>}
+
+    {subtitle && <p class="content-block__subtitle">{subtitle}</p>}
+
+    {
+      isMultipleItems ? (
+        <ul class="content-block__list">
+          {(content as ContentItem[]).map((item) => (
+            <li class="content-block__item">
+              <p class="content-block__text">{item.text}</p>
+              {item.citation && (
+                <span class="content-block__citation">{item.citation}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : content ? (
+        <div class="content-block__content">
+          <p class="content-block__text">{content}</p>
+          {citation && (
+            <span class="content-block__citation">{citation}</span>
+          )}
+        </div>
+      ) : null
+    }
+
+    <slot />
+  </div>
+</section>
+
+<style>
+  /* Base styles */
+  .content-block {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--container-padding);
+  }
+
+  .content-block__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content-block__title {
+    color: var(--color-primary);
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .content-block__subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .content-block__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .content-block__citation {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: var(--space-2);
+  }
+
+  /* List styles for multiple items */
+  .content-block__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .content-block__item {
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .content-block__item:last-child {
+    border-bottom: none;
+  }
+
+  /* Alignment variants */
+  .content-block--align-center {
+    text-align: center;
+  }
+
+  .content-block--align-center .content-block__content,
+  .content-block--align-center .content-block__item {
+    align-items: center;
+  }
+
+  .content-block--align-left {
+    text-align: left;
+  }
+
+  .content-block--align-right {
+    text-align: right;
+  }
+
+  /* Card variant */
+  .content-block--card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transition:
+      box-shadow var(--transition-normal),
+      border-color var(--transition-normal);
+  }
+
+  .content-block--card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+  }
+
+  .content-block--card .content-block__text {
+    font-style: italic;
+  }
+
+  /* Banner variant */
+  .content-block--banner {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    max-width: 100%;
+  }
+
+  .content-block--banner .content-block__text {
+    font-style: italic;
+  }
+
+  /* Highlight variant */
+  .content-block--highlight {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .content-block--highlight .content-block__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .content-block--card {
+      transition: none;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .content-block {
+      padding: var(--space-6) var(--container-padding);
+    }
+
+    .content-block__title {
+      font-size: var(--text-2xl);
+    }
+
+    .content-block__text {
+      font-size: var(--text-base);
+    }
+
+    .content-block__item {
+      padding: var(--space-4) 0;
+    }
+  }
+</style>

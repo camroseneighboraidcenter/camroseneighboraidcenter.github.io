@@ -3,6 +3,7 @@ import BaseLayout from "../components/layout/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
+import heroImage from "../assets/hero/hero-helping-hands.webp";
 
 const title = "Access Denied";
 ---
@@ -11,7 +12,12 @@ const title = "Access Denied";
   <Header />
 
   <div class="error-page">
-    <Hero title={title} ctaText="Return Home" ctaLink="/" />
+    <Hero
+      title={title}
+      backgroundImage={heroImage}
+      ctaText="Return Home"
+      ctaLink="/"
+    />
 
     <div class="content-wrapper">
       <div class="error-content">

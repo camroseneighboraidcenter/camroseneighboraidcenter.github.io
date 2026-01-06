@@ -1,0 +1,140 @@
+---
+/**
+ * CardGrid Component
+ * A flexible grid layout for displaying cards.
+ * Replaces: ProgramGrid, TeamGrid
+ *
+ * Variants:
+ * - default: Auto-fit grid for standard cards
+ * - featured: Constrained width grid for featured items
+ * - single: Single column layout for full-width cards
+ */
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  variant?: "default" | "featured" | "single";
+  columns?: number;
+  className?: string;
+}
+
+const {
+  title,
+  subtitle,
+  variant = "default",
+  columns,
+  className = "",
+} = Astro.props;
+
+const titleId = title ? `grid-title-${Math.random().toString(36).slice(2, 9)}` : undefined;
+---
+
+<section
+  class:list={["card-grid", `card-grid--${variant}`, className]}
+  aria-labelledby={titleId}
+>
+  <div class="card-grid__container">
+    {
+      (title || subtitle) && (
+        <div class="card-grid__header">
+          {title && (
+            <h2 id={titleId} class="card-grid__title">
+              {title}
+            </h2>
+          )}
+          {subtitle && <p class="card-grid__subtitle">{subtitle}</p>}
+        </div>
+      )
+    }
+
+    <ul
+      class="card-grid__list"
+      style={columns ? `--grid-columns: ${columns}` : undefined}
+      aria-label={title || "Items"}
+    >
+      <slot />
+    </ul>
+  </div>
+</section>
+
+<style>
+  .card-grid {
+    width: 100%;
+    padding: var(--space-8) var(--container-padding);
+  }
+
+  .card-grid__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .card-grid__header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .card-grid__title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .card-grid__subtitle {
+    color: var(--color-text-light);
+    font-size: var(--text-lg);
+  }
+
+  .card-grid__list {
+    display: grid;
+    gap: var(--space-8);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Default variant - auto-fit grid */
+  .card-grid--default .card-grid__list {
+    grid-template-columns: repeat(
+      var(--grid-columns, auto-fit),
+      minmax(min(280px, 100%), 1fr)
+    );
+  }
+
+  /* Featured variant - constrained width */
+  .card-grid--featured .card-grid__list {
+    grid-template-columns: repeat(
+      var(--grid-columns, auto-fit),
+      minmax(min(var(--max-width-xxs), 100%), 1fr)
+    );
+    max-width: var(--max-width-5xl);
+    margin: 0 auto;
+  }
+
+  /* Single column variant */
+  .card-grid--single .card-grid__list {
+    grid-template-columns: 1fr;
+    max-width: var(--max-width-4xl);
+    margin: 0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .card-grid {
+      padding: var(--space-6) var(--container-padding);
+    }
+
+    .card-grid__header {
+      margin-bottom: var(--space-8);
+    }
+
+    .card-grid__title {
+      font-size: var(--text-2xl);
+    }
+
+    .card-grid__list {
+      gap: var(--space-6);
+    }
+  }
+</style>

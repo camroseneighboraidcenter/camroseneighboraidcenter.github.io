@@ -1,0 +1,112 @@
+---
+/**
+ * Team Page (Mock/Preview)
+ * This page is for development preview only.
+ * Delete this file before production if not needed.
+ */
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/ui/Hero.astro";
+import TeamGrid from "../components/ui/TeamGrid.astro";
+import CallToAction from "../components/ui/CallToAction.astro";
+import heroImage from "../assets/hero/hero-helping-hands.webp";
+---
+
+<BaseLayout
+  title="Our Team"
+  description="Meet the dedicated team behind Camrose Neighbor Aid Center."
+>
+  <Header slot="header" />
+
+  <div class="team-page">
+    <Hero
+      title="Our Team"
+      backgroundImage={heroImage}
+      ctaText="Join Our Team"
+      ctaLink="/contact#contact-form?subject=volunteer"
+    />
+
+    <section class="team-section">
+      <div class="section-header">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-description">
+          Our dedicated staff and volunteers work tirelessly to serve the Camrose community.
+          Together, we're making a difference one person at a time.
+        </p>
+      </div>
+
+      <TeamGrid />
+    </section>
+
+    <CallToAction
+      title="Join Our Team"
+      description="We're always looking for passionate individuals to join our mission. Whether as a volunteer or staff member, you can make a real difference in our community."
+      primaryCta={{
+        text: "Volunteer With Us",
+        href: "/contact#contact-form?subject=volunteer",
+        srText: "Apply to volunteer at Camrose Neighbor Aid Center"
+      }}
+      secondaryCta={{
+        text: "Contact Us",
+        href: "/contact",
+        srText: "Get in touch with our team"
+      }}
+    />
+  </div>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  .team-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .team-section {
+    padding: var(--space-16) var(--container-padding);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-light);
+    max-width: 60ch;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 768px) {
+    .team-section {
+      padding: var(--space-8) var(--container-padding);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+
+    .section-description {
+      font-size: var(--text-base);
+    }
+  }
+</style>

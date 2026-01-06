@@ -5,10 +5,10 @@ import BaseLayout from "../components/layout/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
-import VisionCard from "../components/ui/VisionCard.astro";
-import ValuesCard from "../components/ui/ValuesCard.astro";
+import ContentBlock from "../components/ui/ContentBlock.astro";
+import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import BeliefsCard from "../components/ui/BeliefsCard.astro";
+import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
 <BaseLayout title="About Us">
@@ -17,6 +17,7 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
   <div class="about-page">
     <Hero
       title="About Us"
+      backgroundImage={heroImage}
       ctaText="Get Involved"
       ctaLink="/contact#contact-form?subject=volunteer"
     />
@@ -32,8 +33,10 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
         </div>
       </section>
 
-      <VisionCard
-        vision="A community where everyone's basic needs are met through Christ-centered service and support."
+      <ContentBlock
+        title="Our Vision"
+        content="A community where everyone's basic needs are met through Christ-centered service and support."
+        variant="banner"
       />
 
       <section class="logo-container">
@@ -49,21 +52,24 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
         />
       </section>
 
-      <BeliefsCard
-        beliefs={[
+      <ContentBlock
+        title="Our Beliefs"
+        content={[
           {
             text: "We believe all things are possible through Christ.",
-            verse: "Matthew 19:26",
+            citation: "Matthew 19:26",
           },
           {
             text: "We believe that Christians working together glorify God and make a difference.",
-            verse: "John 17:21-22",
+            citation: "John 17:21-22",
           },
         ]}
+        variant="banner"
       />
 
-      <ValuesCard
-        values={[
+      <FeatureGrid
+        title="Our Values"
+        items={[
           {
             title: "Faith",
             description:
@@ -126,9 +132,9 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
   }
 
   .content-container {
-    max-width: var(--max-width-7xl);
+    max-width: var(--container-max-width);
     margin: var(--space-8) auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--container-padding);
     width: 100%;
   }
 
@@ -144,7 +150,7 @@ import BeliefsCard from "../components/ui/BeliefsCard.astro";
     align-items: center;
     margin: var(--space-8) auto;
     max-width: min(var(--max-width-4xl), 80vw);
-    padding: 0 var(--space-4);
+    padding: 0 var(--container-padding);
   }
 
   .logo-image {

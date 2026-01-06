@@ -5,7 +5,7 @@ import Footer from "../../components/layout/Footer.astro";
 import Hero from "../../components/ui/Hero.astro";
 import CallToAction from "../../components/ui/CallToAction.astro";
 import { programs } from "../../data/programs";
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const programEntries = await getCollection('programs');
@@ -36,6 +36,8 @@ const { Content } = await entry.render();
     <Hero
       title={program.title}
       backgroundImage={program.image}
+      ctaText="Contact Us"
+      ctaLink="/contact#contact-form?subject=programs"
     />
     <article class="program-content">
       <h2 id="program-title">About {program.title}</h2>

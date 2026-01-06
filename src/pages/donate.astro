@@ -3,9 +3,10 @@ import BaseLayout from "../components/layout/BaseLayout.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
-import ValuesCard from "../components/ui/ValuesCard.astro";
+import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
 import { donateEmail } from "../data/contact";
+import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
 <BaseLayout title="Donate">
@@ -14,6 +15,7 @@ import { donateEmail } from "../data/contact";
   <div class="donate-page">
     <Hero
       title="Donate"
+      backgroundImage={heroImage}
       ctaText="Learn More"
       ctaLink="#ways-to-donate"
     />
@@ -29,9 +31,9 @@ import { donateEmail } from "../data/contact";
         </div>
       </section>
       <section id="ways-to-donate">
-        <ValuesCard
-          title="Ways to donate"
-          values={[
+        <FeatureGrid
+          title="Ways to Donate"
+          items={[
             {
               title: "Cash",
               description:

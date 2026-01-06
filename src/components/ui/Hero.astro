@@ -1,20 +1,24 @@
 ---
+/**
+ * Hero Component
+ * A full-width hero section with background image, title, and call-to-action.
+ * backgroundImage is required for CMS compatibility.
+ */
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
-import defaultHeroImage from "../../assets/hero/hero-helping-hands.webp";
 
 interface Props {
   title: string;
+  backgroundImage: ImageMetadata;
   ctaText?: string;
   ctaLink?: string;
-  backgroundImage?: ImageMetadata;
 }
 
 const {
   title,
+  backgroundImage,
   ctaText = "Get Involved",
   ctaLink = "/contact#contact-form",
-  backgroundImage = defaultHeroImage,
 } = Astro.props;
 ---
 

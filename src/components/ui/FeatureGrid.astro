@@ -1,0 +1,205 @@
+---
+/**
+ * FeatureGrid Component
+ * A grid of feature items with title, description, and optional link.
+ * Renamed from: ValuesCard
+ *
+ * Use cases:
+ * - Values/principles display
+ * - Feature highlights
+ * - Service offerings
+ * - Donation methods
+ */
+interface FeatureItem {
+  title: string;
+  description: string;
+  link?: {
+    href: string;
+    text: string;
+    external?: boolean;
+    srText?: string;
+  };
+}
+
+interface Props {
+  items: FeatureItem[];
+  title?: string;
+  variant?: "default" | "compact";
+  className?: string;
+}
+
+const {
+  items,
+  title,
+  variant = "default",
+  className = "",
+} = Astro.props;
+
+const titleId = title
+  ? `feature-grid-${Math.random().toString(36).slice(2, 9)}`
+  : undefined;
+---
+
+<section
+  class:list={["feature-grid", `feature-grid--${variant}`, className]}
+  aria-labelledby={titleId}
+>
+  <div class="feature-grid__container">
+    {title && <h2 id={titleId} class="feature-grid__title">{title}</h2>}
+
+    <ul class="feature-grid__list">
+      {
+        items.map(({ title: itemTitle, description, link }) => (
+          <li class="feature-grid__item">
+            <div class="feature-grid__card">
+              <h3 class="feature-grid__item-title">{itemTitle}</h3>
+              <p class="feature-grid__item-description">
+                {description}
+                {link && (
+                  <>
+                    {" "}
+                    <a
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      class="feature-grid__link"
+                    >
+                      {link.text}
+                      {link.srText && (
+                        <span class="sr-only"> {link.srText}</span>
+                      )}
+                    </a>
+                  </>
+                )}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .feature-grid {
+    margin: var(--space-8) 0;
+  }
+
+  .feature-grid__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+  }
+
+  .feature-grid__title {
+    color: var(--color-primary);
+    font-size: var(--text-3xl);
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .feature-grid__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-grid__card {
+    width: 100%;
+    height: 100%;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    transition:
+      transform var(--transition-normal),
+      box-shadow var(--transition-normal),
+      border-color var(--transition-normal);
+  }
+
+  .feature-grid__card:hover,
+  .feature-grid__card:focus-within {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+  }
+
+  .feature-grid__item-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-grid__item-description {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text-light);
+  }
+
+  .feature-grid__link {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .feature-grid__link:hover,
+  .feature-grid__link:focus-visible {
+    color: var(--color-link-hover);
+  }
+
+  /* Compact variant */
+  .feature-grid--compact .feature-grid__list {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: var(--space-4);
+  }
+
+  .feature-grid--compact .feature-grid__card {
+    padding: var(--space-4);
+  }
+
+  .feature-grid--compact .feature-grid__item-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-grid--compact .feature-grid__item-description {
+    font-size: var(--text-sm);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .feature-grid__card {
+      transition: none;
+    }
+
+    .feature-grid__card:hover,
+    .feature-grid__card:focus-within {
+      transform: none;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .feature-grid {
+      padding: var(--space-4) 0;
+    }
+
+    .feature-grid__list {
+      gap: var(--space-4);
+    }
+
+    .feature-grid__card {
+      padding: var(--space-4);
+    }
+
+    .feature-grid__item-title {
+      font-size: var(--text-lg);
+    }
+  }
+</style>

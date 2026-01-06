@@ -2,7 +2,7 @@
 import BaseLayout from "../../components/layout/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
-import ProgramHeroCard from "../../components/ui/ProgramHeroCard.astro";
+import HeroCard from "../../components/ui/HeroCard.astro";
 import { programs } from "../../data/programs";
 
 const title = "Our Programs";
@@ -17,7 +17,16 @@ const title = "Our Programs";
     <h1 class="page-title">{title}</h1>
 
     <div class="programs-grid">
-      {programs.map((program) => <ProgramHeroCard {...program} />)}
+      {programs.map((program) => (
+        <HeroCard
+          title={program.title}
+          description={program.description}
+          image={program.image}
+          imageAlt={program.imageAlt}
+          imageTitle={program.imageTitle}
+          href={`/programs/${program.slug}`}
+        />
+      ))}
     </div>
 
   <Footer />

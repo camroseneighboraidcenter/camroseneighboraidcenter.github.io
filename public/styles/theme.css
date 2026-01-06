@@ -20,8 +20,13 @@
   --color-surface-hover: #f8f9fa;
   --color-text: #1a1a1a;
   --color-text-light: #666;
+  --color-text-heading: var(--color-text);
   --color-border: #e5e7eb;
   --color-hero: #fff;
+
+  /* Link Colors */
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary-dark);
 
   /* Semantic Colors */
   --color-success: #28a745;
@@ -34,16 +39,34 @@
   --font-heading: "Montserrat", system-ui, sans-serif;
   --font-body: var(--font-primary);
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-7xl: 5rem;
+  /*
+   * Font Size Scale
+   * All sizes use rem units which are relative to the html font-size.
+   * Change --font-size-base to scale the entire typography system.
+   * Default: 16px (standard browser default)
+   */
+  --font-size-base: 15px;
+
+  /* Font sizes (rem = relative to html font-size set by --font-size-base) */
+  --text-xs: 0.75rem; /* 12px at 16px base */
+  --text-sm: 0.875rem; /* 14px at 16px base */
+  --text-base: 1rem; /* 16px at 16px base */
+  --text-lg: 1.125rem; /* 18px at 16px base */
+  --text-xl: 1.25rem; /* 20px at 16px base */
+  --text-2xl: 1.5rem; /* 24px at 16px base */
+  --text-3xl: 1.875rem; /* 30px at 16px base */
+  --text-4xl: 2.25rem; /* 36px at 16px base */
+  --text-5xl: 3rem; /* 48px at 16px base */
+  --text-6xl: 3.75rem; /* 60px at 16px base */
+  --text-7xl: 4.5rem; /* 72px at 16px base */
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -77,6 +100,18 @@
   --max-width-6xl: 72rem; /* 1152px */
   --max-width-7xl: 80rem; /* 1280px */
 
+  /* Container/Layout Widths */
+  --container-padding: var(--space-4);
+  --container-max-width: var(--max-width-7xl);
+
+  /*
+   * Breakpoints (for reference - use in media queries)
+   * sm: 640px
+   * md: 768px
+   * lg: 1024px
+   * xl: 1280px
+   */
+
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
@@ -96,7 +131,12 @@
   --color-surface-hover: #1a1a1a;
   --color-text: #fff;
   --color-text-light: #a1a1a1;
+  --color-text-heading: var(--color-text);
   --color-border: #383838;
+
+  /* Link Colors - Dark Mode */
+  --color-link: var(--color-primary-light);
+  --color-link-hover: var(--color-primary);
 
   /* Semantic Colors - Dark Mode */
   --color-success: #4caf50;
@@ -113,6 +153,7 @@
 
 /* Base styles */
 html {
+  font-size: var(--font-size-base);
   color-scheme: light;
 }
 
@@ -124,9 +165,27 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-body);
-  line-height: 1.5;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global List Styles - Consistent solid disc bullets */
+ul {
+  list-style-type: disc;
+}
+
+ul li::marker {
+  color: var(--color-primary-light);
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol li::marker {
+  color: var(--color-primary-light);
 }
 
 /* Smooth theme transitions */

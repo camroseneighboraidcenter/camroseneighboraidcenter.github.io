@@ -6,6 +6,7 @@ import Hero from "../components/ui/Hero.astro";
 import ContactForm from "../components/ui/ContactForm.astro";
 import ContactInfo from "../components/ui/ContactInfo.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
+import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
 <BaseLayout
@@ -15,7 +16,12 @@ import CallToAction from "../components/ui/CallToAction.astro";
   <Header slot="header" />
 
   <div class="contact-content">
-    <Hero title="Contact Us" ctaText="View Our Location" ctaLink="#location" />
+    <Hero
+      title="Contact Us"
+      backgroundImage={heroImage}
+      ctaText="View Our Location"
+      ctaLink="#location"
+    />
 
     <div class="contact-grid">
       <ContactForm />
