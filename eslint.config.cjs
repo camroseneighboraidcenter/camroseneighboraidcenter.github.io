@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const js = require("@eslint/js");
 const pluginAstro = require("eslint-plugin-astro");
 const eslintConfigPrettier = require("eslint-config-prettier");
@@ -52,6 +50,12 @@ module.exports = [
     },
     rules: {
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_" },
+      ],
     },
   },
 

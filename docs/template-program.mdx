@@ -1,11 +1,15 @@
 ---
+# Program Template
+# Copy this file and rename it to create a new program.
+# All fields below are required unless marked optional.
+
 title: "Program Title"
-# Optional frontmatter fields
-featured: false # If this is a featured program
-contact: # Optional contact information
-  email: "example@example.com"
-  phone: "(123) 456-7890"
-  hours: "Monday-Friday, 9 AM - 5 PM"
+description: "A brief description of the program for cards and previews."
+image: "../../assets/programs/placeholder.webp"  # Update with actual image path
+imageAlt: "Description of the image for accessibility."
+featured: true  # Show on home page
+order: 99       # Display order (lower = first)
+# updatedDate: 2024-01-01  # Optional: last update date
 ---
 
 import Section from "../../components/Section.astro";

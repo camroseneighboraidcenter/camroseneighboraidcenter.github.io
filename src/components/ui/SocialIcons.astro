@@ -1,5 +1,13 @@
 ---
-import { getActiveSocialMedia } from "../../data/contact";
+/**
+ * SocialIcons Component
+ * Displays social media icons with links.
+ *
+ * @prop {string} className - Additional CSS classes
+ * @prop {"start" | "center" | "end"} justify - Flex justify alignment
+ */
+import { socialMediaLinks } from "../../data/contact";
+import { filterActiveLinks } from "../../utils/formatters";
 
 interface Props {
   className?: string;
@@ -7,7 +15,7 @@ interface Props {
 }
 
 const { className = "", justify = "center" } = Astro.props;
-const activeSocialMedia = getActiveSocialMedia();
+const activeSocialMedia = filterActiveLinks(socialMediaLinks);
 ---
 
 {
@@ -105,7 +113,7 @@ const activeSocialMedia = getActiveSocialMedia();
     width: 40px;
     height: 40px;
     border-radius: var(--radius-md);
-    color: var(--color-text);
+    color: var(--color-primary);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-sm);
@@ -113,7 +121,7 @@ const activeSocialMedia = getActiveSocialMedia();
   }
 
   .social-icon:hover {
-    background-color: var(--color-surface-hover);
+    color: var(--color-primary-dark);
     transform: translateY(-1px);
     border-color: var(--color-primary-light);
     box-shadow: var(--shadow-md);

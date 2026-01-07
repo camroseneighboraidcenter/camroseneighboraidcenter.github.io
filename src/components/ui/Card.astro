@@ -1,13 +1,18 @@
 ---
 /**
  * Card Component
- * A flexible card component with multiple variants for different use cases.
- * Replaces: ProgramCard, ServiceCard, ProfileCard (TeamMember)
+ * A flexible card component with multiple variants.
  *
- * Variants:
- * - default: Standard card with optional image, title, description, and link
- * - profile: Circular image centered, for team/profile displays
- * - horizontal: Side-by-side image and content layout
+ * @prop {string} title - Card title (required)
+ * @prop {string} description - Card description
+ * @prop {ImageMetadata} image - Card image
+ * @prop {string} imageAlt - Image alt text
+ * @prop {string} href - Link URL (makes card clickable)
+ * @prop {string} linkText - Text for the link button
+ * @prop {"default" | "profile" | "horizontal"} variant
+ *   - default: Standard card with image, title, description
+ *   - profile: Circular image, centered text (for team members)
+ *   - horizontal: Side-by-side image and content
  */
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";

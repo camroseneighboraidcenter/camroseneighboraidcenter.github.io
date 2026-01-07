@@ -1,22 +1,27 @@
+/**
+ * Content Collections Configuration
+ * Defines the schema for all content collections.
+ * This is the single source of truth for program data.
+ */
 import { defineCollection, z } from "astro:content";
 
 const programs = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    updatedDate: z.date().optional(),
-    featured: z.boolean().default(false),
-    order: z.number().optional(),
-    requirements: z.array(z.string()).optional(),
-    contact: z
-      .object({
-        email: z.string().email().optional(),
-        phone: z.string().optional(),
-        hours: z.string().optional(),
-      })
-      .optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      // Core fields (required)
+      title: z.string(),
+      description: z.string(),
+      image: image(),
+      imageAlt: z.string(),
+
+      // Display options
+      featured: z.boolean().default(true),
+      order: z.number().default(0),
+
+      // Optional metadata
+      updatedDate: z.date().optional(),
+    }),
 });
 
 export const collections = {

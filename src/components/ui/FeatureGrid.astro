@@ -2,23 +2,19 @@
 /**
  * FeatureGrid Component
  * A grid of feature items with title, description, and optional link.
- * Renamed from: ValuesCard
  *
- * Use cases:
- * - Values/principles display
- * - Feature highlights
- * - Service offerings
- * - Donation methods
+ * @prop {FeatureItem[]} items - Array of feature items (required)
+ * @prop {string} title - Section title
+ * @prop {"default" | "compact"} variant
+ *   - default: Standard card sizing
+ *   - compact: Smaller cards with reduced padding
+ *
+ * Note: Use `descriptionHtml` instead of `description` when you need inline links or HTML.
  */
 interface FeatureItem {
   title: string;
-  description: string;
-  link?: {
-    href: string;
-    text: string;
-    external?: boolean;
-    srText?: string;
-  };
+  description?: string;
+  descriptionHtml?: string;
 }
 
 interface Props {
@@ -49,29 +45,15 @@ const titleId = title
 
     <ul class="feature-grid__list">
       {
-        items.map(({ title: itemTitle, description, link }) => (
+        items.map(({ title: itemTitle, description, descriptionHtml }) => (
           <li class="feature-grid__item">
             <div class="feature-grid__card">
               <h3 class="feature-grid__item-title">{itemTitle}</h3>
-              <p class="feature-grid__item-description">
-                {description}
-                {link && (
-                  <>
-                    {" "}
-                    <a
-                      href={link.href}
-                      target={link.external ? "_blank" : undefined}
-                      rel={link.external ? "noopener noreferrer" : undefined}
-                      class="feature-grid__link"
-                    >
-                      {link.text}
-                      {link.srText && (
-                        <span class="sr-only"> {link.srText}</span>
-                      )}
-                    </a>
-                  </>
-                )}
-              </p>
+              {descriptionHtml ? (
+                <p class="feature-grid__item-description" set:html={descriptionHtml} />
+              ) : (
+                <p class="feature-grid__item-description">{description}</p>
+              )}
             </div>
           </li>
         ))

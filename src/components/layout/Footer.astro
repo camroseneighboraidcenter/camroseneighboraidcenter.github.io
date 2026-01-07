@@ -1,14 +1,15 @@
 ---
-import {
-  contactInfo,
-  getFormattedAddress,
-  formatPhoneNumber,
-} from "../../data/contact";
+/**
+ * Footer Component
+ * Site footer with contact info, quick links, social icons, and theme toggle.
+ */
+import { contactInfo } from "../../data/contact";
+import { formatPhoneNumber, formatAddress } from "../../utils/formatters";
 import SocialIcons from "../ui/SocialIcons.astro";
 import ThemeToggle from "../ui/ThemeToggle.astro";
 
 const currentYear = new Date().getFullYear();
-const address = getFormattedAddress();
+const address = formatAddress(contactInfo.address);
 ---
 
 <footer class="site-footer">

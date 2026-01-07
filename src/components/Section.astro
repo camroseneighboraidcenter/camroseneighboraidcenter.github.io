@@ -1,4 +1,12 @@
 ---
+/**
+ * Section Component
+ * A content section wrapper with various layout types for MDX content.
+ *
+ * @prop {"full" | "schedule" | "services" | "bordered" | "grid"} type - Section layout type
+ * @prop {string} id - Section ID for anchor links
+ * @prop {string} class - Additional CSS classes
+ */
 interface Props {
   type?: 'full' | 'schedule' | 'services' | 'bordered' | 'grid';
   id?: string;

@@ -4,43 +4,35 @@ import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import Hero from "../../components/ui/Hero.astro";
 import CallToAction from "../../components/ui/CallToAction.astro";
-import { programs } from "../../data/programs";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const programEntries = await getCollection('programs');
-  return programs.map((program) => {
-    const mdxEntry = programEntries.find((entry: CollectionEntry<'programs'>) => entry.slug === program.slug);
-    if (!mdxEntry) {
-      throw new Error(`No MDX content found for program: ${program.slug}`);
-    }
-    return {
-      params: { slug: program.slug },
-      props: { program, entry: mdxEntry },
-    };
-  });
+  const programs = await getCollection("programs");
+  return programs.map((program: CollectionEntry<"programs">) => ({
+    params: { slug: program.slug },
+    props: { program },
+  }));
 }
 
 interface Props {
-  program: (typeof programs)[number];
-  entry: CollectionEntry<'programs'>;
+  program: CollectionEntry<"programs">;
 }
 
-const { program, entry } = Astro.props;
-const { Content } = await entry.render();
+const { program } = Astro.props;
+const { Content } = await program.render();
 ---
 
-<BaseLayout title={program.title}>
+<BaseLayout title={program.data.title}>
   <Header />
   <div class="program-page">
     <Hero
-      title={program.title}
-      backgroundImage={program.image}
+      title={program.data.title}
+      backgroundImage={program.data.image}
       ctaText="Contact Us"
       ctaLink="/contact#contact-form?subject=programs"
     />
     <article class="program-content">
-      <h2 id="program-title">About {program.title}</h2>
+      <h2 id="program-title">About {program.data.title}</h2>
       <div class="content-wrapper">
         {Content && <Content />}
       </div>
@@ -54,7 +46,7 @@ const { Content } = await entry.render();
         primaryCta={{
           text: "Contact Us",
           href: `/contact#contact-form?subject=programs`,
-          srText: `Contact us about ${program.title}`,
+          srText: `Contact us about ${program.data.title}`,
         }}
       />
     </section>

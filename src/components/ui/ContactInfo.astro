@@ -1,11 +1,14 @@
 ---
-import {
-  formatPhoneNumber,
-  formatFaxNumber,
-  getFormattedAddress,
-} from "../../data/contact";
-import SocialIcons from "./SocialIcons.astro";
+/**
+ * ContactInfo Component
+ * Displays contact information including address, hours, phone, and social links.
+ *
+ * @prop {boolean} showSocial - Whether to show social media icons
+ * @prop {string} className - Additional CSS classes
+ */
 import { contactInfo } from "../../data/contact";
+import { formatPhoneNumber, formatAddress } from "../../utils/formatters";
+import SocialIcons from "./SocialIcons.astro";
 
 interface Props {
   showSocial?: boolean;
@@ -15,7 +18,7 @@ interface Props {
 const { showSocial = true, className = "" } = Astro.props;
 
 const { hours, phone, fax, email } = contactInfo;
-const address = getFormattedAddress();
+const address = formatAddress(contactInfo.address);
 ---
 
 <div class:list={[`contact-info-section`,`${className}`]}>
@@ -63,7 +66,7 @@ const address = getFormattedAddress();
       {
         fax && (
           <p>
-            Fax: <span class="contact-detail" set:html={formatFaxNumber(fax)} />
+            Fax: <span class="contact-detail" set:html={formatPhoneNumber(fax)} />
           </p>
         )
       }

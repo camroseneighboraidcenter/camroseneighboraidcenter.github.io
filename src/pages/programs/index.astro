@@ -3,9 +3,14 @@ import BaseLayout from "../../components/layout/BaseLayout.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import HeroCard from "../../components/ui/HeroCard.astro";
-import { programs } from "../../data/programs";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 const title = "Our Programs";
+const programs = await getCollection("programs");
+const sortedPrograms = programs.sort(
+  (a: CollectionEntry<"programs">, b: CollectionEntry<"programs">) =>
+    a.data.order - b.data.order
+);
 ---
 
 <BaseLayout
@@ -17,13 +22,12 @@ const title = "Our Programs";
     <h1 class="page-title">{title}</h1>
 
     <div class="programs-grid">
-      {programs.map((program) => (
+      {sortedPrograms.map((program: CollectionEntry<"programs">) => (
         <HeroCard
-          title={program.title}
-          description={program.description}
-          image={program.image}
-          imageAlt={program.imageAlt}
-          imageTitle={program.imageTitle}
+          title={program.data.title}
+          description={program.data.description}
+          image={program.data.image}
+          imageAlt={program.data.imageAlt}
           href={`/programs/${program.slug}`}
         />
       ))}

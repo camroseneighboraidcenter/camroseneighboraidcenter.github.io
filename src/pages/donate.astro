@@ -5,7 +5,7 @@ import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
 import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import { donateEmail } from "../data/contact";
+import { contactInfo } from "../data/contact";
 import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
@@ -36,28 +36,19 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
           items={[
             {
               title: "Cash",
-              description:
-                "You can donate cash in person at Camrose Neighbor Aid Center.",
+              description: "You can donate cash in person at Camrose Neighbor Aid Center.",
             },
             {
               title: "Cheque",
-              description:
-                'You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid.',
+              description: "You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid.",
             },
             {
               title: "Canada Helps",
-              description:
-                "You can donate online through CanadaHelps.org, a secure platform that allows you to contribute using your credit card. Processing fees are subtracted by CanadaHelps.org from your donation.",
-              link: {
-                href: "https://www.canadahelps.org/en/dn/24772",
-                text: "CanadaHelps.org",
-                external: true,
-                srText: "Opens in a new tab",
-              },
+              descriptionHtml: `You can donate online through <a href="https://www.canadahelps.org/en/dn/24772" target="_blank" rel="noopener noreferrer" class="feature-grid__link">CanadaHelps.org</a>, a secure platform that allows you to contribute using your credit card. Processing fees are subtracted by CanadaHelps from your donation.`,
             },
             {
               title: "E-Transfer",
-              description: `You can donate by E-Transfer to ${donateEmail}. If you would like a receipt mailed to you, please include your full name and address in the memo.`,
+              descriptionHtml: `You can donate by E-Transfer to <a href="mailto:${contactInfo.donationEmail}" class="feature-grid__link">${contactInfo.donationEmail}</a>. If you would like a receipt mailed to you, please include your full name and address in the memo.`,
             },
           ]}
         />

@@ -1,4 +1,9 @@
 ---
+/**
+ * ThemeToggle Component
+ * A button to toggle between light and dark themes.
+ * Stores preference in localStorage.
+ */
 ---
 
 <button
@@ -64,14 +69,14 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    color: var(--color-text);
+    color: var(--color-primary);
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-fast);
   }
 
   .theme-toggle:hover {
-    background-color: var(--color-surface-hover);
+    color: var(--color-primary-dark);
     transform: translateY(-1px);
     border-color: var(--color-primary-light);
     box-shadow: var(--shadow-md);

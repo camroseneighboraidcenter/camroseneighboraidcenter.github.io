@@ -1,20 +1,12 @@
-export interface ContactInfo {
-  address?: Address;
-  phone?: string;
-  fax?: string;
-  email?: string;
-  hours: {
-    [key: string]: string;
-  };
-}
+/**
+ * Contact Data
+ * Organization contact information, social media links, and business hours.
+ * Pure data - no business logic or utility functions.
+ */
 
-export interface SocialMedia {
-  platform: string;
-  url: string;
-  icon: string;
-  label: string;
-}
-
+/**
+ * Physical address of the organization.
+ */
 export interface Address {
   street: string;
   city: string;
@@ -22,6 +14,43 @@ export interface Address {
   postalCode: string;
 }
 
+/**
+ * Business hours for each day of the week.
+ */
+export interface BusinessHours {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}
+
+/**
+ * Complete contact information for the organization.
+ */
+export interface ContactInfo {
+  address: Address;
+  phone: string;
+  fax: string;
+  email: string;
+  donationEmail: string;
+  hours: BusinessHours;
+}
+
+/**
+ * Social media platform configuration.
+ */
+export interface SocialMediaLink {
+  platform: "facebook" | "instagram" | "linkedin" | "x" | "youtube";
+  url: string;
+  label: string;
+}
+
+/**
+ * Organization contact information.
+ */
 export const contactInfo: ContactInfo = {
   address: {
     street: "4524 54 Street",
@@ -32,6 +61,7 @@ export const contactInfo: ContactInfo = {
   phone: "(780) 679-3220",
   fax: "(780) 679-3221",
   email: "nbaid@cable-lynx.net",
+  donationEmail: "donationnbaid@gmail.com",
   hours: {
     monday: "9:00 AM - 12:00 PM",
     tuesday: "10:00 AM - 3:00 PM",
@@ -43,71 +73,29 @@ export const contactInfo: ContactInfo = {
   },
 };
 
-export const donateEmail: string = "donationnbaid@gmail.com";
-
-export const socialMedia: SocialMedia[] = [
+/**
+ * Social media links.
+ * Empty URLs indicate the platform is not active.
+ */
+export const socialMediaLinks: SocialMediaLink[] = [
   {
     platform: "facebook",
     url: "https://www.facebook.com/people/Neighbor-Aid/pfbid02u3e3N5P6cNTcBY4iQU2XctFUkUAtUZCo3CiFkpNFfqtiPawvjs9n4Z2noP1gnHd9l",
-    icon: "",
     label: "Follow us on Facebook",
   },
   {
     platform: "instagram",
     url: "https://www.instagram.com/camroseneighboraid/",
-    icon: "",
     label: "Follow us on Instagram",
   },
   {
     platform: "linkedin",
     url: "",
-    icon: "",
     label: "Connect with us on LinkedIn",
   },
   {
     platform: "x",
     url: "",
-    icon: "",
     label: "Follow us on X",
   },
 ];
-
-export const getActiveSocialMedia = () => {
-  return socialMedia.filter((social) => social.url !== "");
-};
-
-export function getAddress(): Address | undefined {
-  return contactInfo.address;
-}
-
-function formatNumberWithNonBreaking(number: string): string {
-  const cleaned = number.replace(/\D/g, "");
-  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-  if (match) {
-    return `(${match[1]})&nbsp;${match[2]}&#8209;${match[3]}`;
-  }
-  return number;
-}
-
-export function formatPhoneNumber(phone: string): string {
-  return formatNumberWithNonBreaking(phone);
-}
-
-export function formatFaxNumber(fax: string): string {
-  return formatNumberWithNonBreaking(fax);
-}
-
-export function getFormattedAddress():
-  | { street: string; cityProvince: string; postalCode: string }
-  | undefined {
-  const address = getAddress();
-  if (!address) return undefined;
-
-  return {
-    street: address.street,
-    cityProvince: `${address.city}, ${address.province}`,
-    postalCode: address.postalCode,
-  };
-}
-
-export const WEB3FORMS_TOKEN = "8e96c192-1da8-48b3-9df9-e4620106f482";

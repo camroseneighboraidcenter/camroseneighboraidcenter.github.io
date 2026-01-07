@@ -2,14 +2,15 @@
 /**
  * CardGrid Component
  * A flexible grid layout for displaying cards.
- * Replaces: ProgramGrid, TeamGrid
  *
- * Variants:
- * - default: Auto-fit grid for standard cards
- * - featured: Constrained width grid for featured items
- * - single: Single column layout for full-width cards
+ * @prop {string} title - Section title
+ * @prop {string} subtitle - Section subtitle
+ * @prop {number} columns - Fixed number of columns (optional)
+ * @prop {"default" | "featured" | "single"} variant
+ *   - default: Auto-fit grid for standard cards
+ *   - featured: Constrained width grid for featured items
+ *   - single: Single column layout for full-width cards
  */
-
 interface Props {
   title?: string;
   subtitle?: string;

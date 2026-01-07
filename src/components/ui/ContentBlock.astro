@@ -1,18 +1,18 @@
 ---
 /**
  * ContentBlock Component
- * A flexible content block for displaying text content with optional styling.
- * Replaces: BioCard, MissionCard, VisionCard, BeliefsCard
+ * A flexible content block for displaying text content.
  *
- * Variants:
- * - default: Simple centered text block
- * - card: Bordered card with shadow
- * - banner: Full-width with border top/bottom
- * - highlight: Emphasized content with background
- *
- * Can display:
- * - Single content item (title + text + optional citation)
- * - Multiple items as a list (for beliefs/principles)
+ * @prop {string} title - Block title
+ * @prop {string} subtitle - Block subtitle
+ * @prop {string | ContentItem[]} content - Text content or array of items with citations
+ * @prop {string} citation - Citation for single content
+ * @prop {"left" | "center" | "right"} align - Text alignment
+ * @prop {"default" | "card" | "banner" | "highlight"} variant
+ *   - default: Simple centered text block
+ *   - card: Bordered card with shadow
+ *   - banner: Full-width with border top/bottom
+ *   - highlight: Emphasized content with background
  */
 interface ContentItem {
   text: string;

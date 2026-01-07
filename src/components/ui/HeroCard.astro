@@ -2,12 +2,13 @@
 /**
  * HeroCard Component
  * A large hero-style card with background image and overlay content.
- * Renamed from: ProgramHeroCard
  *
- * Use cases:
- * - Program showcase cards
- * - Featured content highlights
- * - Landing page hero sections
+ * @prop {string} title - Card title (required)
+ * @prop {string} description - Card description
+ * @prop {ImageMetadata} image - Background image (required)
+ * @prop {string} imageAlt - Image alt text
+ * @prop {string} href - Link URL
+ * @prop {string} linkText - Text for the link button
  */
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";

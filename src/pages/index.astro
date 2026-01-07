@@ -7,8 +7,15 @@ import ContentBlock from "../components/ui/ContentBlock.astro";
 import CardGrid from "../components/ui/CardGrid.astro";
 import Card from "../components/ui/Card.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import { programs } from "../data/programs";
+import { getCollection, type CollectionEntry } from "astro:content";
 import heroImage from "../assets/hero/hero-helping-hands.webp";
+
+type Program = CollectionEntry<"programs">;
+
+const allPrograms = await getCollection("programs");
+const featuredPrograms = allPrograms
+  .filter((p: Program) => p.data.featured)
+  .sort((a: Program, b: Program) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -46,14 +53,13 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
       subtitle="Supporting our community through various initiatives"
       variant="featured"
     >
-      {programs.filter(p => p.featured).map((program) => (
+      {featuredPrograms.map((program) => (
         <li>
           <Card
-            title={program.title}
-            description={program.description}
-            image={program.image}
-            imageAlt={program.imageAlt}
-            imageTitle={program.imageTitle}
+            title={program.data.title}
+            description={program.data.description}
+            image={program.data.image}
+            imageAlt={program.data.imageAlt}
             href={`/programs/${program.slug}`}
           />
         </li>

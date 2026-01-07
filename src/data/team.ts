@@ -1,3 +1,8 @@
+/**
+ * Team Data
+ * Organization team members and staff.
+ * Used by the TeamGrid component.
+ */
 import type { ImageMetadata } from "astro";
 
 import tempPersonImage from "../assets/about/temp-person.jpg";

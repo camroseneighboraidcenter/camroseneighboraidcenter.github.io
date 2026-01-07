@@ -1,5 +1,11 @@
 ---
-import { WEB3FORMS_TOKEN } from "../../data/contact";
+/**
+ * ContactForm Component
+ * A contact form that submits to Web3Forms API.
+ *
+ * @prop {string} className - Additional CSS classes
+ */
+import { apiTokens } from "../../data/site";
 
 interface Props {
   className?: string;
@@ -15,7 +21,7 @@ const { className = "" } = Astro.props;
   method="POST"
   novalidate
 >
-  <input type="hidden" name="access_key" value={WEB3FORMS_TOKEN} />
+  <input type="hidden" name="access_key" value={apiTokens.web3forms} />
   <input type="hidden" name="from_name" value="Neighbor Aid Contact Form" />
   <input
     type="checkbox"
