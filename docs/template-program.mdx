@@ -1,125 +1,164 @@
 ---
-# Program Template
-# Copy this file and rename it to create a new program.
-# All fields below are required unless marked optional.
+# ============================================================================
+# PROGRAM TEMPLATE
+# ============================================================================
+# Copy this file to src/content/programs/ and rename it to your-program-slug.mdx
+# Fill in all required fields below. The slug is derived from the filename.
+#
+# REQUIRED FIELDS:
+# - title: Display name of the program
+# - description: Short description for cards and previews (1-2 sentences)
+# - image: Path to program image (relative to this file)
+# - imageAlt: Accessible description of the image
+#
+# OPTIONAL FIELDS:
+# - featured: Show on home page (default: true)
+# - order: Display order - lower numbers appear first (default: 0)
+# - updatedDate: Last update date in YYYY-MM-DD format
+# ============================================================================
 
 title: "Program Title"
-description: "A brief description of the program for cards and previews."
-image: "../../assets/programs/placeholder.webp"  # Update with actual image path
-imageAlt: "Description of the image for accessibility."
-featured: true  # Show on home page
-order: 99       # Display order (lower = first)
-# updatedDate: 2024-01-01  # Optional: last update date
+description: "A brief description of the program for cards and previews. Keep it to 1-2 sentences."
+image: "../../assets/programs/your-image.webp"
+imageAlt: "Descriptive alt text for accessibility."
+featured: true
+order: 10
+# updatedDate: 2024-01-01
 ---
 
 import Section from "../../components/Section.astro";
 import ServiceCard from "../../components/ServiceCard.astro";
 import Schedule from "../../components/Schedule.astro";
 
-{/* Overview Section - Required */}
+{/* ============================================================================
+    OVERVIEW SECTION
+    Start with a brief introduction to the program. Include history if relevant.
+    ============================================================================ */}
 
 <Section type="full">
-A comprehensive introduction to the program, its history, and its significance in the community.
+A comprehensive introduction to the program, its history, and its significance 
+in the community. This should be 2-3 sentences that give visitors an immediate 
+understanding of what this program does.
 
 ### Program Goals
-- Goal 1
-- Goal 2
-- Goal 3
+- Goal 1: What this program aims to achieve
+- Goal 2: Another key objective
+- Goal 3: Additional outcome we're working toward
 </Section>
 
-{/* Services Section - Optional */}
+{/* ============================================================================
+    SERVICES SECTION
+    Use ServiceCard components to highlight specific services offered.
+    ============================================================================ */}
 
 <Section type="services">
 ## Our Services
 
 <ServiceCard title="Primary Service">
-- Key point 1
-- Key point 2
-- Key point 3
+- Key feature or benefit
+- What's included
+- Who it's for
+- Any requirements
 </ServiceCard>
 
-<ServiceCard title="Additional Service">
-- Feature 1
-- Feature 2
-- Feature 3
+<ServiceCard title="Secondary Service">
+- Key feature or benefit
+- What's included
+- Who it's for
+- Any requirements
 </ServiceCard>
 </Section>
 
-{/* Schedule Section - Optional */}
+{/* ============================================================================
+    SCHEDULE SECTION
+    Use the Schedule component for hours and locations.
+    ============================================================================ */}
 
 <Section type="schedule">
-  ## Program Schedule
-  <Schedule
-    sections={[
-      {
-        title: "Service Hours",
-        items: [
-          { days: "Monday-Friday", hours: "9:00 AM - 5:00 PM" },
-          { days: "Saturday", hours: "10:00 AM - 2:00 PM" },
-        ],
-      },
-      {
-        title: "Special Services",
-        items: [
-          {
-            days: "Tuesday",
-            hours: "1:00 PM - 3:00 PM",
-            location: "Main Office",
-          },
-        ],
-      },
-    ]}
-  />
+## When to Visit
+
+<Schedule
+  sections={[
+    {
+      title: "Regular Hours",
+      items: [
+        { days: "Monday - Friday", hours: "9:00 AM - 5:00 PM" },
+        { days: "Saturday", hours: "10:00 AM - 2:00 PM" },
+      ],
+    },
+    {
+      title: "Special Services",
+      items: [
+        {
+          days: "Tuesday",
+          hours: "1:00 PM - 3:00 PM",
+          location: "Main Office",
+        },
+      ],
+    },
+  ]}
+/>
 </Section>
 
-{/* Requirements Section - Optional */}
+{/* ============================================================================
+    ELIGIBILITY SECTION
+    Explain who can access this program and what they need.
+    ============================================================================ */}
 
 <Section type="full">
-## Program Requirements
-- Requirement 1
-- Requirement 2
-- Requirement 3
+## Eligibility & Requirements
+- Who is eligible for this program
+- Required documentation (ID, proof of address, etc.)
+- Any income or residency requirements
+- Special accommodations available
 </Section>
 
-{/* Process Section - Optional */}
+{/* ============================================================================
+    PROCESS SECTION
+    Walk through how someone accesses the program.
+    ============================================================================ */}
 
 <Section type="grid">
 ## How It Works
 
-1. Step 1
-   - Detail point
-   - Detail point
+1. First Step
+   - What to bring
+   - What to expect
+   - How long it takes
 
-2. Step 2
-   - Detail point
-   - Detail point
+2. Second Step
+   - Next actions
+   - Follow-up process
+   - Timeline
 
-3. Step 3
-   - Detail point
-   - Detail point
+3. Ongoing Support
+   - Regular access
+   - Additional resources
+   - Contact information
 </Section>
 
-{/* Impact Section - Optional */}
+{/* ============================================================================
+    IMPACT SECTION
+    Share metrics and outcomes if available.
+    ============================================================================ */}
 
 <Section type="bordered">
 ## Program Impact
-- Impact metric 1
-- Impact metric 2
-- Impact metric 3
+- Number of people served annually
+- Key outcome or achievement
+- Community benefit
+- Partnership highlights
 </Section>
 
-{/* Additional Information - Optional */}
-
-<Section type="additional">
-## Additional Information
-Any other relevant information about the program.
-</Section>
-
-{/* Contact Information - Optional */}
+{/* ============================================================================
+    CONTACT SECTION
+    How to get more information or get started.
+    ============================================================================ */}
 
 <Section type="full">
 ## Contact Us
-- How to reach us
-- When to reach us
-- Where to find us
+- For more information, please get in touch
+- Phone: Contact the main office
+- Email: Use the contact form
+- In person: Visit during office hours
 </Section>

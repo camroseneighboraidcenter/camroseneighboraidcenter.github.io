@@ -53,7 +53,7 @@ const featuredPrograms = allPrograms
       subtitle="Supporting our community through various initiatives"
       variant="featured"
     >
-      {featuredPrograms.map((program) => (
+      {featuredPrograms.map((program: Program) => (
         <li>
           <Card
             title={program.data.title}
