@@ -28,5 +28,5 @@ export const apiTokens = {
  * Default images used across the site.
  */
 export const defaultImages = {
-  ogImage: "/images/og-image.jpg",
+  ogImage: "/images/og-image.png",
 };

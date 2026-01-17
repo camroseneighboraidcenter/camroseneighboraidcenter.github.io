@@ -16,6 +16,8 @@ interface Props {
   backgroundImage: ImageMetadata;
   ctaText?: string;
   ctaLink?: string;
+  loading?: "eager" | "lazy";
+  fetchPriority?: "high" | "auto" | "low";
 }
 
 const {
@@ -23,6 +25,8 @@ const {
   backgroundImage,
   ctaText = "Get Involved",
   ctaLink = "/contact#contact-form",
+  loading = "eager",
+  fetchPriority = "high",
 } = Astro.props;
 ---
 
@@ -34,8 +38,9 @@ const {
       width={1920}
       height={1080}
       quality={90}
-      loading="eager"
-      decoding="auto"
+      loading={loading}
+      decoding="async"
+      fetchpriority={fetchPriority}
     />
     <div class="hero-overlay"></div>
   </div>

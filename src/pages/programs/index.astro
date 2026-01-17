@@ -17,7 +17,7 @@ const sortedPrograms = programs.sort(
   title={`${title} | Camrose Neighbor Aid Center`}
   description="Explore the various programs and services offered by Camrose Neighbor Aid Center to support our community."
 >
-  <Header />
+  <Header slot="header" />
 
     <h1 class="page-title">{title}</h1>
 
@@ -33,7 +33,7 @@ const sortedPrograms = programs.sort(
       ))}
     </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>

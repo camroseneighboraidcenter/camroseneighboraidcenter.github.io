@@ -8,8 +8,8 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
 const title = "Page Not Found";
 ---
 
-<BaseLayout title={title}>
-  <Header />
+<BaseLayout title={title} noindex>
+  <Header slot="header" />
 
   <div class="error-page">
     <Hero
@@ -34,7 +34,7 @@ const title = "Page Not Found";
     </div>
   </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>

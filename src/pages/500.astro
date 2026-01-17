@@ -8,8 +8,8 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
 const title = "Server Error";
 ---
 
-<BaseLayout title={`${title} | Camrose Neighbor Aid Center`}>
-  <Header />
+<BaseLayout title={`${title} | Camrose Neighbor Aid Center`} noindex>
+  <Header slot="header" />
 
   <div class="error-page">
     <Hero
@@ -33,7 +33,7 @@ const title = "Server Error";
     </div>
   </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>

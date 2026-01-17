@@ -45,7 +45,7 @@
    * Change --font-size-base to scale the entire typography system.
    * Default: 16px (standard browser default)
    */
-  --font-size-base: 15px;
+  --font-size-base: 16px;
 
   /* Font sizes (rem = relative to html font-size set by --font-size-base) */
   --text-xs: 0.75rem; /* 12px at 16px base */
@@ -188,8 +188,18 @@ ol li::marker {
   color: var(--color-primary-light);
 }
 
-/* Smooth theme transitions */
-body * {
+/* Smooth theme transitions on common UI elements */
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  .card,
+  .hero-card,
+  .social-icon,
+  .theme-toggle
+) {
   transition:
     background-color var(--transition-normal),
     border-color var(--transition-normal),

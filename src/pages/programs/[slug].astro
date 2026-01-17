@@ -23,7 +23,7 @@ const { Content } = await program.render();
 ---
 
 <BaseLayout title={program.data.title}>
-  <Header />
+  <Header slot="header" />
   <div class="program-page">
     <Hero
       title={program.data.title}
@@ -52,7 +52,7 @@ const { Content } = await program.render();
     </section>
   </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>

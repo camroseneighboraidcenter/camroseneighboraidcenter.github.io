@@ -68,7 +68,9 @@ const hasSlot = Astro.slots.has("default");
           class="card__image"
           width={variant === "profile" ? 200 : variant === "horizontal" ? 800 : 400}
           height={variant === "profile" ? 200 : variant === "horizontal" ? 600 : 300}
-          quality={90}
+          quality={85}
+          loading="lazy"
+          decoding="async"
         />
       </div>
     )

@@ -47,6 +47,8 @@ const { className = "" } = Astro.props;
       class="form-input"
       required
       aria-required="true"
+      aria-invalid="false"
+      aria-describedby="form-alert"
       placeholder="Your name"
     />
   </div>
@@ -60,6 +62,8 @@ const { className = "" } = Astro.props;
       class="form-input"
       required
       aria-required="true"
+      aria-invalid="false"
+      aria-describedby="form-alert"
       placeholder="your.email@example.com"
     />
   </div>
@@ -71,6 +75,8 @@ const { className = "" } = Astro.props;
       id="phone"
       name="phone"
       class="form-input"
+      aria-invalid="false"
+      aria-describedby="form-alert"
       placeholder="(XXX) XXX-XXXX"
     />
   </div>
@@ -83,6 +89,8 @@ const { className = "" } = Astro.props;
       class="form-select"
       required
       aria-required="true"
+      aria-invalid="false"
+      aria-describedby="form-alert"
     >
       <option value="">Select a subject</option>
       <option value="general">General Inquiry</option>
@@ -100,6 +108,8 @@ const { className = "" } = Astro.props;
       class="form-textarea"
       required
       aria-required="true"
+      aria-invalid="false"
+      aria-describedby="form-alert"
       rows="5"
       placeholder="Your message here..."></textarea>
   </div>
@@ -163,45 +173,44 @@ const { className = "" } = Astro.props;
      * @returns {boolean} True if all fields are valid, false otherwise
      */
     function validateForm() {
-      const requiredFields = formElement.querySelectorAll('[required]');
+      const requiredFields = formElement.querySelectorAll("[required]");
       let isValid = true;
 
       requiredFields.forEach((field) => {
         if (
-          field instanceof HTMLFormElement ||
           field instanceof HTMLInputElement ||
-          field instanceof HTMLTextAreaElement
+          field instanceof HTMLTextAreaElement ||
+          field instanceof HTMLSelectElement
         ) {
-          if (!field.value.trim()) {
+          const hasValue = Boolean(field.value.trim());
+          field.classList.toggle("error", !hasValue);
+          field.setAttribute("aria-invalid", (!hasValue).toString());
+          if (!hasValue) {
             isValid = false;
-            field.classList.add("error");
-          } else {
-            field.classList.remove("error");
           }
         }
       });
 
       const emailField = formElement.querySelector("#email");
       if (emailField instanceof HTMLInputElement) {
-        if (
-          emailField.value &&
-          !emailField.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-        ) {
+        const emailValue = emailField.value.trim();
+        if (emailValue && !emailValue.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
           isValid = false;
           emailField.classList.add("error");
+          emailField.setAttribute("aria-invalid", "true");
         }
       }
 
       const phoneField = formElement.querySelector("#phone");
       if (phoneField instanceof HTMLInputElement) {
+        const phoneValue = phoneField.value.trim();
         if (
-          phoneField.value &&
-          !phoneField.value.match(
-            /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
-          )
+          phoneValue &&
+          !phoneValue.match(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)
         ) {
           isValid = false;
           phoneField.classList.add("error");
+          phoneField.setAttribute("aria-invalid", "true");
         }
       }
 
@@ -265,6 +274,7 @@ const { className = "" } = Astro.props;
     fields.forEach((field) => {
       field.addEventListener("input", () => {
         field.classList.remove("error");
+        field.setAttribute("aria-invalid", "false");
         if (alert.classList.contains("error")) {
           alert.style.display = "none";
         }
