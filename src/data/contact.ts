@@ -32,6 +32,7 @@ export interface BusinessHours {
  */
 export interface ContactInfo {
   address: Address;
+  mailingAddress: Address;
   phone: string;
   fax: string;
   email: string;
@@ -54,6 +55,12 @@ export interface SocialMediaLink {
 export const contactInfo: ContactInfo = {
   address: {
     street: "4524 54 Street",
+    city: "Camrose",
+    province: "AB",
+    postalCode: "T4V 1X8",
+  },
+  mailingAddress: {
+    street: "PO Box 1936",
     city: "Camrose",
     province: "AB",
     postalCode: "T4V 1X8",

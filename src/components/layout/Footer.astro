@@ -10,23 +10,15 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
 
 const currentYear = new Date().getFullYear();
 const address = formatAddress(contactInfo.address);
+const mailingAddress = formatAddress(contactInfo.mailingAddress);
 ---
 
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-content">
       <!-- Organization Info -->
-      <div class="footer-section" id="footer-contacts">
+      <div class="footer-section" id="footer-brand">
         <h2 class="footer-heading">Camrose Neighbor Aid Center</h2>
-        {
-          address && (
-            <address class="contact-info">
-              <p>{address.street}</p>
-              <p>{address.cityProvince}</p>
-              <p>{address.postalCode}</p>
-            </address>
-          )
-        }
         {
           contactInfo.email && (
             <a href={`mailto:${contactInfo.email}`} class="contact-link">
@@ -39,6 +31,19 @@ const address = formatAddress(contactInfo.address);
             <a href={`tel:${contactInfo.phone}`} class="contact-link">
               <span set:html={formatPhoneNumber(contactInfo.phone)} />
             </a>
+          )
+        }
+      </div>
+
+      <div class="footer-section" id="footer-office">
+        <h2 class="footer-heading">Office</h2>
+        {
+          address && (
+            <address class="contact-info">
+              <p>{address.street}</p>
+              <p>{address.cityProvince}</p>
+              <p>{address.postalCode}</p>
+            </address>
           )
         }
       </div>
@@ -58,6 +63,19 @@ const address = formatAddress(contactInfo.address);
       <div class="footer-section" id="footer-social">
         <h2 class="footer-heading">Connect With Us</h2>
         <SocialIcons />
+      </div>
+
+      <div class="footer-section" id="footer-mailing">
+        <h2 class="footer-heading">Mailing</h2>
+        {
+          mailingAddress && (
+            <address class="contact-info">
+              <p>{mailingAddress.street}</p>
+              <p>{mailingAddress.cityProvince}</p>
+              <p>{mailingAddress.postalCode}</p>
+            </address>
+          )
+        }
       </div>
 
       <div class="footer-section" id="footer-theme">
@@ -91,9 +109,33 @@ const address = formatAddress(contactInfo.address);
 
   .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
     gap: var(--space-8);
     margin-bottom: var(--space-8);
+    align-items: normal;
+    justify-items: stretch;
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #footer-quick-links,
+  #footer-theme {
+    align-items: flex-end;
+    text-align: right;
+  }
+  #footer-mailing,
+  #footer-office {
+    align-items: center;
+    text-align: center;
+  }
+
+  #footer-quick-links .footer-links {
+    align-items: flex-end;
   }
 
   .footer-heading {
@@ -132,6 +174,7 @@ const address = formatAddress(contactInfo.address);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    align-items: flex-start;
   }
 
   .footer-links a {
@@ -144,22 +187,6 @@ const address = formatAddress(contactInfo.address);
     color: var(--color-primary);
   }
 
-  #footer-contacts {
-    text-align: left;
-  }
-
-  #footer-quick-links {
-    text-align: center;
-  }
-
-  #footer-social {
-    text-align: center;
-  }
-
-  #footer-theme {
-    text-align: right;
-  }
-
   .footer-bottom {
     padding-top: var(--space-6);
     border-top: 1px solid var(--color-border);
@@ -170,27 +197,85 @@ const address = formatAddress(contactInfo.address);
 
   @media (max-width: 1024px) {
     .footer-content {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-6);
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: var(--space-8);
       max-width: var(--max-width-4xl);
       margin: 0 auto;
+      justify-items: center;
     }
 
-    #footer-contacts,
-    #footer-quick-links,
-    #footer-social,
-    #footer-theme {
+    .footer-section {
+      width: 100%;
+      max-width: var(--max-width-sm);
+      align-items: center;
       text-align: center;
+    }
+
+    .footer-heading {
+      text-align: center;
+    }
+
+    #footer-quick-links,
+    #footer-theme {
+      align-items: center;
+      text-align: center;
+    }
+
+    #footer-quick-links .footer-links {
+      align-items: center;
+    }
+
+    .footer-links {
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-info,
+    .contact-link {
+      text-align: center;
+    }
+
+    #footer-brand {
+      order: 1;
+    }
+
+    #footer-social {
+      order: 2;
+    }
+
+    #footer-office {
+      order: 3;
+    }
+
+    #footer-mailing {
+      order: 4;
+    }
+
+    #footer-quick-links {
+      order: 5;
+    }
+
+    #footer-theme {
+      order: 6;
     }
   }
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
+      justify-items: center;
       text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .footer-section {
+      align-items: center;
+      text-align: center;
+      max-width: var(--max-width-sm);
     }
 
     .footer-links {
       align-items: center;
+      text-align: center;
     }
   }
 </style>

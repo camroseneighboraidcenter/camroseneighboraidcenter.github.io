@@ -19,6 +19,7 @@ const { showSocial = true, className = "" } = Astro.props;
 
 const { hours, phone, fax, email } = contactInfo;
 const address = formatAddress(contactInfo.address);
+const mailingAddress = formatAddress(contactInfo.mailingAddress);
 ---
 
 <div class:list={[`contact-info-section`,`${className}`]}>
@@ -27,11 +28,22 @@ const address = formatAddress(contactInfo.address);
     <address class="contact-text">
       {
         address && (
-          <>
+          <section class="contact-address" id="office-address">
+            <h4>Office Address:</h4>
             <p>{address.street}</p>
             <p>{address.cityProvince}</p>
             <p>{address.postalCode}</p>
-          </>
+          </section>
+        )
+      }
+      {
+        mailingAddress && (
+          <section class="contact-address" id="mailing-address">
+            <h4>Mailing Address:</h4>
+            <p>{mailingAddress.street}</p>
+            <p>{mailingAddress.cityProvince}</p>
+            <p>{mailingAddress.postalCode}</p>
+          </section>
         )
       }
     </address>
@@ -138,6 +150,14 @@ const address = formatAddress(contactInfo.address);
   .contact-detail {
     color: var(--color-text);
   }
+  
+  .contact-address {
+    margin-bottom: var(--space-4);
+  }
+  
+  .contact-address h4 {
+    margin-bottom: var(--space-2);
+  }
 
   /* Custom styles for social icons in contact info */
   :global(.contact-social.social-links) {
@@ -147,6 +167,26 @@ const address = formatAddress(contactInfo.address);
 
   :global(.contact-social .social-icon) {
     padding: var(--space-2);
+  }
+
+  @media (max-width: 767px) {
+    .contact-info-section {
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-group {
+      align-items: center;
+    }
+
+    .contact-text,
+    .contact-address {
+      text-align: center;
+    }
+
+    :global(.contact-social.social-links) {
+      justify-content: center;
+    }
   }
 
   @media (min-width: 768px) {
