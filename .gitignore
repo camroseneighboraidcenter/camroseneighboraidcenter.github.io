@@ -32,3 +32,10 @@ coverage/
 # Misc
 *.tsbuildinfo
 *.log
+
+# Test artifacts
+test-results/
+playwright-report/
+.lighthouseci/
+lighthouse-*.json
+tests/visual.spec.ts-snapshots/
