@@ -172,7 +172,7 @@ const { className = "" } = Astro.props;
      * Validate all form fields
      * @returns {boolean} True if all fields are valid, false otherwise
      */
-    function validateForm() {
+    function validateForm(): boolean {
       const requiredFields = formElement.querySelectorAll("[required]");
       let isValid = true;
 
@@ -435,7 +435,7 @@ const { className = "" } = Astro.props;
       0 0 0 4px var(--color-primary);
   }
 
-  @media (max-width: 800px) {
+  @media (width <= 800px) {
     .contact-form {
       max-width: 800px;
     }

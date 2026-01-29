@@ -9,10 +9,14 @@ module.exports = [
       "node_modules/",
       "dist/",
       ".astro/",
+      "**/.astro/**",
       ".husky/",
       "public/",
       "**/.eslintrc.*",
     ],
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
   },
 
   js.configs.recommended,
@@ -25,33 +29,25 @@ module.exports = [
     ? pluginAstro.configs["flat/jsx-a11y-recommended"]
     : []),
 
-  eslintConfigPrettier,
-  {
-    files: ["**/*.astro/*.ts", "**/*.astro/*.tsx"],
-    languageOptions: {
-      parser: tseslint.parser,
-    },
-  },
-
-  {
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-      },
-    },
-  },
-
   {
     files: ["**/*.{js,jsx,ts,tsx,astro}"],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: "latest",
       sourceType: "module",
     },
+  },
+
+  {
+    files: ["src/**/*.{ts,tsx}"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
     rules: {
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "no-unused-vars": "off",
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_" },
@@ -60,9 +56,16 @@ module.exports = [
   },
 
   {
+    files: ["**/*.{js,jsx}"],
+    rules: {
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    },
+  },
+
+  {
     files: ["**/*.cjs", "eslint.config.*"],
     languageOptions: {
-      ecmaVersion: 2022,
+      ecmaVersion: "latest",
       sourceType: "commonjs",
       globals: {
         require: "readonly",
@@ -75,4 +78,6 @@ module.exports = [
       "no-undef": "off",
     },
   },
+
+  eslintConfigPrettier,
 ];

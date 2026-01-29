@@ -5,8 +5,12 @@ import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
 import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import { contactInfo } from "../data/contact";
+import { contactInfo, charityStatus } from "../data/contact";
 import heroImage from "../assets/hero/hero-helping-hands.webp";
+
+const charityNumber = charityStatus.charityNumber;
+const craLink = charityStatus.craLink;
+const financialStatementsLink = charityStatus.financialStatementsLink;
 ---
 
 <BaseLayout title="Donate">
@@ -21,10 +25,14 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     />
     <div class="content-wrapper">
       <section class="intro-section">
-        <div class="content-container">
+        <div class="content-container flex-col">
           <p class="lead-text">
-            Camrose Neighbor Aid Center operates on the generosity of our supporters. Your donation helps us provide essential services to those in need. We are a registered charity and your donation is tax deductible.
+            Camrose Neighbor Aid Center operates on the generosity of our supporters. Your donation helps us provide essential services to those in need. We are a registered charity and your donation is tax deductible. Our CRA registration number is
+            <a href={craLink} target="_blank" rel="noopener noreferrer">
+              {charityNumber}
+            </a>.
           </p>
+          <p class="lead-text">All our annual financial statements are available for review on the <a href={financialStatementsLink} target="_blank" rel="noopener noreferrer">CRA website</a>.</p>
           <p class="donation-methods">
             We accept donations in a few different ways outlined below:
           </p>
@@ -40,8 +48,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
             },
             {
               title: "Cheque",
-              description:
-                "You can donate by cheque in person or by mail, payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8.",
+              descriptionHtml: "You can donate by cheque in person or by mail. Payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8.",
             },
             {
               title: "Canada Helps",
@@ -101,19 +108,14 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     margin-bottom: var(--space-8);
   }
 
-
   .lead-text,
   .donation-methods {
     font-size: var(--text-xl);
     color: var(--color-text-light);
     max-width: 80ch;
-    margin: 0 auto;
+    margin: var(--space-8) auto;
     line-height: 1.7;
     text-align: justify;
-  }
-
-  .donation-methods {
-    margin-top: var(--space-4);
   }
 
   .section-title {
@@ -130,7 +132,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     margin-bottom: var(--space-8);
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .content-wrapper {
       gap: var(--space-12);
       padding: var(--space-12) 0;

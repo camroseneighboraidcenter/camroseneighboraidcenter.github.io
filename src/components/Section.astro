@@ -167,7 +167,7 @@ const { type, id, class: className } = Astro.props;
   }
 
   /* Responsive styles */
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .content-section {
       padding: var(--space-6) var(--container-padding);
     }
@@ -185,6 +185,7 @@ const { type, id, class: className } = Astro.props;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-8);
   }
+
   .section-grid .section-content :global(ol) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }

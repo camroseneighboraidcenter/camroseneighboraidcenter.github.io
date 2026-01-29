@@ -10,6 +10,8 @@ import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
 import TeamGrid from "../components/ui/TeamGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
+import { teamMembers as directors } from "../data/directors";
+import { teamMembers as staff } from "../data/staff";
 import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
@@ -36,7 +38,8 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
         </p>
       </div>
 
-      <TeamGrid />
+      <TeamGrid title="Board of Directors" members={directors} />
+      <TeamGrid title="Staff" members={staff} />
     </section>
 
     <CallToAction
@@ -92,7 +95,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     line-height: var(--leading-relaxed);
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .team-section {
       padding: var(--space-8) var(--container-padding);
     }

@@ -50,6 +50,15 @@ export interface SocialMediaLink {
 }
 
 /**
+ * Charity registration status and information.
+ */
+export interface CharityStatus {
+  charityNumber: string;
+  craLink: string;
+  financialStatementsLink: string;
+}
+
+/**
  * Organization contact information.
  */
 export const contactInfo: ContactInfo = {
@@ -106,3 +115,11 @@ export const socialMediaLinks: SocialMediaLink[] = [
     label: "Follow us on X",
   },
 ];
+
+export const charityStatus: CharityStatus = {
+  charityNumber: "890404767 RR 0001",
+  craLink:
+    "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls?selectedCharityBn=890404767RR0001",
+  financialStatementsLink:
+    "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyQckVw?selectedFilingPeriodIndex=0&selectedCharityBn=890404767RR0001&isSingleResult=false",
+};

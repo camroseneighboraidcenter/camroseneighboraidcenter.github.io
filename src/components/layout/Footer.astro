@@ -3,7 +3,7 @@
  * Footer Component
  * Site footer with contact info, quick links, social icons, and theme toggle.
  */
-import { contactInfo } from "../../data/contact";
+import { contactInfo, charityStatus } from "../../data/contact";
 import { formatPhoneNumber, formatAddress } from "../../utils/formatters";
 import SocialIcons from "../ui/SocialIcons.astro";
 import ThemeToggle from "../ui/ThemeToggle.astro";
@@ -11,6 +11,8 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
 const currentYear = new Date().getFullYear();
 const address = formatAddress(contactInfo.address);
 const mailingAddress = formatAddress(contactInfo.mailingAddress);
+const charityNumber = charityStatus.charityNumber;
+const craLink = charityStatus.craLink;
 ---
 
 <footer class="site-footer">
@@ -21,16 +23,29 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
         <h2 class="footer-heading">Camrose Neighbor Aid Center</h2>
         {
           contactInfo.email && (
-            <a href={`mailto:${contactInfo.email}`} class="contact-link">
-              {contactInfo.email}
-            </a>
+            <p>
+              <a href={`mailto:${contactInfo.email}`} class="contact-link">
+                {contactInfo.email}
+              </a>
+            </p>
           )
         }
         {
           contactInfo.phone && (
-            <a href={`tel:${contactInfo.phone}`} class="contact-link">
-              <span set:html={formatPhoneNumber(contactInfo.phone)} />
-            </a>
+            <p>
+              <a href={`tel:${contactInfo.phone}`} class="contact-link">
+                <span set:html={formatPhoneNumber(contactInfo.phone)} />
+              </a>
+            </p>
+          )
+        }
+        {
+          charityNumber && (
+            <p>
+              <a href={craLink} target="_blank" rel="noopener noreferrer" class="contact-link">
+                CRA Number: {charityNumber}
+              </a>
+            </p>
           )
         }
       </div>
@@ -87,6 +102,9 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <p>
+          Our work takes place on historical and contemporary Indigenous lands, including the territories of Treaty 6, Treaty 7 & Treaty 8 and the homeland of the Métis Nation of Alberta and 8 Metis Settlements. We also acknowledge the many Indigenous communities that have been forged in urban centers across Alberta.
+        </p>
+        <p class="footer-copyright">
           &copy; {currentYear} Camrose Neighbor Aid Center. All rights reserved.
         </p>
       </div>
@@ -112,8 +130,7 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     grid-template-columns: repeat(3, minmax(220px, 1fr));
     gap: var(--space-8);
     margin-bottom: var(--space-8);
-    align-items: normal;
-    justify-items: stretch;
+    place-items: normal stretch;
   }
 
   .footer-section {
@@ -128,6 +145,7 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     align-items: flex-end;
     text-align: right;
   }
+
   #footer-mailing,
   #footer-office {
     align-items: center;
@@ -195,7 +213,11 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     font-size: var(--text-sm);
   }
 
-  @media (max-width: 1024px) {
+  .footer-copyright {
+    margin-top: var(--space-4);
+  }
+
+  @media (width <= 1024px) {
     .footer-content {
       grid-template-columns: repeat(2, minmax(240px, 1fr));
       gap: var(--space-8);
@@ -259,7 +281,8 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
       order: 6;
     }
   }
-  @media (max-width: 768px) {
+
+  @media (width <= 768px) {
     .footer-content {
       grid-template-columns: 1fr;
       justify-items: center;

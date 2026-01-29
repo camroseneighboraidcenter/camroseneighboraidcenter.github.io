@@ -12,7 +12,7 @@ export interface TeamMember {
   name: string;
   role: string;
   bio: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
 }
 
 export const teamMembers: TeamMember[] = [

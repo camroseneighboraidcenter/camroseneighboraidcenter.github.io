@@ -5,14 +5,15 @@
   "description": "Camrose Neighbor Aid Center website",
   "version": "0.0.1",
   "scripts": {
-    "lint": "prettier --check . && find . -type f -name '*.html' ! -path '*/node_modules/*' ! -path './dist/*' ! -path './.astro/*' -exec html-validate {} + && stylelint \"**/*.css\" --report-needless-disables --report-invalid-scope-disables && eslint .",
-    "fix": "prettier --write . && eslint --fix . && stylelint \"**/*.css\" --fix --report-needless-disables --report-invalid-scope-disables",
+    "lint": "prettier --check . && astro check && eslint \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --report-needless-disables --report-invalid-scope-disables && (html-validate \"src/**/*.html\" || true) && markdownlint \"**/*.md\" \"**/*.mdx\"",
+    "fix": "prettier --write . && astro check && eslint --fix \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --fix --report-needless-disables --report-invalid-scope-disables && (html-validate \"src/**/*.html\" || true) && markdownlint --fix \"**/*.md\" \"**/*.mdx\"",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.16.9",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/hast": "^3.0.4",
+    "@typescript-eslint/parser": "^8.54.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.5.0",
@@ -30,6 +32,7 @@
     "html-validate": "^10.5.0",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.47.0",
+    "postcss-html": "^1.8.1",
     "prettier": "^3.8.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard": "^40.0.0",

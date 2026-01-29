@@ -107,8 +107,8 @@ const {
     inset: 0;
     background: linear-gradient(
       165deg,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgb(0 0 0 / 70%) 0%,
+      rgb(0 0 0 / 50%) 100%
     );
     z-index: 2;
   }
@@ -161,7 +161,7 @@ const {
   .hero-cta:hover {
     background-color: var(--color-primary-dark);
     transform: translateY(-2px) rotateX(5deg);
-    box-shadow: 0 20px 40px -10px rgba(var(--color-primary), 0.3);
+    box-shadow: 0 20px 40px -10px rgb(var(--color-primary), 0.3);
   }
 
   .hero-cta:active {
@@ -180,6 +180,7 @@ const {
     from {
       transform: scale(1.1);
     }
+
     to {
       transform: scale(1);
     }
@@ -190,13 +191,14 @@ const {
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .hero {
       height: clamp(300px, 20vh, 600px);
     }

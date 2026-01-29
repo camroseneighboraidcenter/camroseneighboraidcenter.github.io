@@ -281,7 +281,7 @@ const hasSlot = Astro.slots.has("default");
   }
 
   /* Responsive */
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .card--horizontal {
       flex-direction: column;
     }

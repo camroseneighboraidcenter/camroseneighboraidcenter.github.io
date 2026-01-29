@@ -8,6 +8,9 @@ import Hero from "../components/ui/Hero.astro";
 import ContentBlock from "../components/ui/ContentBlock.astro";
 import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
+import TeamGrid from "../components/ui/TeamGrid.astro";
+import { teamMembers as directors } from "../data/directors.ts";
+import { teamMembers as staff } from "../data/staff.ts";
 import heroImage from "../assets/hero/hero-helping-hands.webp";
 ---
 
@@ -52,21 +55,6 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
         />
       </section>
 
-      <ContentBlock
-        title="Our Beliefs"
-        content={[
-          {
-            text: "We believe all things are possible through Christ.",
-            citation: "Matthew 19:26",
-          },
-          {
-            text: "We believe that Christians working together glorify God and make a difference.",
-            citation: "John 17:21-22",
-          },
-        ]}
-        variant="banner"
-      />
-
       <FeatureGrid
         title="Our Values"
         items={[
@@ -95,6 +83,23 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
           },
         ]}
       />
+      <ContentBlock
+        title="Our Beliefs"
+        content={[
+          {
+            text: "We believe all things are possible through Christ.",
+            citation: "Matthew 19:26",
+          },
+          {
+            text: "We believe that Christians working together glorify God and make a difference.",
+            citation: "John 17:21-22",
+          },
+        ]}
+        variant="banner"
+      />
+    <TeamGrid title="Board of Directors" members={directors} />
+    <TeamGrid title="Staff" members={staff} />
+
 
       <CallToAction
         title="Join Our Mission"
@@ -202,7 +207,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     margin-bottom: var(--space-8);
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .content-wrapper {
       gap: var(--space-12);
       padding: var(--space-12) 0;

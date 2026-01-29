@@ -169,7 +169,7 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     padding: var(--space-2);
   }
 
-  @media (max-width: 767px) {
+  @media (width <= 767px) {
     .contact-info-section {
       align-items: center;
       text-align: center;
@@ -189,7 +189,7 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
     }
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .contact-info-section {
       padding: var(--space-8);
     }

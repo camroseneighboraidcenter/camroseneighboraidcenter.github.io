@@ -125,7 +125,7 @@ const { label, items } = Astro.props;
     text-overflow: ellipsis;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .dropdown-menu {
       position: static;
       top: 100%;
@@ -169,7 +169,7 @@ const { label, items } = Astro.props;
     color: var(--color-primary);
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .nav-dropdown {
       width: 100%;
     }

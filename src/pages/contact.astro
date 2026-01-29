@@ -108,14 +108,16 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     height: 100%;
     border: 0;
   }
+
   .social-links-contact {
     justify-content: start;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     .contact-content {
       gap: var(--space-6);
     }
+
     .contact-grid {
       flex-direction: column;
       gap: var(--space-6);

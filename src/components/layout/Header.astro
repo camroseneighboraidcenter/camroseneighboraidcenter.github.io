@@ -90,7 +90,6 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
     display: flex;
     align-items: center;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
 
   .header-content {
@@ -115,14 +114,12 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
     font-family: var(--font-heading);
     font-weight: 800;
     font-size: var(--text-xl);
-    color: var(--color-text);
     letter-spacing: -0.03em;
     background: linear-gradient(
       45deg,
       var(--color-primary) 0%,
       var(--color-primary-dark) 100%
     );
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
@@ -207,17 +204,14 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
     transition: all var(--transition-fast);
   }
 
-  @media (max-width: 830px) {
+  @media (width <= 830px) {
     .mobile-menu-toggle {
       display: flex;
     }
 
     .primary-navigation {
       position: fixed;
-      top: 80px;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 80px 0 0;
       background-color: var(--color-surface);
       transform: translateX(100%);  
       transition: transform var(--transition-normal);
@@ -280,7 +274,7 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
     }
   }
 
-  @media (max-width: 450px) {
+  @media (width <= 450px) {
     .logo-text {
       font-size: var(--text-base);
     }
