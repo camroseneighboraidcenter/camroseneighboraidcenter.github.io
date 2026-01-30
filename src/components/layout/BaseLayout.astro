@@ -130,33 +130,7 @@ const ogImage = image.startsWith("http")
     flex: 1;
   }
   
-  /* Skip to main content - Accessibility */
-  .skip-to-main-content {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-  
-  .skip-to-main-content:focus {
-    position: fixed;
-    top: var(--space-4);
-    left: var(--space-4);
-    background: var(--color-primary);
-    color: white;
-    padding: var(--space-2) var(--space-4);
-    z-index: 999;
-    width: auto;
-    height: auto;
-    clip: auto;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-  }
+  /* Skip link styles moved to theme.css for consistency */
   
   /* Focus Styles */
   .user-is-tabbing *:focus {

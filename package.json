@@ -15,12 +15,11 @@
     "test:a11y": "npm run build && npx playwright test tests/accessibility.spec.ts",
     "test:perf": "npm run build && npx playwright test tests/performance.spec.ts",
     "test:seo": "npm run build && npx playwright test tests/seo.spec.ts",
-    "test:visual": "npm run build && npx playwright test tests/visual.spec.ts",
-    "test:visual:update": "npm run build && npx playwright test tests/visual.spec.ts --update-snapshots",
     "test:lighthouse": "npm run build && npx lhci autorun",
+    "clean": "rm -rf test-results playwright-report .lighthouseci dist",
     "test:all": "npm run build && npm run test:lighthouse && npx playwright test",
     "test:ci": "npm run build && npx playwright test --project=chromium-light --project=chromium-dark",
-    "test:report": "npx playwright show-report test-results/html-report",
+    "test:report": "npx playwright show-report playwright-report",
     "test:batched": "node scripts/run-tests.js"
   },
   "dependencies": {

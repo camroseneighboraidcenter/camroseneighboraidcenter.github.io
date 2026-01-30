@@ -31,7 +31,7 @@ const {
   imageAlt = "",
   imageTitle,
   href,
-  linkText = "Learn More",
+  linkText = "View Details",
   className = "",
 } = Astro.props;
 ---
@@ -56,7 +56,7 @@ const {
     {description && <p class="hero-card__description">{description}</p>}
     {
       href && (
-        <a href={href} class="hero-card__button">
+        <a href={href} class="btn btn-primary hero-card__button">
           {linkText}
           <span class="sr-only">about {title}</span>
         </a>
@@ -94,8 +94,8 @@ const {
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgb(0 0 0 / 30%) 0%,
-      rgb(0 0 0 / 70%) 100%
+      var(--color-overlay-light) 0%,
+      var(--color-overlay-dark) 100%
     );
   }
 
@@ -105,56 +105,31 @@ const {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    color: white;
+    color: var(--color-text-inverse);
   }
 
   .hero-card__title {
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    margin-bottom: var(--space-4);
-    text-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+    color: var(--color-text-inverse);
+    text-shadow: 0 2px 4px var(--color-shadow-text);
   }
 
   .hero-card__description {
     font-size: var(--text-lg);
     margin-bottom: var(--space-6);
-    text-shadow: 0 1px 2px rgb(0 0 0 / 30%);
-    opacity: 0.9;
+    text-shadow: 0 1px 2px var(--color-shadow-text);
+    opacity: var(--opacity-muted);
   }
 
   .hero-card__button {
     align-self: flex-start;
-    padding: var(--space-3) var(--space-6);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    transition: background-color var(--transition-normal);
-  }
-
-  .hero-card__button:hover {
-    background-color: var(--color-primary-dark);
   }
 
   .hero-card__button:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 2px;
+    outline-color: var(--color-text-inverse);
   }
 
   .hero-card:hover .hero-card__background img {
     transform: scale(1.05);
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-card__background img {
-      transition: none;
-    }
-
-    .hero-card:hover .hero-card__background img {
-      transform: none;
-    }
   }
 
   /* Responsive */
@@ -166,10 +141,6 @@ const {
 
     .hero-card__content {
       padding: var(--space-6);
-    }
-
-    .hero-card__title {
-      font-size: var(--text-2xl);
     }
 
     .hero-card__description {

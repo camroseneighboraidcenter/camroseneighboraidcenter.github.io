@@ -21,6 +21,7 @@ const { title, description } = Astro.props;
 </section>
 
 <style>
+  /* Service card uses global card hover pattern */
   .service-card {
     background-color: var(--color-surface);
     border-radius: var(--radius-lg);
@@ -38,25 +39,12 @@ const { title, description } = Astro.props;
   }
 
   .title {
-    color: var(--color-text-heading);
     font-size: var(--text-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--space-4);
   }
 
   .description {
-    color: var(--color-text);
-    font-size: var(--text-base);
-    line-height: 1.6;
-  }
-
-  @media (width >= 768px) {
-    .service-card {
-      padding: var(--space-8);
-    }
-
-    .title {
-      font-size: var(--text-xl);
-    }
+    line-height: var(--leading-relaxed);
   }
 </style>

@@ -47,9 +47,9 @@ const { sections = [] } = Astro.props;
   }
 
   .subtitle {
-    color: var(--color-primary);
+    color: var(--color-text-heading);
     font-size: var(--text-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--space-4);
   }
 
@@ -80,33 +80,18 @@ const { sections = [] } = Astro.props;
 
   .schedule-item {
     padding: var(--space-6);
-    transition: var(--transition-normal);
   }
 
   .schedule-item:not(:last-child) {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .schedule-item:last-child {
-    border-bottom: none;
-  }
-
   .day {
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
   }
 
   .note {
     font-size: var(--text-base);
     margin-top: var(--space-1);
-  }
-
-  @media (width >= 768px) {
-    .schedule-item {
-      padding: var(--space-6);
-    }
-
-    .title {
-      font-size: var(--text-xl);
-    }
   }
 </style>

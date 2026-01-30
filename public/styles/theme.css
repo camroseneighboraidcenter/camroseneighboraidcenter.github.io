@@ -1,74 +1,111 @@
-/* Theme Variables */
+/* ===================================
+   CAMROSE NEIGHBOR AID CENTER - THEME STYLES
+   ===================================
+   
+   CSS Architecture:
+   1. CSS Variables (Colors, Typography, Spacing)
+   2. CSS Reset & Base Element Styles
+   3. Typography (Headings, Paragraphs, Links)
+   4. Buttons
+   5. Cards
+   6. Forms
+   7. Containers & Layout Utilities
+   8. Accessibility Utilities
+   9. Dark Mode
+   10. Responsive & Reduced Motion
+   
+   Components should ONLY contain:
+   - Layout/structure specific to that component
+   - Component-specific overrides using CSS variables
+   - NO hardcoded colors, sizes, or fonts
+*/
+
+/* ===================================
+   1. CSS VARIABLES
+   =================================== */
 :root {
-  /* Scroll Behavior */
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Accounts for fixed header height plus some padding */
+  /* ----- Brand Colors (Immutable) ----- */
+  --brand-primary: #1d6fa8;
+  --brand-primary-light: #79caec;
+  --brand-secondary: #fcae16;
+  --brand-accent: #6bac7a;
 
-  /* Colors */
-  --color-primary: #1f6fa8;
-  --color-primary-light: #66a6cc;
-  --color-primary-dark: #144c72;
-  --color-primary-alt: #1f3ba8;
+  /* ----- Derived Colors ----- */
+  --color-primary: var(--brand-primary);
+  --color-primary-light: var(--brand-primary-light);
+  --color-primary-dark: #0f3d66;
+  --color-primary-darker: #0a2d4f;
+  --color-primary-darkest: #061e38;
 
-  /* Complementary Colors */
-  --color-secondary: #fdaf18;
-  --color-accent: #6cab7a;
-
-  /* Neutral Colors */
+  /* ----- Neutral Colors ----- */
   --color-background: #fff;
   --color-surface: #fff;
   --color-surface-hover: #f8f9fa;
   --color-text: #1a1a1a;
   --color-text-light: #666;
-  --color-text-heading: var(--color-text);
+  --color-text-heading: var(--color-primary);
+  --color-text-inverse: #fff;
+  --color-text-inverse-light: rgba(255, 255, 255, 0.9);
   --color-border: #e5e7eb;
   --color-hero: #fff;
 
-  /* Link Colors */
+  /* ----- Overlay Colors ----- */
+  --color-overlay-light: rgba(0, 0, 0, 0.3);
+  --color-overlay-medium: rgba(0, 0, 0, 0.5);
+  --color-overlay-dark: rgba(0, 0, 0, 0.7);
+
+  /* ----- Shadow Colors ----- */
+  --color-shadow-primary: rgba(29, 111, 168, 0.3);
+  --color-shadow-text: rgba(0, 0, 0, 0.3);
+
+  /* ----- Link Colors ----- */
   --color-link: var(--color-primary);
   --color-link-hover: var(--color-primary-dark);
 
-  /* Semantic Colors */
+  /* ----- Semantic Colors ----- */
   --color-success: #28a745;
+  --color-success-light: rgba(40, 167, 69, 0.1);
   --color-warning: #ffc107;
+  --color-warning-light: rgba(255, 193, 7, 0.1);
   --color-error: #dc3545;
+  --color-error-light: rgba(220, 53, 69, 0.1);
   --color-info: var(--color-primary);
 
-  /* Typography */
+  /* ----- Font Families ----- */
   --font-primary: "Open Sans", system-ui, sans-serif;
   --font-heading: "Montserrat", system-ui, sans-serif;
   --font-body: var(--font-primary);
 
-  /*
-   * Font Size Scale
-   * All sizes use rem units which are relative to the html font-size.
-   * Change --font-size-base to scale the entire typography system.
-   * Default: 16px (standard browser default)
-   */
+  /* ----- Font Sizes ----- */
   --font-size-base: 16px;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
 
-  /* Font sizes (rem = relative to html font-size set by --font-size-base) */
-  --text-xs: 0.75rem; /* 12px at 16px base */
-  --text-sm: 0.875rem; /* 14px at 16px base */
-  --text-base: 1rem; /* 16px at 16px base */
-  --text-lg: 1.125rem; /* 18px at 16px base */
-  --text-xl: 1.25rem; /* 20px at 16px base */
-  --text-2xl: 1.5rem; /* 24px at 16px base */
-  --text-3xl: 1.875rem; /* 30px at 16px base */
-  --text-4xl: 2.25rem; /* 36px at 16px base */
-  --text-5xl: 3rem; /* 48px at 16px base */
-  --text-6xl: 3.75rem; /* 60px at 16px base */
-  --text-7xl: 4.5rem; /* 72px at 16px base */
+  /* ----- Font Weights ----- */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
-  /* Line Heights */
+  /* ----- Line Heights ----- */
   --leading-none: 1;
   --leading-tight: 1.25;
   --leading-snug: 1.375;
   --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
+  --leading-relaxed: 1.6;
   --leading-loose: 2;
 
-  /* Spacing */
+  /* ----- Spacing Scale ----- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -80,88 +117,74 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* Border Radius */
+  /* ----- Border Radius ----- */
   --radius-sm: 0.125rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
-  /* Max Widths */
-  --max-width-xxs: 16rem; /* 256px */
-  --max-width-xs: 20rem; /* 320px */
-  --max-width-sm: 24rem; /* 384px */
-  --max-width-md: 28rem; /* 448px */
-  --max-width-lg: 32rem; /* 512px */
-  --max-width-xl: 36rem; /* 576px */
-  --max-width-2xl: 42rem; /* 672px */
-  --max-width-3xl: 48rem; /* 768px */
-  --max-width-4xl: 56rem; /* 896px */
-  --max-width-5xl: 64rem; /* 1024px */
-  --max-width-6xl: 72rem; /* 1152px */
-  --max-width-7xl: 80rem; /* 1280px */
+  /* ----- Max Widths ----- */
+  --max-width-xxs: 16rem;
+  --max-width-xs: 20rem;
+  --max-width-sm: 24rem;
+  --max-width-md: 28rem;
+  --max-width-lg: 32rem;
+  --max-width-xl: 36rem;
+  --max-width-2xl: 42rem;
+  --max-width-3xl: 48rem;
+  --max-width-4xl: 56rem;
+  --max-width-5xl: 64rem;
+  --max-width-6xl: 72rem;
+  --max-width-7xl: 80rem;
 
-  /* Container/Layout Widths */
+  /* ----- Container/Layout ----- */
   --container-padding: var(--space-4);
   --container-max-width: var(--max-width-6xl);
 
-  /*
-   * Breakpoints (for reference - use in media queries)
-   * sm: 640px
-   * md: 768px
-   * lg: 1024px
-   * xl: 1280px
-   */
-
-  /* Transitions */
+  /* ----- Transitions ----- */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow: 350ms ease;
 
-  /* Shadows */
+  /* ----- Shadows ----- */
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px -1px rgb(0 0 0 / 10%);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 12%), 0 2px 4px -2px rgb(0 0 0 / 10%);
   --shadow-lg:
     0 10px 15px -3px rgb(0 0 0 / 12%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+
+  /* ----- Icon Sizes ----- */
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+  --icon-lg: 1.5rem;
+  --icon-xl: 2rem;
+
+  /* ----- Opacity ----- */
+  --opacity-disabled: 0.7;
+  --opacity-muted: 0.7;
+
+  /* ----- Scroll Behavior ----- */
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
-/* Dark mode using data-theme attribute */
-[data-theme="dark"] {
-  --color-background: #121212;
-  --color-surface: #121212;
-  --color-surface-hover: #1a1a1a;
-  --color-text: #fff;
-  --color-text-light: #a1a1a1;
-  --color-text-heading: var(--color-text);
-  --color-border: #383838;
+/* ===================================
+   2. CSS RESET & BASE ELEMENT STYLES
+   =================================== */
 
-  /* Link Colors - Dark Mode */
-  --color-link: var(--color-primary-light);
-  --color-link-hover: var(--color-primary);
-
-  /* Semantic Colors - Dark Mode */
-  --color-success: #4caf50;
-  --color-warning: #ff9800;
-  --color-error: #f44336;
-
-  /* Adjust shadows for dark mode - subtle glow effect */
-  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 7%);
-  --shadow-md:
-    0 2px 4px 0 rgb(255 255 255 / 8%), 0 1px 2px -1px rgb(255 255 255 / 6%);
-  --shadow-lg:
-    0 4px 6px -1px rgb(255 255 255 / 10%), 0 2px 4px -2px rgb(255 255 255 / 8%);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* Base styles */
 html {
   font-size: var(--font-size-base);
   color-scheme: light;
 }
 
-[data-theme="dark"] html {
-  color-scheme: dark;
-}
-
 body {
+  margin: 0;
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-body);
@@ -169,46 +192,397 @@ body {
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
-/* Global List Styles - Consistent solid disc bullets */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===================================
+   3. TYPOGRAPHY
+   =================================== */
+
+/* ----- Headings ----- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-heading);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-4) 0;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h4 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h5 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+h6 {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ----- Paragraphs ----- */
+p {
+  margin: 0 0 var(--space-4) 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* ----- Links ----- */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* Links within text content */
+p a,
+.text-content a {
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+}
+
+/* ----- Lists ----- */
+ul,
+ol {
+  margin: 0 0 var(--space-4) 0;
+  padding-left: var(--space-8);
+}
+
 ul {
   list-style-type: disc;
-}
-
-ul li::marker {
-  color: var(--color-primary-light);
 }
 
 ol {
   list-style-type: decimal;
 }
 
-ol li::marker {
+li {
+  line-height: var(--leading-relaxed);
+  padding: var(--space-1) 0;
+}
+
+li::marker {
   color: var(--color-primary-light);
 }
 
-/* Smooth theme transitions on common UI elements */
+/* ===================================
+   4. BUTTONS
+   =================================== */
+
+/* Base button reset */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Primary button style */
+.btn,
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn:hover,
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  text-decoration: none;
+  color: var(--color-text-inverse);
+}
+
+.btn:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn-primary:disabled {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* Secondary button (outline) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border: 2px solid var(--color-text);
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  text-decoration: none;
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hero CTA (darker for contrast on images) */
+.btn-hero {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-hero:hover {
+  background-color: var(--color-primary-darker);
+}
+
+/* ===================================
+   5. CARDS
+   =================================== */
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+.card__content {
+  padding: var(--space-6);
+}
+
+.card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.card__description {
+  color: var(--color-text-light);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-link);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+}
+
+.card__link:hover {
+  color: var(--color-link-hover);
+}
+
+/* ===================================
+   6. FORMS
+   =================================== */
+
+label {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-base);
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-light);
+  opacity: var(--opacity-muted);
+}
+
+/* Form validation states */
+input.error,
+select.error,
+textarea.error {
+  border-color: var(--color-error);
+}
+
+/* Select dropdown styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  background-size: var(--icon-md);
+  padding-right: var(--space-10);
+}
+
+/* ===================================
+   7. CONTAINERS & LAYOUT UTILITIES
+   =================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Section title - reusable for all section headings */
+.section-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+/* Logo */
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+}
+
+/* ===================================
+   8. ACCESSIBILITY UTILITIES
+   =================================== */
+
+/* Focus Styles - Global */
 :where(
   a,
   button,
   input,
   select,
   textarea,
-  .card,
-  .hero-card,
-  .social-icon,
-  .theme-toggle
-) {
-  transition:
-    background-color var(--transition-normal),
-    border-color var(--transition-normal),
-    color var(--transition-normal),
-    fill var(--transition-normal),
-    stroke var(--transition-normal);
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-/* Accessibility Utilities */
+/* Skip Link */
+.skip-to-main-content {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  z-index: -9999 !important;
+}
+
+.skip-to-main-content:focus,
+.skip-to-main-content:focus-visible {
+  position: fixed !important;
+  left: var(--space-4) !important;
+  top: var(--space-4) !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  z-index: 9999 !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-text-inverse) !important;
+  padding: var(--space-4) !important;
+  text-decoration: none !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Screen Reader Only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -221,7 +595,6 @@ ol li::marker {
   border: 0;
 }
 
-/* Make the element visible when focused - for keyboard navigation */
 .sr-only-focusable:not(:focus) {
   position: absolute;
   width: 1px;
@@ -245,43 +618,158 @@ ol li::marker {
   white-space: normal;
 }
 
-/* For elements that should be visually hidden but maintain layout */
 .visually-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
-/* For elements that should be invisible to all users including screen readers */
 .hidden {
   display: none;
 }
 
-/* Reduce motion if user prefers it */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms;
-    animation-iteration-count: 1;
-    transition-duration: 0.01ms;
-    scroll-behavior: auto;
+/* ===================================
+   9. DARK MODE
+   =================================== */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #121212;
+  --color-surface-hover: #1a1a1a;
+  --color-text: #fff;
+  --color-text-light: #d1d5db;
+  --color-text-heading: var(--brand-primary-light);
+  --color-border: #383838;
+  --color-link: #e6f3ff;
+  --color-link-hover: var(--color-primary);
+  --color-success: #4caf50;
+  --color-success-light: rgba(76, 175, 80, 0.15);
+  --color-warning: #ff9800;
+  --color-warning-light: rgba(255, 152, 0, 0.15);
+  --color-error: #f44336;
+  --color-error-light: rgba(244, 67, 54, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 7%);
+  --shadow-md:
+    0 2px 4px 0 rgb(255 255 255 / 8%), 0 1px 2px -1px rgb(255 255 255 / 6%);
+  --shadow-lg:
+    0 4px 6px -1px rgb(255 255 255 / 10%), 0 2px 4px -2px rgb(255 255 255 / 8%);
+}
+
+/* Dark Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --color-background: #121212;
+    --color-surface: #121212;
+    --color-surface-hover: #1a1a1a;
+    --color-text: #fff;
+    --color-text-light: #d1d5db;
+    --color-text-heading: var(--brand-primary-light);
+    --color-border: #383838;
+    --color-link: #e6f3ff;
+    --color-link-hover: var(--color-primary);
+    --color-success: #4caf50;
+    --color-success-light: rgba(76, 175, 80, 0.15);
+    --color-warning: #ff9800;
+    --color-warning-light: rgba(255, 152, 0, 0.15);
+    --color-error: #f44336;
+    --color-error-light: rgba(244, 67, 54, 0.15);
+    --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 7%);
+    --shadow-md:
+      0 2px 4px 0 rgb(255 255 255 / 8%), 0 1px 2px -1px rgb(255 255 255 / 6%);
+    --shadow-lg:
+      0 4px 6px -1px rgb(255 255 255 / 10%),
+      0 2px 4px -2px rgb(255 255 255 / 8%);
   }
 }
 
-/* Skip to main content link - appears on keyboard focus */
-.skip-to-main {
-  position: absolute;
-  top: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: var(--space-4);
-  background-color: var(--color-primary);
-  color: white;
-  text-decoration: none;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  z-index: 100;
-  transition: top var(--transition-fast);
+/* Dark Mode Logo */
+[data-theme="dark"] .logo-text {
+  color: var(--color-link);
 }
 
-.skip-to-main:focus {
-  top: 0;
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .logo-text {
+    color: var(--color-link);
+  }
+}
+
+/* Dark Mode SVG Icons */
+[data-theme="dark"] svg {
+  color: var(--color-primary-light);
+}
+
+[data-theme="dark"] .btn svg,
+[data-theme="dark"] .btn-primary svg,
+[data-theme="dark"] .btn-hero svg {
+  color: var(--color-text-inverse);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) svg {
+    color: var(--color-primary-light);
+  }
+
+  html:not([data-theme="light"]) .btn svg,
+  html:not([data-theme="light"]) .btn-primary svg,
+  html:not([data-theme="light"]) .btn-hero svg {
+    color: var(--color-text-inverse);
+  }
+}
+
+/* ===================================
+   10. RESPONSIVE & REDUCED MOTION
+   =================================== */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Responsive */
+@media (width <= 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+  }
+
+  h3 {
+    font-size: var(--text-xl);
+  }
+
+  /* Touch Targets */
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  /* Inline links don't need large touch targets */
+  p a,
+  .text-content a {
+    min-height: auto;
+  }
 }

@@ -15,7 +15,10 @@ const pages = [
   { name: "Food for Kids", path: "/programs/food-for-kids" },
   { name: "Martha's Table", path: "/programs/marthas-table" },
   { name: "Medical Transportation", path: "/programs/medical-transportation" },
-  { name: "Emergency Financial Assistance", path: "/programs/emergency-financial-assistance" },
+  {
+    name: "Emergency Financial Assistance",
+    path: "/programs/emergency-financial-assistance",
+  },
   { name: "Referral Services", path: "/programs/referral-services" },
 ];
 
@@ -48,7 +51,11 @@ test.describe("Performance Tests", () => {
 
         // Images should use modern formats (webp, avif) or have lazy loading
         if (src && !src.includes("hero")) {
-          expect(loading === "lazy" || src.includes(".webp") || src.includes(".avif")).toBe(true);
+          expect(
+            loading === "lazy" ||
+              src.includes(".webp") ||
+              src.includes(".avif"),
+          ).toBe(true);
         }
       }
     });

@@ -83,7 +83,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
   .section-title {
     font-size: var(--text-3xl);
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--color-text-heading);
     margin-bottom: var(--space-4);
   }
 

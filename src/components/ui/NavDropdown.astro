@@ -17,7 +17,7 @@ interface Props {
 const { label, items } = Astro.props;
 ---
 
-<div class="nav-dropdown">
+<nav-dropdown class="nav-dropdown">
   <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">
     {label}
     <svg
@@ -46,7 +46,7 @@ const { label, items } = Astro.props;
       ))
     }
   </div>
-</div>
+</nav-dropdown>
 
 <style>
   .nav-dropdown {
@@ -58,18 +58,25 @@ const { label, items } = Astro.props;
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    color: inherit;
+    padding: 0;
+    color: var(--color-text-light);
     background: none;
     border: none;
-    font: inherit;
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-weight: var(--font-weight-semibold);
+    font-family: inherit;
     cursor: pointer;
-    width: 100%;
+    transition: color var(--transition-fast);
+  }
+
+  .dropdown-trigger:hover {
+    color: var(--color-text);
   }
 
   .dropdown-trigger:focus-visible {
     outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
   }
 
   .dropdown-arrow {
@@ -125,29 +132,6 @@ const { label, items } = Astro.props;
     text-overflow: ellipsis;
   }
 
-  @media (width <= 768px) {
-    .dropdown-menu {
-      position: static;
-      top: 100%;
-      width: 100%;
-      transform: none;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 0;
-    }
-
-    .dropdown-item {
-      padding-left: var(--space-8);
-      background-color: var(--color-surface-hover);
-    }
-
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background-color: var(--color-surface-hover);
-    }
-  }
-
   .dropdown-item:last-child {
     border-bottom: none;
   }
@@ -157,15 +141,11 @@ const { label, items } = Astro.props;
     background-color: var(--color-surface-hover);
     color: var(--color-primary);
     border-left: 2px solid var(--color-primary);
-  }
-
-  .dropdown-item:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    text-decoration: none;
   }
 
   .overview-text {
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--color-primary);
   }
 
@@ -184,15 +164,17 @@ const { label, items } = Astro.props;
       width: 100%;
       max-width: none;
       padding: 0;
+      border: none;
     }
 
     .dropdown-item {
       padding: var(--space-3) var(--space-4);
+      padding-left: var(--space-8);
+      background-color: var(--color-surface-hover);
       -webkit-tap-highlight-color: transparent;
       white-space: normal;
     }
 
-    /* Enable hover effects only on devices that support hover */
     @media (hover: hover) {
       .dropdown-item:hover {
         background-color: var(--color-surface-hover);

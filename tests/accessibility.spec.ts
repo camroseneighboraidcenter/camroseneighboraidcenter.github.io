@@ -17,7 +17,10 @@ const pages = [
   { name: "Food for Kids", path: "/programs/food-for-kids" },
   { name: "Martha's Table", path: "/programs/marthas-table" },
   { name: "Medical Transportation", path: "/programs/medical-transportation" },
-  { name: "Emergency Financial Assistance", path: "/programs/emergency-financial-assistance" },
+  {
+    name: "Emergency Financial Assistance",
+    path: "/programs/emergency-financial-assistance",
+  },
   { name: "Referral Services", path: "/programs/referral-services" },
 ];
 
@@ -46,7 +49,7 @@ test.describe("Accessibility Tests", () => {
 
       const headings = await browserPage.evaluate(() => {
         const headingElements = document.querySelectorAll(
-          "h1, h2, h3, h4, h5, h6"
+          "h1, h2, h3, h4, h5, h6",
         );
         return Array.from(headingElements).map((h) => ({
           level: parseInt(h.tagName.charAt(1)),
@@ -120,7 +123,7 @@ test.describe("Accessibility Tests", () => {
       // Tab through interactive elements and check for focus visibility
       const focusableElements = await browserPage
         .locator(
-          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
         )
         .all();
 
@@ -136,7 +139,7 @@ test.describe("Accessibility Tests", () => {
         if (isVisible && isEnabled) {
           await element.focus();
           const isFocused = await element.evaluate(
-            (el) => document.activeElement === el
+            (el) => document.activeElement === el,
           );
           expect(isFocused).toBe(true);
           testedCount++;
@@ -171,6 +174,28 @@ test.describe("Dark Mode Accessibility", () => {
 });
 
 test.describe("Keyboard Navigation", () => {
+  // Test focus management on all browsers (works reliably)
+  test("should handle focus management correctly", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    // Test direct focus on skip link
+    const skipLink = page.locator(".skip-to-main-content");
+    await skipLink.focus();
+    await expect(skipLink).toBeFocused();
+
+    // Test activation
+    await page.keyboard.press("Enter");
+    const mainContent = page.locator("#main-content");
+    await expect(mainContent).toBeVisible();
+  });
+
+  // Test tab navigation only on non-WebKit browsers
+  test.skip(
+    ({ browserName }) => browserName === "webkit",
+    "Tab navigation limited on WebKit/Safari due to browser settings requirement",
+  );
+
   test("should be able to navigate the site using only keyboard", async ({
     page,
   }) => {
@@ -248,7 +273,7 @@ test.describe("Form Accessibility", () => {
         .count();
 
       // Form should either prevent submission or show accessible errors
-      expect(invalidInputs > 0 || errorMessages >= 0).toBe(true);
+      expect(invalidInputs > 0 || errorMessages > 0).toBe(true);
     }
   });
 });

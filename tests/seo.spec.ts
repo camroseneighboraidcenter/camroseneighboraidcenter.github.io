@@ -6,16 +6,39 @@ import { test, expect } from "@playwright/test";
  */
 
 const pages = [
-  { name: "Home", path: "/", expectedTitle: "Home | Camrose Neighbor Aid Center" },
-  { name: "About", path: "/about", expectedTitle: "About Us | Camrose Neighbor Aid Center" },
-  { name: "Contact", path: "/contact", expectedTitle: "Contact Us | Camrose Neighbor Aid Center" },
-  { name: "Donate", path: "/donate", expectedTitle: "Donate | Camrose Neighbor Aid Center" },
-  { name: "Programs", path: "/programs", expectedTitle: "Our Programs | Camrose Neighbor Aid Center" },
+  {
+    name: "Home",
+    path: "/",
+    expectedTitle: "Home | Camrose Neighbor Aid Center",
+  },
+  {
+    name: "About",
+    path: "/about",
+    expectedTitle: "About Us | Camrose Neighbor Aid Center",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+    expectedTitle: "Contact Us | Camrose Neighbor Aid Center",
+  },
+  {
+    name: "Donate",
+    path: "/donate",
+    expectedTitle: "Donate | Camrose Neighbor Aid Center",
+  },
+  {
+    name: "Programs",
+    path: "/programs",
+    expectedTitle: "Our Programs | Camrose Neighbor Aid Center",
+  },
   { name: "Food Bank Services", path: "/programs/food-bank-services" },
   { name: "Food for Kids", path: "/programs/food-for-kids" },
   { name: "Martha's Table", path: "/programs/marthas-table" },
   { name: "Medical Transportation", path: "/programs/medical-transportation" },
-  { name: "Emergency Financial Assistance", path: "/programs/emergency-financial-assistance" },
+  {
+    name: "Emergency Financial Assistance",
+    path: "/programs/emergency-financial-assistance",
+  },
   { name: "Referral Services", path: "/programs/referral-services" },
 ];
 
@@ -29,29 +52,49 @@ test.describe("SEO Meta Tags", () => {
       expect(title.length).toBeLessThan(70);
     });
 
-    test(`${pageInfo.name} page should have meta description`, async ({ page }) => {
+    test(`${pageInfo.name} page should have meta description`, async ({
+      page,
+    }) => {
       await page.goto(pageInfo.path);
-      const metaDescription = await page.locator('meta[name="description"]').getAttribute("content");
+      const metaDescription = await page
+        .locator('meta[name="description"]')
+        .getAttribute("content");
       expect(metaDescription).toBeTruthy();
       expect(metaDescription!.length).toBeGreaterThan(50);
       expect(metaDescription!.length).toBeLessThan(160);
     });
 
-    test(`${pageInfo.name} page should have canonical URL`, async ({ page }) => {
+    test(`${pageInfo.name} page should have canonical URL`, async ({
+      page,
+    }) => {
       await page.goto(pageInfo.path);
-      const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+      const canonical = await page
+        .locator('link[rel="canonical"]')
+        .getAttribute("href");
       expect(canonical).toBeTruthy();
       expect(canonical).toContain("camroseneighboraidcenter.ca");
     });
 
-    test(`${pageInfo.name} page should have Open Graph tags`, async ({ page }) => {
+    test(`${pageInfo.name} page should have Open Graph tags`, async ({
+      page,
+    }) => {
       await page.goto(pageInfo.path);
 
-      const ogTitle = await page.locator('meta[property="og:title"]').getAttribute("content");
-      const ogDescription = await page.locator('meta[property="og:description"]').getAttribute("content");
-      const ogUrl = await page.locator('meta[property="og:url"]').getAttribute("content");
-      const ogImage = await page.locator('meta[property="og:image"]').getAttribute("content");
-      const ogType = await page.locator('meta[property="og:type"]').getAttribute("content");
+      const ogTitle = await page
+        .locator('meta[property="og:title"]')
+        .getAttribute("content");
+      const ogDescription = await page
+        .locator('meta[property="og:description"]')
+        .getAttribute("content");
+      const ogUrl = await page
+        .locator('meta[property="og:url"]')
+        .getAttribute("content");
+      const ogImage = await page
+        .locator('meta[property="og:image"]')
+        .getAttribute("content");
+      const ogType = await page
+        .locator('meta[property="og:type"]')
+        .getAttribute("content");
 
       expect(ogTitle).toBeTruthy();
       expect(ogDescription).toBeTruthy();
@@ -60,19 +103,29 @@ test.describe("SEO Meta Tags", () => {
       expect(ogType).toBe("website");
     });
 
-    test(`${pageInfo.name} page should have Twitter Card tags`, async ({ page }) => {
+    test(`${pageInfo.name} page should have Twitter Card tags`, async ({
+      page,
+    }) => {
       await page.goto(pageInfo.path);
 
-      const twitterCard = await page.locator('meta[property="twitter:card"]').getAttribute("content");
-      const twitterTitle = await page.locator('meta[property="twitter:title"]').getAttribute("content");
-      const twitterDescription = await page.locator('meta[property="twitter:description"]').getAttribute("content");
+      const twitterCard = await page
+        .locator('meta[property="twitter:card"]')
+        .getAttribute("content");
+      const twitterTitle = await page
+        .locator('meta[property="twitter:title"]')
+        .getAttribute("content");
+      const twitterDescription = await page
+        .locator('meta[property="twitter:description"]')
+        .getAttribute("content");
 
       expect(twitterCard).toBe("summary_large_image");
       expect(twitterTitle).toBeTruthy();
       expect(twitterDescription).toBeTruthy();
     });
 
-    test(`${pageInfo.name} page should have proper lang attribute`, async ({ page }) => {
+    test(`${pageInfo.name} page should have proper lang attribute`, async ({
+      page,
+    }) => {
       await page.goto(pageInfo.path);
       const lang = await page.locator("html").getAttribute("lang");
       expect(lang).toBe("en-CA");
@@ -93,7 +146,9 @@ test.describe("SEO Structure", () => {
     expect(content).toContain("Sitemap");
   });
 
-  test("should have proper heading structure on home page", async ({ page }) => {
+  test("should have proper heading structure on home page", async ({
+    page,
+  }) => {
     await page.goto("/");
 
     // Should have exactly one h1
@@ -118,7 +173,7 @@ test.describe("SEO Structure", () => {
 
       // Check that link text is not generic
       const isGeneric = genericTexts.some(
-        (generic) => accessibleText.toLowerCase().trim() === generic
+        (generic) => accessibleText.toLowerCase().trim() === generic,
       );
 
       // Allow generic text only if there's a more descriptive aria-label
@@ -134,7 +189,9 @@ test.describe("SEO Structure", () => {
 test.describe("Mobile SEO", () => {
   test("should have viewport meta tag", async ({ page }) => {
     await page.goto("/");
-    const viewport = await page.locator('meta[name="viewport"]').getAttribute("content");
+    const viewport = await page
+      .locator('meta[name="viewport"]')
+      .getAttribute("content");
     expect(viewport).toContain("width=device-width");
   });
 

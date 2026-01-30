@@ -44,7 +44,7 @@ module.exports = {
         "image-alt": "error",
         "link-name": "error",
         "button-name": "error",
-        "bypass": "error",
+        bypass: "error",
         "heading-order": "warn",
         "landmark-one-main": "error",
       },

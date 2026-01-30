@@ -44,11 +44,11 @@ const {
     <h2 id="cta-title" class="cta-title">{title}</h2>
     <p class="cta-description">{description}</p>
     <div class="cta-buttons">
-      <a href={primaryCta.href} class="cta-button primary">
+      <a href={primaryCta.href} class="btn btn-primary cta-button">
         <span>{primaryCta.text}</span>
         {primaryCta.srText && <span class="sr-only">- {primaryCta.srText}</span>}
       </a>
-      <a href={secondaryCta.href} class="cta-button secondary">
+      <a href={secondaryCta.href} class="btn-secondary cta-button">
         <span>{secondaryCta.text}</span>
         {secondaryCta.srText && <span class="sr-only">- {secondaryCta.srText}</span>}
       </a>
@@ -71,19 +71,6 @@ const {
     text-align: center;
   }
 
-  .cta-title {
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: var(--space-4);
-  }
-
-  .cta-description {
-    color: var(--color-text-light);
-    line-height: 1.6;
-    margin-bottom: var(--space-6);
-  }
-
   .cta-buttons {
     display: flex;
     gap: var(--space-4);
@@ -92,49 +79,12 @@ const {
   }
 
   .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-normal);
     min-width: 160px;
-  }
-
-  .cta-button.primary {
-    background-color: var(--color-primary);
-    color: white;
-  }
-
-  .cta-button.primary:hover {
-    background-color: var(--color-primary-dark);
-  }
-
-  .cta-button.secondary {
-    background-color: transparent;
-    color: var(--color-text);
-    border: 2px solid var(--color-text);
-  }
-
-  .cta-button.secondary:hover {
-    background-color: var(--color-text);
-    color: var(--color-background);
-  }
-
-  .cta-button:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
   }
 
   @media (width <= 640px) {
     .cta-section {
       padding: var(--space-8) var(--container-padding);
-    }
-
-    .cta-title {
-      font-size: var(--text-xl);
     }
 
     .cta-buttons {

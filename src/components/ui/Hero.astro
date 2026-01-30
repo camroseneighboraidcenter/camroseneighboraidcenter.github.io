@@ -51,7 +51,7 @@ const {
         <span class="title-highlight">{title}</span>
       </h1>
       <div class="cta-wrapper">
-        <a href={ctaLink} class="hero-cta">
+        <a href={ctaLink} class="btn btn-hero hero-cta">
           {ctaText}
           <span class="sr-only">(Call to action)</span>
           <svg
@@ -107,8 +107,8 @@ const {
     inset: 0;
     background: linear-gradient(
       165deg,
-      rgb(0 0 0 / 70%) 0%,
-      rgb(0 0 0 / 50%) 100%
+      var(--color-overlay-dark) 0%,
+      var(--color-overlay-medium) 100%
     );
     z-index: 2;
   }
@@ -120,21 +120,21 @@ const {
   }
 
   .container {
-    max-width: 1200px;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--container-padding);
   }
 
   .content-wrapper {
-    max-width: 800px;
+    max-width: var(--max-width-3xl);
     margin: 0 auto;
     text-align: center;
     animation: fadeUp 1s ease-out forwards;
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.1;
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+    line-height: var(--leading-tight);
     margin-bottom: var(--space-6);
     color: var(--color-hero);
   }
@@ -144,24 +144,15 @@ const {
   }
 
   .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3);
-    background-color: var(--color-primary);
-    color: white;
     padding: var(--space-4) var(--space-8);
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-fast);
     transform-style: preserve-3d;
     backface-visibility: hidden;
   }
 
   .hero-cta:hover {
-    background-color: var(--color-primary-dark);
     transform: translateY(-2px) rotateX(5deg);
-    box-shadow: 0 20px 40px -10px rgb(var(--color-primary), 0.3);
+    box-shadow: 0 20px 40px -10px var(--color-shadow-primary);
+    text-decoration: none;
   }
 
   .hero-cta:active {
@@ -204,12 +195,7 @@ const {
     }
 
     .hero-title {
-      font-size: clamp(2rem, 8vw, 2.5rem);
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 4vw, 1.25rem);
-      margin-bottom: var(--space-6);
+      font-size: clamp(var(--text-3xl), 8vw, var(--text-4xl));
     }
 
     .hero-cta {

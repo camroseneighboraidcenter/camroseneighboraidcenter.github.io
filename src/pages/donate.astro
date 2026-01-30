@@ -118,10 +118,21 @@ const financialStatementsLink = charityStatus.financialStatementsLink;
     text-align: justify;
   }
 
+  .lead-text a {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .lead-text a:hover,
+  .lead-text a:focus-visible {
+    color: var(--color-link-hover);
+  }
+
   .section-title {
     font-size: var(--text-3xl);
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--color-text-heading);
     margin-bottom: var(--space-8);
     text-align: center;
   }
