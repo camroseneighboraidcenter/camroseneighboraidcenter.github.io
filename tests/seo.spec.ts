@@ -137,7 +137,8 @@ test.describe("SEO Structure", () => {
   test("should have sitemap.xml", async ({ page }) => {
     const response = await page.goto("/sitemap-index.xml");
     // In dev mode, sitemap returns 404, but should exist in production
-    expect(response?.status()).toBeGreaterThanOrEqual(200);
+    // Accept 200 (success) or 404 (dev mode) but reject server errors
+    expect([200, 404]).toContain(response?.status());
     if (response?.status() === 200) {
       const content = await page.content();
       expect(content).toContain("sitemap");
@@ -227,7 +228,7 @@ test.describe("Mobile SEO", () => {
       const box = await button.boundingBox();
       // Only test visible elements with meaningful dimensions
       if (box && box.width > 0 && box.height > 0) {
-        // Tap targets should be at least 44x44 pixels
+        // Tap targets should be at least 24x24 pixels
         expect(box.width).toBeGreaterThanOrEqual(24);
         expect(box.height).toBeGreaterThanOrEqual(24);
       }
