@@ -556,7 +556,7 @@ select {
   font-family: var(--font-heading);
   font-weight: var(--font-weight-extrabold);
   font-size: var(--text-xl);
-  color: var(--color-primary);
+  color: var(--color-text-heading);
   letter-spacing: -0.03em;
 }
 
@@ -707,17 +707,6 @@ html[data-theme="dark"] {
     --shadow-lg:
       0 4px 6px -1px rgb(255 255 255 / 10%),
       0 2px 4px -2px rgb(255 255 255 / 8%);
-  }
-}
-
-/* Dark Mode Logo */
-[data-theme="dark"] .logo-text {
-  color: var(--color-link);
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .logo-text {
-    color: var(--color-link);
   }
 }
 
