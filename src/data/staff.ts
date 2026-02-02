@@ -15,8 +15,8 @@ export interface TeamMember {
 
 export const teamMembers: TeamMember[] = [
   {
-    id: "jaime-ocampo",
-    name: "Jaime Ocampo",
+    id: "jaime-ocampos",
+    name: "Jaime Ocampos",
     role: "Executive Director",
   },
   {
