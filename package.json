@@ -25,17 +25,17 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.13",
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.16.9",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.17.1",
     "remark-attr": "^0.11.1",
     "sharp": "^0.34.5",
     "unified": "^11.0.5"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.0",
+    "@axe-core/playwright": "^4.11.1",
     "@eslint/js": "^9.39.2",
     "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.58.0",
+    "@playwright/test": "^1.58.1",
     "@types/hast": "^3.0.4",
     "@typescript-eslint/parser": "^8.54.0",
     "axe-core": "^4.11.1",
@@ -43,17 +43,17 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "html-validate": "^10.5.0",
+    "html-validate": "^10.7.0",
     "lighthouse": "^13.0.1",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.47.0",
-    "playwright": "^1.58.0",
+    "playwright": "^1.58.1",
     "postcss-html": "^1.8.1",
-    "prettier": "^3.8.0",
-    "stylelint": "^17.0.0",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.1.1",
     "stylelint-config-standard": "^40.0.0",
     "terser": "^5.46.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.53.0"
+    "typescript-eslint": "^8.54.0"
   }
 }
