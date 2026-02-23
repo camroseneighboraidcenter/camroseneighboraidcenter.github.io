@@ -1,9 +1,13 @@
-const js = require("@eslint/js");
-const pluginAstro = require("eslint-plugin-astro");
-const eslintConfigPrettier = require("eslint-config-prettier");
-const tseslint = require("typescript-eslint");
+import js from "@eslint/js";
+import pluginAstro from "eslint-plugin-astro";
+import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-module.exports = [
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default [
   {
     ignores: [
       "node_modules/",
@@ -63,7 +67,7 @@ module.exports = [
   },
 
   {
-    files: ["**/*.cjs", "eslint.config.*"],
+    files: ["**/*.cjs"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "commonjs",

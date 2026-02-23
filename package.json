@@ -5,8 +5,8 @@
   "description": "Camrose Neighbor Aid Center website",
   "version": "0.0.1",
   "scripts": {
-    "lint": "prettier --check . && astro check && eslint \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --report-needless-disables --report-invalid-scope-disables && (html-validate \"src/**/*.html\" || true) && markdownlint \"**/*.md\" \"**/*.mdx\"",
-    "fix": "prettier --write . && astro check && eslint --fix \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --fix --report-needless-disables --report-invalid-scope-disables && (html-validate \"src/**/*.html\" || true) && markdownlint --fix \"**/*.md\" \"**/*.mdx\"",
+    "lint": "prettier --check . && astro check && eslint \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --report-needless-disables --report-invalid-scope-disables && markdownlint \"**/*.md\" \"**/*.mdx\"",
+    "fix": "prettier --write . && astro check && eslint --fix \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --fix --report-needless-disables --report-invalid-scope-disables && markdownlint --fix \"**/*.md\" \"**/*.mdx\"",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -26,24 +26,23 @@
     "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.17.2",
+    "astro": "^5.17.3",
     "remark-attr": "^0.11.1",
     "sharp": "^0.34.5",
     "unified": "^11.0.5"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.1",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.58.2",
     "@types/hast": "^3.0.4",
-    "@typescript-eslint/parser": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.1",
     "axe-core": "^4.11.1",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "html-validate": "^10.8.0",
     "lighthouse": "^13.0.3",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.47.0",
@@ -54,6 +53,6 @@
     "stylelint-config-standard": "^40.0.0",
     "terser": "^5.46.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.0"
+    "typescript-eslint": "^8.56.1"
   }
 }
