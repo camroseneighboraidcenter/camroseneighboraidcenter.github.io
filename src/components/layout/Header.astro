@@ -27,7 +27,7 @@ const sortedPrograms = programs.sort(
 
 const programNavItems = sortedPrograms.map((program: Program) => ({
   text: program.data.title,
-  href: `/programs/${program.slug}`,
+  href: `/programs/${program.id}`,
 }));
 ---
 

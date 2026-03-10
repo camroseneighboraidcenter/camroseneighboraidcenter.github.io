@@ -3,10 +3,17 @@
  * Defines the schema for all content collections.
  * This is the single source of truth for program data.
  */
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const programs = defineCollection({
-  type: "content",
+  loader: glob({
+    base: "./src/content/programs",
+    pattern: "**/*.mdx",
+    generateId: ({ entry }) => entry.replace(/\.(mdx|md)$/, ""),
+  }),
+  type: "content_layer",
   schema: ({ image }) =>
     z.object({
       // Core fields (required)

@@ -19,6 +19,7 @@ const sortedPrograms = programs.sort(
 >
   <Header slot="header" />
 
+  <div class="programs-page">
     <h1 class="page-title">{title}</h1>
 
     <div class="programs-grid">
@@ -28,11 +29,11 @@ const sortedPrograms = programs.sort(
           description={program.data.description}
           image={program.data.image}
           imageAlt={program.data.imageAlt}
-          href={`/programs/${program.slug}`}
+          href={`/programs/${program.id}`}
         />
       ))}
     </div>
-
+  </div>
   <Footer slot="footer" />
 </BaseLayout>
 

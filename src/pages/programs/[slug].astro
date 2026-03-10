@@ -4,14 +4,16 @@ import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import Hero from "../../components/ui/Hero.astro";
 import CallToAction from "../../components/ui/CallToAction.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const programs = await getCollection("programs");
-  return programs.map((program: CollectionEntry<"programs">) => ({
-    params: { slug: program.slug },
-    props: { program },
-  }));
+  return programs.map((program: CollectionEntry<"programs">) => {
+    return {
+      params: { slug: program.id },
+      props: { program },
+    };
+  });
 }
 
 interface Props {
@@ -19,7 +21,7 @@ interface Props {
 }
 
 const { program } = Astro.props;
-const { Content } = await program.render();
+const { Content } = await render(program);
 ---
 
 <BaseLayout title={program.data.title}>
