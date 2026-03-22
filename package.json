@@ -23,10 +23,10 @@
     "test:batched": "node scripts/run-tests.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.7",
-    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/mdx": "^5.0.2",
     "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.0.4",
+    "astro": "^6.0.8",
     "remark-attr": "^0.11.1",
     "sharp": "^0.34.5",
     "unified": "^11.0.5"
@@ -37,9 +37,9 @@
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.58.2",
     "@types/hast": "^3.0.4",
-    "@typescript-eslint/parser": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.1",
     "axe-core": "^4.11.1",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -49,10 +49,10 @@
     "playwright": "^1.58.2",
     "postcss-html": "^1.8.1",
     "prettier": "^3.8.1",
-    "stylelint": "^17.4.0",
+    "stylelint": "^17.5.0",
     "stylelint-config-standard": "^40.0.0",
-    "terser": "^5.46.0",
+    "terser": "^5.46.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.0"
+    "typescript-eslint": "^8.57.1"
   }
 }
