@@ -22,12 +22,6 @@ export default defineConfig({
     },
   },
   image: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
     service: { entrypoint: "astro/assets/services/sharp" },
   },
 });
