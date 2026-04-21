@@ -10,9 +10,6 @@ export default defineConfig({
     inlineStylesheets: "auto",
   },
   vite: {
-    optimizeDeps: {
-      exclude: ["resvg-js"],
-    },
     build: {
       cssMinify: true,
       minify: "terser",
@@ -25,7 +22,12 @@ export default defineConfig({
     },
   },
   image: {
-    remotePatterns: [{ protocol: "https" }],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
     service: { entrypoint: "astro/assets/services/sharp" },
   },
 });
