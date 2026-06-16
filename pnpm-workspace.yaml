@@ -3,4 +3,7 @@ allowBuilds:
   sharp: true
 minimumReleaseAge: 1440 # 1 day in minutes
 overrides:
+  esbuild: ^0.28.1
+  js-yaml: ^4.2.0
+  markdown-it: ^14.2.0
   yaml: ^2.9.0
