@@ -23,20 +23,14 @@ const { className = "" } = Astro.props;
 >
   <input type="hidden" name="access_key" value={apiTokens.web3forms} />
   <input type="hidden" name="from_name" value="Neighbor Aid Contact Form" />
-  <input
-    type="checkbox"
-    name="botcheck"
-    class="hidden"
-    style="display: none;"
-  />
+  <input type="checkbox" name="botcheck" class="hidden" />
 
   <div class="form-header">
     <h2 class="form-title">Send Us a Message</h2>
     <p class="form-description">We'll get back to you as soon as possible.</p>
   </div>
 
-  <div id="form-alert" class="form-alert" role="alert" style="display: none;">
-  </div>
+  <div id="form-alert" class="form-alert hidden" role="alert"></div>
 
   <div class="form-group">
     <label for="name" class="form-label">Name</label>
@@ -287,6 +281,10 @@ const { className = "" } = Astro.props;
 </script>
 
 <style>
+  .hidden {
+    display: none;
+  }
+
   /* Form container - uses card-like styling */
   .contact-form {
     background-color: var(--color-surface);
