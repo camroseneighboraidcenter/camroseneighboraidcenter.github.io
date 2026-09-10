@@ -4,6 +4,10 @@
   "name": "camroseneighboraidcenter.ca",
   "description": "Camrose Neighbor Aid Center website",
   "version": "0.0.1",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "lint": "prettier --check . && astro check && eslint \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --report-needless-disables --report-invalid-scope-disables && markdownlint \"**/*.md\" \"**/*.mdx\"",
     "fix": "prettier --write . && astro check && eslint --fix \"src/**/*.{js,jsx,ts,tsx,astro}\" && stylelint \"**/*.{css,astro}\" --fix --report-needless-disables --report-invalid-scope-disables && markdownlint --fix \"**/*.md\" \"**/*.mdx\"",
@@ -14,25 +18,25 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.7",
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.4",
-    "sharp": "^0.35.3"
+    "@astrojs/mdx": "^7.0.8",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.2",
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.9.0",
+    "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "markdownlint-cli": "^0.49.1",
     "postcss-html": "^2.0.0",
     "prettier": "^3.9.6",
-    "stylelint": "^17.14.1",
+    "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
-    "terser": "^5.50.0",
+    "terser": "^5.51.2",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript-eslint": "^8.70.0"
   }
 }
