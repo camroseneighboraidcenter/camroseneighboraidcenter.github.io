@@ -2,13 +2,6 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAge: 1440 # 1 day in minutes
-overrides:
-  # markdownlint-cli pins js-yaml ~5.2.1, which is vulnerable
-  # (GHSA-r3ph-w7gj-g6xm); force the patched release.
-  "markdownlint-cli>js-yaml": ^5.4.2
-peerDependencyRules:
-  allowedVersions:
-    "eslint-plugin-jsx-a11y>eslint": "10"
 auditConfig:
   # braces@3.0.3 has no patched release; only reachable via dev-time
   # stylelint glob handling where patterns are developer-controlled.
