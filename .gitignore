@@ -4,6 +4,7 @@
 node_modules/
 dist/
 .astro/
+v11/
 
 # OS
 .DS_Store
