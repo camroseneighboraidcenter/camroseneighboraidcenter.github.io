@@ -1,5 +1,5 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  // docs/template-program.mdx is a copy-paste template for content editors.
-  "ignore": ["docs/template-program.mdx"]
+  // Types companion for the markdown-it runtime dep used in src/utils/markdown.ts.
+  "ignoreDependencies": ["@types/markdown-it"]
 }

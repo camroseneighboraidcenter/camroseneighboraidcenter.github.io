@@ -1,0 +1,79 @@
+title: "Referral Services"
+description: "Connecting individuals with additional support resources and community services."
+image: "../../assets/programs/referral-services.webp"
+imageAlt: "Referral services volunteer helping a client."
+featured: true
+order: 6
+sections:
+  - type: full
+    body: |
+      Our Referral Services program acts as a bridge between those in need and the various support services available in our community. We maintain strong relationships with local agencies, government services, and other nonprofits to ensure our clients can access all available resources.
+
+      ### Program Goals
+
+      - Connect people with essential services
+      - Simplify access to community resources
+      - Provide comprehensive support
+      - Foster community collaboration
+  - type: services
+    heading: "Our Services"
+    cards:
+      - title: "Referral Support"
+        body: |
+          - Personalized needs assessment
+          - Resource matching and referrals
+          - Application assistance
+          - Follow-up support
+      - title: "Available Resources"
+        body: |
+          - Government assistance programs
+          - Mental health services
+          - Employment support
+          - Housing assistance
+  - type: grid
+    heading: "How We Help"
+    body: |
+      1. Initial Consultation
+
+         - Meet with our staff
+         - Discuss your needs
+         - Identify priorities
+
+      2. Resource Matching
+
+         - Identify appropriate services
+         - Connect with providers
+         - Coordinate appointments
+
+      3. Ongoing Support
+         - Application assistance
+         - Follow-up check-ins
+         - Additional referrals as needed
+  - type: full
+    heading: "Our Partners"
+    body: |
+      We work closely with:
+
+      - Local government agencies
+      - Healthcare providers
+      - Social service organizations
+      - Educational institutions
+      - Mental health services
+      - Employment agencies
+      - Housing organizations
+  - type: bordered
+    heading: "Program Impact"
+    body: |
+      - Streamlined access to services
+      - Reduced barriers to support
+      - Improved service coordination
+      - Stronger community connections
+      - Better outcomes for clients
+  - type: full
+    heading: "Get Started"
+    body: |
+      - No appointment necessary
+      - Walk-in during office hours
+      - All services are confidential
+      - No cost for referral services
+      - Multiple language support available

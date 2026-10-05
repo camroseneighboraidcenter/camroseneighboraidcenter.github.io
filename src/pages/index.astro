@@ -7,10 +7,16 @@ import ContentBlock from "../components/ui/ContentBlock.astro";
 import CardGrid from "../components/ui/CardGrid.astro";
 import Card from "../components/ui/Card.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-import heroImage from "../assets/hero/hero-helping-hands.webp";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { PageData } from "../content.config";
 
 type Program = CollectionEntry<"programs">;
+
+const entry = await getEntry("pages", "home");
+if (!entry || entry.data.page !== "home") {
+  throw new Error("Missing or invalid src/content/pages/home.yaml");
+}
+const page = entry.data as Extract<PageData, { page: "home" }>;
 
 const allPrograms = await getCollection("programs");
 const featuredPrograms = allPrograms
@@ -18,39 +24,36 @@ const featuredPrograms = allPrograms
   .sort((a: Program, b: Program) => a.data.order - b.data.order);
 ---
 
-<BaseLayout
-  title="Home"
-  description="Camrose Neighbor Aid Center - Hands linked in Christ's name to meet the needs of others. We provide essential support services to our community."
->
+<BaseLayout title="Home" description={page.description}>
   <Header slot="header" />
 
   <div class="home-content">
     <Hero
-      title="Welcome to Camrose Neighbor Aid Center"
-      backgroundImage={heroImage}
-      ctaText="Contact Us"
-      ctaLink="/contact"
+      title={page.hero.title}
+      backgroundImage={page.hero.image}
+      ctaText={page.hero.ctaText}
+      ctaLink={page.hero.ctaLink}
     />
 
     <section class="mission-section">
       <ContentBlock
-        title="Who We Are"
-        content="Camrose Neighbor Aid Center is a nonprofit Christian organization dedicated to providing essential services to individuals and families in need within our community."
+        title={page.whoWeAre.title}
+        content={page.whoWeAre.content}
         variant="highlight"
       >
-        <p class="motto-intro">We serve with an attitude of:</p>
-        <p class="motto">WE CARE - WE LISTEN - WE RESPOND</p>
+        <p class="motto-intro">{page.whoWeAre.mottoIntro}</p>
+        <p class="motto">{page.whoWeAre.motto}</p>
       </ContentBlock>
       <ContentBlock
-        title="Our Mission"
-        content="Hands linked in Christ's name to meet the needs of others."
+        title={page.mission.title}
+        content={page.mission.content}
         variant="card"
       />
     </section>
 
     <CardGrid
-      title="Featured Programs"
-      subtitle="Supporting our community through various initiatives"
+      title={page.featured.title}
+      subtitle={page.featured.subtitle}
       variant="featured"
     >
       {featuredPrograms.map((program: Program) => (
@@ -67,18 +70,10 @@ const featuredPrograms = allPrograms
     </CardGrid>
 
     <CallToAction
-      title="Make a Difference"
-      description="Join us in building a stronger, more caring community. Your support can help transform lives."
-      primaryCta={{
-        text: "Donate Today",
-        href: "/donate",
-        srText: "Learn more about donating opportunities",
-      }}
-      secondaryCta={{
-        text: "Get Involved",
-        href: "/contact#contact-form?subject=volunteer",
-        srText: "Contact us about volunteering opportunities",
-      }}
+      title={page.cta.title}
+      description={page.cta.description}
+      primaryCta={page.cta.primaryCta}
+      secondaryCta={page.cta.secondaryCta}
     />
   </div>
 

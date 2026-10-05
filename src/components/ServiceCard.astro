@@ -1,14 +1,14 @@
 ---
 /**
  * ServiceCard Component
- * A card for displaying service information within MDX content.
+ * A card for displaying service information within program content.
  *
  * @prop {string} title - Card title (required)
- * @prop {string} description - Card description (required)
+ * @prop {string} description - Card description (optional)
  */
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const { title, description } = Astro.props;
@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
 
 <section class="service-card">
   <h3 class="title">{title}</h3>
-  <p class="description">{description}</p>
+  {description && <p class="description">{description}</p>}
   <slot />
 </section>
 

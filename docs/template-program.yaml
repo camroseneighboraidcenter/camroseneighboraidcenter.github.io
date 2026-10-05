@@ -1,0 +1,100 @@
+# Program Page Template
+# ======================
+# Copy this file to src/content/programs/<program-slug>.yaml and fill in the
+# fields. Every field is validated by the zod schema in src/content.config.ts —
+# a mistake here fails the build with a readable error, so you can't break
+# the site layout.
+#
+# Text fields named `body` accept Markdown (paragraphs, lists, ### subheadings,
+# links). `heading` fields become the section's <h2>.
+#
+# Section `type` controls layout:
+#   full      - standard full-width prose section
+#   bordered  - prose inside a bordered card (good for impact/metrics)
+#   grid      - markdown ordered list rendered as cards (good for processes)
+#   services  - a grid of titled cards, each with its own markdown body
+#   schedule  - structured day/time/location tables
+#
+# Sections render in the order they appear here — add, remove, or reorder
+# freely. Only `type` (and `body`/`cards`/`sections` as shown) are required.
+
+title: "Program Name"
+description: "One sentence shown on the programs index page."
+image: "../../assets/programs/your-image.webp" # place image in src/assets/programs/
+imageAlt: "Describe the image for screen readers."
+featured: true # show on the programs index page
+order: 7 # controls sort order on the index page
+
+sections:
+  # ---- Overview (no heading; the page already shows "About <title>") ----
+  - type: full
+    body: |
+      A comprehensive introduction to the program, its history, and its
+      significance to the community. Explain what this program does.
+
+      ### Optional Subheading
+
+      - Goal 1: What this program aims to achieve
+      - Goal 2: Another key objective
+      - Goal 3: Additional outcome we're working toward
+
+  # ---- Services ----
+  - type: services
+    heading: "Our Services"
+    cards:
+      - title: "Service Name"
+        body: |
+          - What this service includes
+          - Who it helps
+          - Any important details
+      - title: "Second Service"
+        body: |
+          - More details here
+
+  # ---- Schedule (optional — delete if the program has none) ----
+  - type: schedule
+    heading: "When to Visit"
+    sections:
+      - title: "Service Name"
+        items:
+          - days: "Tuesday to Thursday"
+            hours: "10:00 AM - 3:00 PM"
+            location: "Optional location" # optional
+            note: "Optional note" # optional
+
+  # ---- Eligibility / Requirements ----
+  - type: full
+    heading: "Eligibility & Requirements"
+    body: |
+      - Who can access this service
+      - What they need to bring
+      - Any restrictions or requirements
+
+  # ---- Process (numbered steps render as cards) ----
+  - type: grid
+    heading: "How It Works"
+    body: |
+      1. Step One
+         - What happens
+         - What to bring
+         - How long it takes
+
+      2. Step Two
+         - Next actions
+         - Follow-up information
+
+  # ---- Impact ----
+  - type: bordered
+    heading: "Program Impact"
+    body: |
+      - Key metrics or outcomes
+      - Community benefit highlights
+      - Partnership highlights
+
+  # ---- Contact ----
+  - type: full
+    heading: "Contact Us"
+    body: |
+      - How to get more information
+      - Office contact details
+      - Special instructions

@@ -3,16 +3,18 @@
  * Footer Component
  * Site footer with contact info, quick links, social icons, and theme toggle.
  */
-import { contactInfo, charityStatus } from "../../data/contact";
 import { formatPhoneNumber, formatAddress } from "../../utils/formatters";
+import { getSite } from "../../utils/site";
 import SocialIcons from "../ui/SocialIcons.astro";
 import ThemeToggle from "../ui/ThemeToggle.astro";
 
+const site = await getSite();
+const contactInfo = site.contact;
 const currentYear = new Date().getFullYear();
 const address = formatAddress(contactInfo.address);
 const mailingAddress = formatAddress(contactInfo.mailingAddress);
-const charityNumber = charityStatus.charityNumber;
-const craLink = charityStatus.craLink;
+const charityNumber = site.charity.number;
+const craLink = site.charity.craLink;
 ---
 
 <footer class="site-footer">

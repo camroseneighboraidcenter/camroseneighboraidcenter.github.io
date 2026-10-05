@@ -7,7 +7,7 @@
  */
 interface ScheduleItem {
   days: string;
-  hours: string;
+  hours?: string;
   location?: string;
   note?: string;
 }
@@ -32,7 +32,7 @@ const { sections = [] } = Astro.props;
         {items.map(({ days, hours, location, note }) => (
           <li class="schedule-item">
             <div class="day">{location ? `${location} - ${days}` : days}</div>
-            <div class="hours">{hours}</div>
+            {hours && <div class="hours">{hours}</div>}
             {note && <div class="note">{note}</div>}
           </li>
         ))}

@@ -1,0 +1,6 @@
+# Programs index page — page title and meta description.
+# The program cards themselves come from src/content/programs/.
+page: programs
+
+title: "Our Programs"
+description: "Explore the various programs and services offered by Camrose Neighbor Aid Center to support our community."

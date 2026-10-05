@@ -1,0 +1,70 @@
+title: "Martha's Table"
+description: "Serving a hot meal twice weekly."
+image: "../../assets/programs/soup-kitchen.webp"
+imageAlt: "Soup kitchen volunteer distributing meals."
+featured: true
+order: 3
+sections:
+  - type: full
+    body: |
+      Martha's Table, established in 1998, is more than just a soup kitchen - it's a place where community members can find warm meals and warm hearts. Our twice-weekly gatherings provide nutritious meals in a dignified, welcoming environment where everyone is treated as family.
+
+      ### Our Mission
+
+      - Provide nutritious meals to those in need
+      - Create a welcoming community atmosphere
+      - Foster connections and support networks
+      - Serve with dignity and respect
+  - type: schedule
+    heading: "Service Schedule"
+    sections:
+      - title: "Weekly Schedule"
+        items:
+          - days: "Tuesday"
+            hours: "12:00 PM - 1:00 PM"
+            location: "Messiah Lutheran Church"
+          - days: "Wednesday"
+            hours: "12:00 PM - 1:00 PM"
+            location: "Camrose United Church"
+  - type: services
+    heading: "Our Services"
+    cards:
+      - title: "Community Meal Service"
+        body: |
+          - Hot, nutritious soup made fresh daily
+          - Fresh sandwiches and sides
+          - Coffee, tea, and refreshments
+          - Welcoming, dignified dining environment
+      - title: "Additional Support"
+        body: |
+          - Connection to other community resources
+          - Friendly conversation and community building
+          - Information about other CNAC programs
+          - Seasonal celebrations and special events
+  - type: full
+    heading: "How We Operate"
+    body: |
+      Our dedicated volunteers work together to:
+
+      - Create and manage serving schedules
+      - Source and manage food supplies
+      - Prepare fresh soups and sandwiches
+      - Set up welcoming dining spaces
+      - Serve meals with care and respect
+      - Build relationships with community members
+  - type: bordered
+    heading: "Program Impact"
+    body: |
+      Each service provides:
+
+      - Welcoming, community atmosphere
+      - Opportunities for social connection
+      - Access to additional support resources
+      - Regular, reliable meal service since 1998
+  - type: full
+    heading: "Get Involved"
+    body: |
+      - To volunteer, please contact our office
+      - No registration required to attend
+      - All are welcome
+      - For special dietary needs, please let us know in advance

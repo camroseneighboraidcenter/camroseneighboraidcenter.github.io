@@ -1,0 +1,82 @@
+title: "Food for Kids"
+description: "Serving children breakfast through breakfast clubs in 6 local schools."
+image: "../../assets/programs/kids-breakfast.webp"
+imageAlt: "Breakfast club food preparation."
+featured: true
+order: 2
+sections:
+  - type: full
+    body: |
+      Our Food for Kids program, established in 2000, operates in partnership with six local schools to ensure that no child starts their day hungry. Through our breakfast clubs, we provide nutritious morning meals that help students focus on learning rather than hunger.
+
+      ### Program Goals
+
+      - Ensure no child starts school hungry
+      - Support academic success through nutrition
+      - Create welcoming breakfast environments
+      - Build community partnerships
+  - type: services
+    heading: "Our Services"
+    cards:
+      - title: "School Breakfast Program"
+        body: |
+          - Nutritious morning meals
+          - Welcoming breakfast environment
+          - Inclusive and accessible service
+          - Available every school day
+      - title: "Program Support"
+        body: |
+          - Weekly food delivery to schools
+          - Volunteer coordination
+          - Menu planning assistance
+          - Equipment and supplies
+  - type: schedule
+    heading: "Program Schedule"
+    sections:
+      - title: "School Year Schedule"
+        items:
+          - days: "Monday-Friday"
+            hours: "Before School Hours"
+            note: "During regular school days"
+      - title: "Participating Schools"
+        items:
+          - days: "Daily Service"
+            location: "The Comp"
+          - days: "Daily Service"
+            location: "Chester Ronning"
+          - days: "Daily Service"
+            location: "Charlie Killiam"
+          - days: "Daily Service"
+            location: "Jack Stuart"
+          - days: "Daily Service"
+            location: "Sifton"
+          - days: "Daily Service"
+            location: "Sparling"
+  - type: full
+    heading: "How We Operate"
+    body: |
+      Our program functions through:
+
+      - School-based coordinators managing local programs
+      - Dedicated volunteer teams at each school
+      - Weekly grocery shopping and delivery service
+      - Partnership with local businesses
+      - Regular communication with school staff
+      - Ongoing program evaluation
+  - type: bordered
+    heading: "Program Impact"
+    body: |
+      - Serves approximately 1,000 children monthly
+      - Operates in 6 local schools
+      - Provides daily breakfast during school days
+      - Supports improved academic focus
+      - Creates positive morning routines
+      - Builds community connections
+  - type: full
+    heading: "Get Involved"
+    body: |
+      - Schools interested in joining the program, please contact us
+      - Volunteers always welcome
+      - Food and supply donations accepted
+      - Financial contributions appreciated
+      - For more information, contact our office

@@ -1,0 +1,28 @@
+# Team Member Template
+# ====================
+# Copy this file to src/content/team/<firstname>-<lastname>.yaml to add
+# a board member or staff member to the About page.
+#
+# Files live at src/content/team/*.yaml — one file per person.
+
+# Full name as shown on the site (required)
+name: "Jane Doe"
+
+# Job title or board position (required)
+role: "Director"
+
+# Which section of the About page they appear under (required):
+#   "directors" → Board of Directors grid
+#   "staff"     → Staff grid
+group: "directors"
+
+# Sort position within the grid — lower numbers appear first.
+# Directors are typically ordered by office (Chair=1, Vice Chair=2, ...)
+order: 10
+
+# Optional short biography shown on the member's card
+# bio: "Jane has volunteered with the center since 2019..."
+
+# Optional photo — path relative to THIS file, pointing into src/assets.
+# Recommended: place headshots in src/assets/team/
+# image: "../assets/team/jane-doe.webp"

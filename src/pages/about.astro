@@ -9,36 +9,48 @@ import ContentBlock from "../components/ui/ContentBlock.astro";
 import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
 import TeamGrid from "../components/ui/TeamGrid.astro";
-import { teamMembers as directors } from "../data/directors.ts";
-import { teamMembers as staff } from "../data/staff.ts";
-import heroImage from "../assets/hero/hero-helping-hands.webp";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import type { PageData } from "../content.config";
+
+const entry = await getEntry("pages", "about");
+if (!entry || entry.data.page !== "about") {
+  throw new Error("Missing or invalid src/content/pages/about.yaml");
+}
+const page = entry.data as Extract<PageData, { page: "about" }>;
+
+const team = await getCollection("team");
+const membersByGroup = (group: "directors" | "staff") =>
+  team
+    .filter((m: CollectionEntry<"team">) => m.data.group === group)
+    .sort(
+      (a: CollectionEntry<"team">, b: CollectionEntry<"team">) =>
+        a.data.order - b.data.order,
+    )
+    .map((m: CollectionEntry<"team">) => m.data);
+const directors = membersByGroup("directors");
+const staff = membersByGroup("staff");
 ---
 
-<BaseLayout title="About Us">
+<BaseLayout title="About Us" description={page.description}>
   <Header slot="header" />
 
   <div class="about-page">
     <Hero
-      title="About Us"
-      backgroundImage={heroImage}
-      ctaText="Get Involved"
-      ctaLink="/contact#contact-form?subject=volunteer"
+      title={page.hero.title}
+      backgroundImage={page.hero.image}
+      ctaText={page.hero.ctaText}
+      ctaLink={page.hero.ctaLink}
     />
     <div class="content-wrapper">
       <section class="intro-section">
         <div class="content-container">
-          <p class="lead-text">
-            Camrose Neighbor Aid Center began as a collaboration between six
-            evangelical churches and has grown into a network supported by 20
-            local churches. Our mission is rooted in faith and service, ensuring
-            that no one in our community goes without basic needs.
-          </p>
+          <p class="lead-text">{page.intro}</p>
         </div>
       </section>
 
       <ContentBlock
-        title="Our Vision"
-        content="A community where everyone's basic needs are met through Christ-centered service and support."
+        title={page.vision.title}
+        content={page.vision.content}
         variant="banner"
       />
 
@@ -55,64 +67,20 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
         />
       </section>
 
-      <FeatureGrid
-        title="Our Values"
-        items={[
-          {
-            title: "Faith",
-            description:
-              "Rooted in Christian principles, serving all with compassion and grace.",
-          },
-          {
-            title: "Community",
-            description:
-              "Building strong relationships and fostering a sense of belonging.",
-          },
-          {
-            title: "Service",
-            description: "Dedicated to meeting needs with care and dignity.",
-          },
-          {
-            title: "Collaboration",
-            description:
-              "Working together with churches and organizations for greater impact.",
-          },
-          {
-            title: "Responsiveness",
-            description: "Acting swiftly in times of crisis and need.",
-          },
-        ]}
-      />
+      <FeatureGrid title={page.values.title} items={page.values.items} />
       <ContentBlock
-        title="Our Beliefs"
-        content={[
-          {
-            text: "We believe all things are possible through Christ.",
-            citation: "Matthew 19:26",
-          },
-          {
-            text: "We believe that Christians working together glorify God and make a difference.",
-            citation: "John 17:21-22",
-          },
-        ]}
+        title={page.beliefs.title}
+        content={page.beliefs.items}
         variant="banner"
       />
-      <TeamGrid title="Board of Directors" members={directors} />
-      <TeamGrid title="Staff" members={staff} />
+      <TeamGrid title={page.teamHeadings.directors} members={directors} />
+      <TeamGrid title={page.teamHeadings.staff} members={staff} />
 
       <CallToAction
-        title="Join Our Mission"
-        description="Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."
-        primaryCta={{
-          text: "Volunteer With Us",
-          href: "/contact#contact-form?subject=volunteer",
-          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center",
-        }}
-        secondaryCta={{
-          text: "Support Our Mission",
-          href: "/donate",
-          srText: "Make a donation to support our community programs",
-        }}
+        title={page.cta.title}
+        description={page.cta.description}
+        primaryCta={page.cta.primaryCta}
+        secondaryCta={page.cta.secondaryCta}
       />
     </div>
   </div>

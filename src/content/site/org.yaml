@@ -1,0 +1,54 @@
+# Organization-wide data — contact info, social links, charity status.
+# This is the single source of truth shown in the footer, contact page,
+# and anywhere the site displays contact details.
+
+contact:
+  # Physical address (shown in footer, contact page, and used for the map)
+  address:
+    street: "4524 54 Street"
+    city: "Camrose"
+    province: "AB"
+    postalCode: "T4V 1X8"
+
+  # Mailing address (shown on the contact page)
+  mailingAddress:
+    street: "PO Box 1936"
+    city: "Camrose"
+    province: "AB"
+    postalCode: "T4V 1X8"
+
+  phone: "(780) 679-3220"
+  fax: "(780) 679-3221"
+  email: "nbaid@cable-lynx.net"
+  donationEmail: "donationnbaid@gmail.com"
+
+  # Business hours — free text per day (e.g. "9:00 AM - 12:00 PM" or "Closed")
+  hours:
+    monday: "9:00 AM - 12:00 PM"
+    tuesday: "10:00 AM - 3:00 PM"
+    wednesday: "10:00 AM - 3:00 PM"
+    thursday: "10:00 AM - 3:00 PM"
+    friday: "9:00 AM - 12:00 PM"
+    saturday: "Closed"
+    sunday: "Closed"
+
+# Social media links — set url to an empty string to hide a link site-wide
+social:
+  - platform: "facebook"
+    url: "https://www.facebook.com/people/Neighbor-Aid/pfbid02u3e3N5P6cNTcBY4iQU2XctFUkUAtUZCo3CiFkpNFfqtiPawvjs9n4Z2noP1gnHd9l"
+    label: "Follow us on Facebook"
+  - platform: "instagram"
+    url: "https://www.instagram.com/camroseneighboraid/"
+    label: "Follow us on Instagram"
+  - platform: "linkedin"
+    url: ""
+    label: "Connect with us on LinkedIn"
+  - platform: "x"
+    url: ""
+    label: "Follow us on X"
+
+# CRA charity registration details
+charity:
+  number: "890404767 RR 0001"
+  craLink: "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/chrtydtls?selectedCharityBn=890404767RR0001"
+  financialStatementsLink: "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyQckVw?selectedFilingPeriodIndex=0&selectedCharityBn=890404767RR0001&isSingleResult=false"

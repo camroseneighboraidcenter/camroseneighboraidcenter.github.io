@@ -1,0 +1,50 @@
+# Donate page — intro text and donation methods.
+#
+# `intro` and method `body` fields support markdown. Links use standard
+# markdown syntax: [link text](https://example.com). External links open
+# in a new tab automatically.
+#
+# You can use {{tokens}} anywhere in markdown to insert live values from
+# src/content/site/org.yaml — e.g. {{donationEmail}}, {{email}}, {{phone}},
+# {{charityNumber}}, {{craLink}}, {{financialStatementsLink}}.
+# This keeps emails and links consistent if they ever change.
+page: donate
+
+hero:
+  title: "Donate"
+  image: "../../assets/hero/hero-helping-hands.webp"
+  ctaText: "Learn More"
+  ctaLink: "#ways-to-donate"
+
+# Lead paragraphs (markdown — links supported)
+intro: |
+  Camrose Neighbor Aid Center operates on the generosity of our supporters. Your donation helps us provide essential services to those in need. We are a registered charity and your donation is tax deductible. Our CRA registration number is [{{charityNumber}}]({{craLink}}).
+
+  All our annual financial statements are available for review on the [CRA website]({{financialStatementsLink}}).
+
+# Plain line shown above the donation method cards
+methodsIntro: "We accept donations in a few different ways outlined below:"
+
+methods:
+  title: "Ways to Donate"
+  items:
+    - title: "Cash"
+      body: "You can donate cash in person at Camrose Neighbor Aid Center."
+    - title: "Cheque"
+      body: "You can donate by cheque in person or by mail. Payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8."
+    - title: "Canada Helps"
+      body: "You can donate online through [CanadaHelps.org](https://www.canadahelps.org/en/dn/24772), a secure platform that allows you to contribute using your credit card. Processing fees are subtracted by CanadaHelps from your donation."
+    - title: "E-Transfer"
+      body: "You can donate by E-Transfer to [{{donationEmail}}](mailto:{{donationEmail}}). If you would like a receipt mailed to you, please include your full name and address in the memo."
+
+cta:
+  title: "Join Our Mission"
+  description: "Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."
+  primaryCta:
+    text: "Volunteer With Us"
+    href: "/contact#contact-form?subject=volunteer"
+    srText: "Join our team as a volunteer at Camrose Neighbor Aid Center"
+  secondaryCta:
+    text: "Get in Touch"
+    href: "/contact#contact-form?subject=general"
+    srText: "Contact Camrose Neighbor Aid Center for more information"

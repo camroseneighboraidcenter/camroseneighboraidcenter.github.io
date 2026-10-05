@@ -6,8 +6,8 @@
  * @prop {boolean} showSocial - Whether to show social media icons
  * @prop {string} className - Additional CSS classes
  */
-import { contactInfo } from "../../data/contact";
 import { formatPhoneNumber, formatAddress } from "../../utils/formatters";
+import { getSite } from "../../utils/site";
 import SocialIcons from "./SocialIcons.astro";
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
 
 const { showSocial = true, className = "" } = Astro.props;
 
+const contactInfo = (await getSite()).contact;
 const { hours, phone, fax, email } = contactInfo;
 const address = formatAddress(contactInfo.address);
 const mailingAddress = formatAddress(contactInfo.mailingAddress);

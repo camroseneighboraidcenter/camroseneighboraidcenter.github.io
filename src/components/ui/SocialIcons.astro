@@ -6,8 +6,8 @@
  * @prop {string} className - Additional CSS classes
  * @prop {"start" | "center" | "end"} justify - Flex justify alignment
  */
-import { socialMediaLinks } from "../../data/contact";
 import { filterActiveLinks } from "../../utils/formatters";
+import { getSite } from "../../utils/site";
 
 interface Props {
   className?: string;
@@ -15,7 +15,8 @@ interface Props {
 }
 
 const { className = "", justify = "center" } = Astro.props;
-const activeSocialMedia = filterActiveLinks(socialMediaLinks);
+const site = await getSite();
+const activeSocialMedia = filterActiveLinks(site.social);
 ---
 
 {activeSocialMedia.length > 0 && (

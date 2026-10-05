@@ -5,91 +5,55 @@ import Footer from "../components/layout/Footer.astro";
 import Hero from "../components/ui/Hero.astro";
 import FeatureGrid from "../components/ui/FeatureGrid.astro";
 import CallToAction from "../components/ui/CallToAction.astro";
-import { contactInfo, charityStatus } from "../data/contact";
-import heroImage from "../assets/hero/hero-helping-hands.webp";
+import { getEntry } from "astro:content";
+import { getSite } from "../utils/site";
+import {
+  renderMarkdown,
+  renderMarkdownInline,
+  siteVars,
+} from "../utils/markdown";
+import type { PageData } from "../content.config";
 
-const charityNumber = charityStatus.charityNumber;
-const craLink = charityStatus.craLink;
-const financialStatementsLink = charityStatus.financialStatementsLink;
+const entry = await getEntry("pages", "donate");
+if (!entry || entry.data.page !== "donate") {
+  throw new Error("Missing or invalid src/content/pages/donate.yaml");
+}
+const page = entry.data as Extract<PageData, { page: "donate" }>;
+
+const site = await getSite();
+const vars = siteVars(site);
+
+const methodItems = page.methods.items.map((item) => ({
+  title: item.title,
+  descriptionHtml: renderMarkdownInline(item.body, vars),
+}));
 ---
 
-<BaseLayout title="Donate">
+<BaseLayout title="Donate" description={page.description}>
   <Header slot="header" />
 
   <div class="donate-page">
     <Hero
-      title="Donate"
-      backgroundImage={heroImage}
-      ctaText="Learn More"
-      ctaLink="#ways-to-donate"
+      title={page.hero.title}
+      backgroundImage={page.hero.image}
+      ctaText={page.hero.ctaText}
+      ctaLink={page.hero.ctaLink}
     />
     <div class="content-wrapper">
       <section class="intro-section">
         <div class="content-container flex-col">
-          <p class="lead-text">
-            Camrose Neighbor Aid Center operates on the generosity of our
-            supporters. Your donation helps us provide essential services to
-            those in need. We are a registered charity and your donation is tax
-            deductible. Our CRA registration number is
-            <a href={craLink} target="_blank" rel="noopener noreferrer">
-              {charityNumber}
-            </a>
-            .
-          </p>
-          <p class="lead-text">
-            All our annual financial statements are available for review on the{" "}
-            <a
-              href={financialStatementsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CRA website
-            </a>
-            .
-          </p>
-          <p class="donation-methods">
-            We accept donations in a few different ways outlined below:
-          </p>
+          <div class="lead-text" set:html={renderMarkdown(page.intro, vars)} />
+          <p class="donation-methods">{page.methodsIntro}</p>
         </div>
       </section>
       <section id="ways-to-donate">
-        <FeatureGrid
-          title="Ways to Donate"
-          items={[
-            {
-              title: "Cash",
-              description:
-                "You can donate cash in person at Camrose Neighbor Aid Center.",
-            },
-            {
-              title: "Cheque",
-              descriptionHtml:
-                "You can donate by cheque in person or by mail. Payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8.",
-            },
-            {
-              title: "Canada Helps",
-              descriptionHtml: `You can donate online through <a href="https://www.canadahelps.org/en/dn/24772" target="_blank" rel="noopener noreferrer" class="feature-grid__link">CanadaHelps.org</a>, a secure platform that allows you to contribute using your credit card. Processing fees are subtracted by CanadaHelps from your donation.`,
-            },
-            {
-              title: "E-Transfer",
-              descriptionHtml: `You can donate by E-Transfer to <a href="mailto:${contactInfo.donationEmail}" class="feature-grid__link">${contactInfo.donationEmail}</a>. If you would like a receipt mailed to you, please include your full name and address in the memo.`,
-            },
-          ]}
-        />
+        <FeatureGrid title={page.methods.title} items={methodItems} />
       </section>
       <CallToAction
-        title="Join Our Mission"
-        description="Together, we can make a difference in our community. Join us as a volunteer or support our mission through donations."
-        primaryCta={{
-          text: "Volunteer With Us",
-          href: "/contact#contact-form?subject=volunteer",
-          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center",
-        }}
-        secondaryCta={{
-          text: "Get in Touch",
-          href: "/contact#contact-form?subject=general",
-          srText: "Contact Camrose Neighbor Aid Center for more information",
-        }}
+        title={page.cta.title}
+        description={page.cta.description}
+        primaryCta={page.cta.primaryCta}
+        secondaryCta={page.cta.secondaryCta}
       />
     </div>
   </div>
@@ -132,6 +96,14 @@ const financialStatementsLink = charityStatus.financialStatementsLink;
     margin: var(--space-8) auto;
     line-height: 1.7;
     text-align: justify;
+  }
+
+  .lead-text p {
+    margin: 0;
+  }
+
+  .lead-text p + p {
+    margin-top: var(--space-4);
   }
 
   .lead-text a {

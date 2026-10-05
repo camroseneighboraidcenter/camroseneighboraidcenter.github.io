@@ -4,7 +4,12 @@ import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import Hero from "../../components/ui/Hero.astro";
 import CallToAction from "../../components/ui/CallToAction.astro";
-import { getCollection, render, type CollectionEntry } from "astro:content";
+import Section from "../../components/Section.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import Schedule from "../../components/Schedule.astro";
+import { renderMarkdown } from "../../utils/markdown";
+import type { ProgramSection } from "../../content.config";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const programs = await getCollection("programs");
@@ -21,7 +26,7 @@ interface Props {
 }
 
 const { program } = Astro.props;
-const { Content } = await render(program);
+const sections = program.data.sections as ProgramSection[];
 ---
 
 <BaseLayout title={program.data.title}>
@@ -35,7 +40,25 @@ const { Content } = await render(program);
     />
     <article class="program-content">
       <h2 id="program-title">About {program.data.title}</h2>
-      <div class="content-wrapper">{Content && <Content />}</div>
+      <div class="content-wrapper">
+        {sections.map((section) => (
+          <Section type={section.type}>
+            {section.heading && <h2>{section.heading}</h2>}
+            {section.type === "services" &&
+              section.cards.map((card) => (
+                <ServiceCard title={card.title}>
+                  <Fragment set:html={renderMarkdown(card.body)} />
+                </ServiceCard>
+              ))}
+            {section.type === "schedule" && (
+              <Schedule sections={section.sections} />
+            )}
+            {"body" in section && (
+              <Fragment set:html={renderMarkdown(section.body)} />
+            )}
+          </Section>
+        ))}
+      </div>
     </article>
 
     <section class="program-cta">
