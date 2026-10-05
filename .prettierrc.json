@@ -1,4 +1,5 @@
 {
+  "plugins": ["prettier-plugin-astro"],
   "arrowParens": "always",
   "bracketSpacing": true,
   "endOfLine": "lf",
@@ -10,7 +11,6 @@
   "trailingComma": "all",
   "useTabs": false,
   "proseWrap": "preserve",
-  "embeddedLanguageFormatting": "off",
   "htmlWhitespaceSensitivity": "css",
   "overrides": [
     {

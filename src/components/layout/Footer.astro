@@ -21,56 +21,61 @@ const craLink = charityStatus.craLink;
       <!-- Organization Info -->
       <div class="footer-section" id="footer-brand">
         <h2 class="footer-heading">Camrose Neighbor Aid Center</h2>
-        {
-          contactInfo.email && (
-            <p>
-              <a href={`mailto:${contactInfo.email}`} class="contact-link">
-                {contactInfo.email}
-              </a>
-            </p>
-          )
-        }
-        {
-          contactInfo.phone && (
-            <p>
-              <a href={`tel:${contactInfo.phone}`} class="contact-link">
-                <span set:html={formatPhoneNumber(contactInfo.phone)} />
-              </a>
-            </p>
-          )
-        }
-        {
-          charityNumber && (
-            <p>
-              <a href={craLink} target="_blank" rel="noopener noreferrer" class="contact-link">
-                CRA Number: {charityNumber}
-              </a>
-            </p>
-          )
-        }
+        {contactInfo.email && (
+          <p>
+            <a href={`mailto:${contactInfo.email}`} class="contact-link">
+              {contactInfo.email}
+            </a>
+          </p>
+        )}
+        {contactInfo.phone && (
+          <p>
+            <a href={`tel:${contactInfo.phone}`} class="contact-link">
+              <span set:html={formatPhoneNumber(contactInfo.phone)} />
+            </a>
+          </p>
+        )}
+        {charityNumber && (
+          <p>
+            <a
+              href={craLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link"
+            >
+              CRA Number: {charityNumber}
+            </a>
+          </p>
+        )}
       </div>
 
       <div class="footer-section" id="footer-office">
         <h2 class="footer-heading">Office</h2>
-        {
-          address && (
-            <address class="contact-info">
-              <p>{address.street}</p>
-              <p>{address.cityProvince}</p>
-              <p>{address.postalCode}</p>
-            </address>
-          )
-        }
+        {address && (
+          <address class="contact-info">
+            <p>{address.street}</p>
+            <p>{address.cityProvince}</p>
+            <p>{address.postalCode}</p>
+          </address>
+        )}
       </div>
 
       <!-- Quick Links -->
       <div class="footer-section" id="footer-quick-links">
         <h2 class="footer-heading">Quick Links</h2>
         <ul class="footer-links">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/programs">Our Programs</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/donate">Donate</a></li>
+          <li>
+            <a href="/about">About Us</a>
+          </li>
+          <li>
+            <a href="/programs">Our Programs</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/donate">Donate</a>
+          </li>
         </ul>
       </div>
 
@@ -82,15 +87,13 @@ const craLink = charityStatus.craLink;
 
       <div class="footer-section" id="footer-mailing">
         <h2 class="footer-heading">Mailing</h2>
-        {
-          mailingAddress && (
-            <address class="contact-info">
-              <p>{mailingAddress.street}</p>
-              <p>{mailingAddress.cityProvince}</p>
-              <p>{mailingAddress.postalCode}</p>
-            </address>
-          )
-        }
+        {mailingAddress && (
+          <address class="contact-info">
+            <p>{mailingAddress.street}</p>
+            <p>{mailingAddress.cityProvince}</p>
+            <p>{mailingAddress.postalCode}</p>
+          </address>
+        )}
       </div>
 
       <div class="footer-section" id="footer-theme">
@@ -102,7 +105,11 @@ const craLink = charityStatus.craLink;
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <p>
-          Our work takes place on historical and contemporary Indigenous lands, including the territories of Treaty 6, Treaty 7 & Treaty 8 and the homeland of the Métis Nation of Alberta and 8 Metis Settlements. We also acknowledge the many Indigenous communities that have been forged in urban centers across Alberta.
+          Our work takes place on historical and contemporary Indigenous lands,
+          including the territories of Treaty 6, Treaty 7 & Treaty 8 and the
+          homeland of the Métis Nation of Alberta and 8 Metis Settlements. We
+          also acknowledge the many Indigenous communities that have been forged
+          in urban centers across Alberta.
         </p>
         <p class="footer-copyright">
           &copy; {currentYear} Camrose Neighbor Aid Center. All rights reserved.

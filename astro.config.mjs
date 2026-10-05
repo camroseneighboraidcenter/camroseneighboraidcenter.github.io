@@ -12,11 +12,14 @@ export default defineConfig({
   vite: {
     build: {
       cssMinify: true,
-      minify: "terser",
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
+      rolldownOptions: {
+        output: {
+          minify: {
+            compress: {
+              dropConsole: true,
+              dropDebugger: true,
+            },
+          },
         },
       },
     },

@@ -97,9 +97,8 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
         ]}
         variant="banner"
       />
-    <TeamGrid title="Board of Directors" members={directors} />
-    <TeamGrid title="Staff" members={staff} />
-
+      <TeamGrid title="Board of Directors" members={directors} />
+      <TeamGrid title="Staff" members={staff} />
 
       <CallToAction
         title="Join Our Mission"
@@ -107,12 +106,12 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
         primaryCta={{
           text: "Volunteer With Us",
           href: "/contact#contact-form?subject=volunteer",
-          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center"
+          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center",
         }}
         secondaryCta={{
           text: "Support Our Mission",
           href: "/donate",
-          srText: "Make a donation to support our community programs"
+          srText: "Make a donation to support our community programs",
         }}
       />
     </div>
@@ -162,8 +161,7 @@ import heroImage from "../assets/hero/hero-helping-hands.webp";
     width: 100%;
     height: auto;
     object-fit: contain;
-    transition:
-      transform var(--transition-normal);
+    transition: transform var(--transition-normal);
   }
 
   /* Enhance logo on hover/focus for interactive feedback */

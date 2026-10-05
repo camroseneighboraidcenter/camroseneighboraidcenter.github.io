@@ -34,7 +34,7 @@ const ogImage = image.startsWith("http")
   : `${siteUrl}${image.startsWith("/") ? image : `/${image}`}`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
@@ -47,14 +47,14 @@ const ogImage = image.startsWith("http")
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
-    
+
     <!-- Primary Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={lang} />
@@ -63,35 +63,40 @@ const ogImage = image.startsWith("http")
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:image" content={ogImage} />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Theme -->
     <link rel="stylesheet" href="/styles/theme.css" />
-    
+
     <!-- Skip to main content for accessibility -->
     <script>
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-          document.body.classList.add('user-is-tabbing');
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Tab") {
+          document.body.classList.add("user-is-tabbing");
         }
       });
-      window.addEventListener('mousedown', () => {
-        document.body.classList.remove('user-is-tabbing');
+      window.addEventListener("mousedown", () => {
+        document.body.classList.remove("user-is-tabbing");
       });
     </script>
   </head>
   <body>
-    <a href="#main-content" class="skip-to-main-content">Skip to main content</a>
+    <a href="#main-content" class="skip-to-main-content">
+      Skip to main content
+    </a>
     <div id="page-wrapper">
       <slot name="header" />
       <main id="main-content">
@@ -104,19 +109,21 @@ const ogImage = image.startsWith("http")
 
 <style is:global>
   /* Base Reset */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   /* Base Styles */
   html {
     font-family: var(--font-primary);
     font-size: 16px;
     scroll-behavior: smooth;
   }
-  
+
   body {
     background-color: var(--color-background);
     color: var(--color-text);
@@ -125,53 +132,58 @@ const ogImage = image.startsWith("http")
     display: flex;
     flex-direction: column;
   }
-  
+
   main {
     flex: 1;
   }
-  
+
   /* Skip link styles moved to theme.css for consistency */
-  
+
   /* Focus Styles */
   .user-is-tabbing *:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
-  
+
   .user-is-tabbing *:focus:not(:focus-visible) {
     outline: none;
   }
-  
+
   /* Heading Styles */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: var(--space-4);
   }
-  
+
   /* Link Styles */
   a {
     color: var(--color-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
-  
+
   a:hover {
     color: var(--color-primary-dark);
   }
-  
+
   /* Image Styles */
   img {
     max-width: 100%;
     height: auto;
   }
-  
+
   /* Focus Visible Polyfill */
   *:focus:not(:focus-visible) {
     outline: none;
   }
-  
+
   *:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;

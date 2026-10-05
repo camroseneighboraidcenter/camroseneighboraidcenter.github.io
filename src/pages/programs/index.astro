@@ -9,7 +9,7 @@ const title = "Our Programs";
 const programs = await getCollection("programs");
 const sortedPrograms = programs.sort(
   (a: CollectionEntry<"programs">, b: CollectionEntry<"programs">) =>
-    a.data.order - b.data.order
+    a.data.order - b.data.order,
 );
 ---
 

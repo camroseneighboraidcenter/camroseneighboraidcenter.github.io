@@ -22,42 +22,44 @@ const address = formatAddress(contactInfo.address);
 const mailingAddress = formatAddress(contactInfo.mailingAddress);
 ---
 
-<div class:list={[`contact-info-section`,`${className}`]}>
+<div class:list={[`contact-info-section`, `${className}`]}>
   <div class="contact-group">
     <h3 class="contact-heading">Address</h3>
     <address class="contact-text">
-      {
-        address && (
-          <section class="contact-address" id="office-address">
-            <h4>Office Address:</h4>
-            <p>{address.street}</p>
-            <p>{address.cityProvince}</p>
-            <p>{address.postalCode}</p>
-          </section>
-        )
-      }
-      {
-        mailingAddress && (
-          <section class="contact-address" id="mailing-address">
-            <h4>Mailing Address:</h4>
-            <p>{mailingAddress.street}</p>
-            <p>{mailingAddress.cityProvince}</p>
-            <p>{mailingAddress.postalCode}</p>
-          </section>
-        )
-      }
+      {address && (
+        <section class="contact-address" id="office-address">
+          <h4>Office Address:</h4>
+          <p>{address.street}</p>
+          <p>{address.cityProvince}</p>
+          <p>{address.postalCode}</p>
+        </section>
+      )}
+      {mailingAddress && (
+        <section class="contact-address" id="mailing-address">
+          <h4>Mailing Address:</h4>
+          <p>{mailingAddress.street}</p>
+          <p>{mailingAddress.cityProvince}</p>
+          <p>{mailingAddress.postalCode}</p>
+        </section>
+      )}
     </address>
   </div>
 
   <div class="contact-group">
     <h3 class="contact-heading">Hours of Operation</h3>
     <p class="contact-text">
-      Monday: {hours.monday}<br />
-      Tuesday: {hours.tuesday}<br />
-      Wednesday: {hours.wednesday}<br />
-      Thursday: {hours.thursday}<br />
-      Friday: {hours.friday}<br />
-      Saturday: {hours.saturday}<br />
+      Monday: {hours.monday}
+      <br />
+      Tuesday: {hours.tuesday}
+      <br />
+      Wednesday: {hours.wednesday}
+      <br />
+      Thursday: {hours.thursday}
+      <br />
+      Friday: {hours.friday}
+      <br />
+      Saturday: {hours.saturday}
+      <br />
       Sunday: {hours.sunday}
     </p>
   </div>
@@ -65,44 +67,36 @@ const mailingAddress = formatAddress(contactInfo.mailingAddress);
   <div class="contact-group">
     <h3 class="contact-heading">Contact Information</h3>
     <div class="contact-text">
-      {
-        phone && (
-          <p>
-            Phone:{" "}
-            <a href={`tel:${phone}`} class="contact-link">
-              <span set:html={formatPhoneNumber(phone)} />
-            </a>
-          </p>
-        )
-      }
-      {
-        fax && (
-          <p>
-            Fax: <span class="contact-detail" set:html={formatPhoneNumber(fax)} />
-          </p>
-        )
-      }
-      {
-        email && (
-          <p>
-            Email:{" "}
-            <a href={`mailto:${email}`} class="contact-link">
-              {email}
-            </a>
-          </p>
-        )
-      }
+      {phone && (
+        <p>
+          Phone:{" "}
+          <a href={`tel:${phone}`} class="contact-link">
+            <span set:html={formatPhoneNumber(phone)} />
+          </a>
+        </p>
+      )}
+      {fax && (
+        <p>
+          Fax: <span class="contact-detail" set:html={formatPhoneNumber(fax)} />
+        </p>
+      )}
+      {email && (
+        <p>
+          Email:{" "}
+          <a href={`mailto:${email}`} class="contact-link">
+            {email}
+          </a>
+        </p>
+      )}
     </div>
   </div>
 
-  {
-    showSocial && (
-      <div class="contact-group">
-        <h3 class="contact-heading">Connect With Us</h3>
-        <SocialIcons className="contact-social" justify="start" />
-      </div>
-    )
-  }
+  {showSocial && (
+    <div class="contact-group">
+      <h3 class="contact-heading">Connect With Us</h3>
+      <SocialIcons className="contact-social" justify="start" />
+    </div>
+  )}
 </div>
 
 <style>

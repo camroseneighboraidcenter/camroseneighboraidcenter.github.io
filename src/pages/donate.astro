@@ -27,12 +27,26 @@ const financialStatementsLink = charityStatus.financialStatementsLink;
       <section class="intro-section">
         <div class="content-container flex-col">
           <p class="lead-text">
-            Camrose Neighbor Aid Center operates on the generosity of our supporters. Your donation helps us provide essential services to those in need. We are a registered charity and your donation is tax deductible. Our CRA registration number is
+            Camrose Neighbor Aid Center operates on the generosity of our
+            supporters. Your donation helps us provide essential services to
+            those in need. We are a registered charity and your donation is tax
+            deductible. Our CRA registration number is
             <a href={craLink} target="_blank" rel="noopener noreferrer">
               {charityNumber}
-            </a>.
+            </a>
+            .
           </p>
-          <p class="lead-text">All our annual financial statements are available for review on the <a href={financialStatementsLink} target="_blank" rel="noopener noreferrer">CRA website</a>.</p>
+          <p class="lead-text">
+            All our annual financial statements are available for review on the{" "}
+            <a
+              href={financialStatementsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CRA website
+            </a>
+            .
+          </p>
           <p class="donation-methods">
             We accept donations in a few different ways outlined below:
           </p>
@@ -44,11 +58,13 @@ const financialStatementsLink = charityStatus.financialStatementsLink;
           items={[
             {
               title: "Cash",
-              description: "You can donate cash in person at Camrose Neighbor Aid Center.",
+              description:
+                "You can donate cash in person at Camrose Neighbor Aid Center.",
             },
             {
               title: "Cheque",
-              descriptionHtml: "You can donate by cheque in person or by mail. Payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8.",
+              descriptionHtml:
+                "You can donate by cheque in person or by mail. Payable to: Camrose Neighbor Aid. Mail to: PO Box 1936, Camrose, AB T4V 1X8.",
             },
             {
               title: "Canada Helps",
@@ -67,12 +83,12 @@ const financialStatementsLink = charityStatus.financialStatementsLink;
         primaryCta={{
           text: "Volunteer With Us",
           href: "/contact#contact-form?subject=volunteer",
-          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center"
+          srText: "Join our team as a volunteer at Camrose Neighbor Aid Center",
         }}
         secondaryCta={{
           text: "Get in Touch",
           href: "/contact#contact-form?subject=general",
-          srText: "Contact Camrose Neighbor Aid Center for more information"
+          srText: "Contact Camrose Neighbor Aid Center for more information",
         }}
       />
     </div>

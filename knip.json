@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  // docs/template-program.mdx is a copy-paste template for content editors.
+  "ignore": ["docs/template-program.mdx"]
+}

@@ -7,6 +7,9 @@ node_modules
 # Generated files
 .astro
 
+# pnpm store
+v11
+
 # Environment variables
 .env
 .env.*
@@ -17,5 +20,6 @@ pnpm-lock.yaml
 package-lock.json
 yarn.lock
 
-# MDX files (handled by mdx plugin)
+# MDX files: prettier's mdx parser corrupts {/* */} JSX comments.
+# Linted by markdownlint instead.
 *.mdx

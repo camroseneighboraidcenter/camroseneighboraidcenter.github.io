@@ -35,13 +35,13 @@ const { Content } = await render(program);
     />
     <article class="program-content">
       <h2 id="program-title">About {program.data.title}</h2>
-      <div class="content-wrapper">
-        {Content && <Content />}
-      </div>
+      <div class="content-wrapper">{Content && <Content />}</div>
     </article>
 
     <section class="program-cta">
-      <h2 id="cta-heading" class="sr-only">Get Involved</h2>
+      <h2 id="cta-heading" class="sr-only">
+        Get Involved
+      </h2>
       <CallToAction
         title="Interested in this program?"
         description="Contact us to learn more about how you can participate or support this initiative."

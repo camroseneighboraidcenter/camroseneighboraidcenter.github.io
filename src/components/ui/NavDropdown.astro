@@ -18,7 +18,12 @@ const { label, items } = Astro.props;
 ---
 
 <nav-dropdown class="nav-dropdown">
-  <button type="button" class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+  <button
+    type="button"
+    class="dropdown-trigger"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
     {label}
     <svg
       class="dropdown-arrow"
@@ -33,18 +38,17 @@ const { label, items } = Astro.props;
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
-        stroke-linejoin="round"></path>
+        stroke-linejoin="round"
+      ></path>
     </svg>
   </button>
 
   <div class="dropdown-menu" hidden>
-    {
-      items.map((item) => (
-        <a href={item.href} class="dropdown-item">
-          {item.text}
-        </a>
-      ))
-    }
+    {items.map((item) => (
+      <a href={item.href} class="dropdown-item">
+        {item.text}
+      </a>
+    ))}
   </div>
 </nav-dropdown>
 
@@ -193,16 +197,19 @@ const { label, items } = Astro.props;
     setupEventListeners() {
       const trigger = this.querySelector(".dropdown-trigger");
       const menu = this.querySelector(".dropdown-menu");
-      
-      if (!(trigger instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
-        console.error('Required dropdown elements not found');
+
+      if (
+        !(trigger instanceof HTMLButtonElement) ||
+        !(menu instanceof HTMLElement)
+      ) {
+        console.error("Required dropdown elements not found");
         return;
       }
 
       trigger.addEventListener("click", () => {
         const isExpanded = trigger.getAttribute("aria-expanded") === "true";
         trigger.setAttribute("aria-expanded", (!isExpanded).toString());
-        
+
         if (isExpanded) {
           menu.setAttribute("hidden", "");
         } else {

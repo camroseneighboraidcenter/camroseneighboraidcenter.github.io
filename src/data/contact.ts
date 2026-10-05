@@ -7,7 +7,7 @@
 /**
  * Physical address of the organization.
  */
-export interface Address {
+interface Address {
   street: string;
   city: string;
   province: string;
@@ -17,7 +17,7 @@ export interface Address {
 /**
  * Business hours for each day of the week.
  */
-export interface BusinessHours {
+interface BusinessHours {
   monday: string;
   tuesday: string;
   wednesday: string;

@@ -24,12 +24,7 @@ interface Props {
   className?: string;
 }
 
-const {
-  items,
-  title,
-  variant = "default",
-  className = "",
-} = Astro.props;
+const { items, title, variant = "default", className = "" } = Astro.props;
 
 const titleId = title
   ? `feature-grid-${Math.random().toString(36).slice(2, 9)}`
@@ -41,23 +36,28 @@ const titleId = title
   aria-labelledby={titleId}
 >
   <div class="feature-grid__container">
-    {title && <h2 id={titleId} class="feature-grid__title">{title}</h2>}
+    {title && (
+      <h2 id={titleId} class="feature-grid__title">
+        {title}
+      </h2>
+    )}
 
     <ul class="feature-grid__list">
-      {
-        items.map(({ title: itemTitle, description, descriptionHtml }) => (
-          <li class="feature-grid__item">
-            <div class="feature-grid__card">
-              <h3 class="feature-grid__item-title">{itemTitle}</h3>
-              {descriptionHtml ? (
-                <p class="feature-grid__item-description" set:html={descriptionHtml} />
-              ) : (
-                <p class="feature-grid__item-description">{description}</p>
-              )}
-            </div>
-          </li>
-        ))
-      }
+      {items.map(({ title: itemTitle, description, descriptionHtml }) => (
+        <li class="feature-grid__item">
+          <div class="feature-grid__card">
+            <h3 class="feature-grid__item-title">{itemTitle}</h3>
+            {descriptionHtml ? (
+              <p
+                class="feature-grid__item-description"
+                set:html={descriptionHtml}
+              />
+            ) : (
+              <p class="feature-grid__item-description">{description}</p>
+            )}
+          </div>
+        </li>
+      ))}
     </ul>
   </div>
 </section>

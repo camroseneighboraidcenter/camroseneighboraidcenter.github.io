@@ -53,70 +53,76 @@ const hasSlot = Astro.slots.has("default");
     className,
   ]}
 >
-  {
-    image && (
-      <div
-        class:list={[
-          "card__image-wrapper",
-          { "card__image-wrapper--circle": variant === "profile" },
-        ]}
-      >
-        <Image
-          src={image}
-          alt={imageAlt}
-          title={imageTitle}
-          class="card__image"
-          width={variant === "profile" ? 200 : variant === "horizontal" ? 800 : 400}
-          height={variant === "profile" ? 200 : variant === "horizontal" ? 600 : 300}
-          quality={85}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-    )
-  }
+  {image && (
+    <div
+      class:list={[
+        "card__image-wrapper",
+        { "card__image-wrapper--circle": variant === "profile" },
+      ]}
+    >
+      <Image
+        src={image}
+        alt={imageAlt}
+        title={imageTitle}
+        class="card__image"
+        width={
+          variant === "profile" ? 200 : variant === "horizontal" ? 800 : 400
+        }
+        height={
+          variant === "profile" ? 200 : variant === "horizontal" ? 600 : 300
+        }
+        quality={85}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  )}
 
   <div class="card__content">
-    {
-      hasLink ? (
-        <h3 class="card__title">
-          <a href={href} class="card__title-link">
-            {title}
-            <span class="sr-only">View details about {title}</span>
-          </a>
-        </h3>
-      ) : (
-        <h3 class="card__title">{title}</h3>
-      )
-    }
+    {hasLink ? (
+      <h3 class="card__title">
+        <a href={href} class="card__title-link">
+          {title}
+          <span class="sr-only">View details about {title}</span>
+        </a>
+      </h3>
+    ) : (
+      <h3 class="card__title">{title}</h3>
+    )}
 
     {description && <p class="card__description">{description}</p>}
 
-    {hasSlot && <div class="card__slot"><slot /></div>}
+    {hasSlot && (
+      <div class="card__slot">
+        <slot />
+      </div>
+    )}
 
-    {
-      hasLink && (
-        <a href={href} class="card__link" aria-label={`${linkText} about ${title}`}>
-          {linkText}
-          <span class="sr-only">about {title}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </a>
-      )
-    }
+    {hasLink && (
+      <a
+        href={href}
+        class="card__link"
+        aria-label={`${linkText} about ${title}`}
+      >
+        {linkText}
+        <span class="sr-only">about {title}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    )}
   </div>
 </article>
 

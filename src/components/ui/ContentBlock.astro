@@ -55,31 +55,31 @@ const titleId = title
   aria-labelledby={titleId}
 >
   <div class="content-block__container">
-    {title && <h2 id={titleId} class="content-block__title">{title}</h2>}
+    {title && (
+      <h2 id={titleId} class="content-block__title">
+        {title}
+      </h2>
+    )}
 
     {subtitle && <p class="content-block__subtitle">{subtitle}</p>}
 
-    {
-      isMultipleItems ? (
-        <ul class="content-block__list">
-          {(content as ContentItem[]).map((item) => (
-            <li class="content-block__item">
-              <p class="content-block__text">{item.text}</p>
-              {item.citation && (
-                <span class="content-block__citation">{item.citation}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : content ? (
-        <div class="content-block__content">
-          <p class="content-block__text">{content}</p>
-          {citation && (
-            <span class="content-block__citation">{citation}</span>
-          )}
-        </div>
-      ) : null
-    }
+    {isMultipleItems ? (
+      <ul class="content-block__list">
+        {(content as ContentItem[]).map((item) => (
+          <li class="content-block__item">
+            <p class="content-block__text">{item.text}</p>
+            {item.citation && (
+              <span class="content-block__citation">{item.citation}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    ) : content ? (
+      <div class="content-block__content">
+        <p class="content-block__text">{content}</p>
+        {citation && <span class="content-block__citation">{citation}</span>}
+      </div>
+    ) : null}
 
     <slot />
   </div>

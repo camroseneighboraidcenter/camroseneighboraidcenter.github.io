@@ -54,14 +54,12 @@ const {
   <div class="hero-card__content">
     <h2 class="hero-card__title">{title}</h2>
     {description && <p class="hero-card__description">{description}</p>}
-    {
-      href && (
-        <a href={href} class="btn btn-primary hero-card__button">
-          {linkText}
-          <span class="sr-only">about {title}</span>
-        </a>
-      )
-    }
+    {href && (
+      <a href={href} class="btn btn-primary hero-card__button">
+        {linkText}
+        <span class="sr-only">about {title}</span>
+      </a>
+    )}
   </div>
 </article>
 

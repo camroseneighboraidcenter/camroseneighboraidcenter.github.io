@@ -41,16 +41,22 @@ const {
 
 <section class="cta-section" aria-labelledby="cta-title">
   <div class="cta-content">
-    <h2 id="cta-title" class="cta-title">{title}</h2>
+    <h2 id="cta-title" class="cta-title">
+      {title}
+    </h2>
     <p class="cta-description">{description}</p>
     <div class="cta-buttons">
       <a href={primaryCta.href} class="btn btn-primary cta-button">
         <span>{primaryCta.text}</span>
-        {primaryCta.srText && <span class="sr-only">- {primaryCta.srText}</span>}
+        {primaryCta.srText && (
+          <span class="sr-only">- {primaryCta.srText}</span>
+        )}
       </a>
       <a href={secondaryCta.href} class="btn-secondary cta-button">
         <span>{secondaryCta.text}</span>
-        {secondaryCta.srText && <span class="sr-only">- {secondaryCta.srText}</span>}
+        {secondaryCta.srText && (
+          <span class="sr-only">- {secondaryCta.srText}</span>
+        )}
       </a>
     </div>
   </div>

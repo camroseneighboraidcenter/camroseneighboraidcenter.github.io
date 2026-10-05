@@ -16,32 +16,30 @@ interface Props {
   className?: string;
 }
 
-const {
-  title = "Meet Our Team",
-  members,
-  className = "",
-} = Astro.props;
+const { title = "Meet Our Team", members, className = "" } = Astro.props;
 
 const titleId = `team-grid-${Math.random().toString(36).slice(2, 9)}`;
 ---
-<section
-  class:list={["team-grid", className]}
-  aria-labelledby={titleId}
->
+
+<section class:list={["team-grid", className]} aria-labelledby={titleId}>
   <div class="team-grid__container">
-    <h2 id={titleId} class="team-grid__title">{title}</h2>
+    <h2 id={titleId} class="team-grid__title">
+      {title}
+    </h2>
     <div class="team-grid__list">
-    {members.map((member) => (
-      <Card
-        title={member.name}
-        description={member.bio}
-        image={member.image}
-        imageAlt={member.image ? `${member.name} - ${member.role}` : undefined}
-        variant="profile"
-      >
-        <p class="member-role">{member.role}</p>
-      </Card>
-    ))}
+      {members.map((member) => (
+        <Card
+          title={member.name}
+          description={member.bio}
+          image={member.image}
+          imageAlt={
+            member.image ? `${member.name} - ${member.role}` : undefined
+          }
+          variant="profile"
+        >
+          <p class="member-role">{member.role}</p>
+        </Card>
+      ))}
     </div>
   </div>
 </section>

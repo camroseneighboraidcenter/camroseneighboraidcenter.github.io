@@ -22,7 +22,7 @@ const mainNavItems: NavItem[] = [
 
 const programs = await getCollection("programs");
 const sortedPrograms = programs.sort(
-  (a: Program, b: Program) => a.data.order - b.data.order
+  (a: Program, b: Program) => a.data.order - b.data.order,
 );
 
 const programNavItems = sortedPrograms.map((program: Program) => ({
@@ -33,7 +33,11 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
 
 <header id="site-header">
   <div class="header-container">
-    <a href="/" class="site-logo" aria-label="Camrose Neighbor Aid Center - Home">
+    <a
+      href="/"
+      class="site-logo"
+      aria-label="Camrose Neighbor Aid Center - Home"
+    >
       <span class="logo-text">Camrose Neighbor Aid Center</span>
       <span class="sr-only">Home</span>
     </a>
@@ -48,29 +52,36 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
         aria-controls="primary-navigation"
       >
         <div class="hamburger-box" aria-hidden="true">
-          <span class="hamburger-line hamburger-line-1" aria-hidden="true"></span>
-          <span class="hamburger-line hamburger-line-2" aria-hidden="true"></span>
-          <span class="hamburger-line hamburger-line-3" aria-hidden="true"></span>
+          <span
+            class="hamburger-line hamburger-line-1"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="hamburger-line hamburger-line-2"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="hamburger-line hamburger-line-3"
+            aria-hidden="true"
+          ></span>
         </div>
       </button>
 
       <div class="nav-wrapper">
         <ul id="primary-navigation" class="nav-list">
-          {
-            mainNavItems.map(({ name, href }) => (
-              <li class="nav-item">
-                <a
-                  href={href}
-                  class:list={[
-                    "nav-link",
-                    { "active": Astro.url.pathname === href }
-                  ]}
-                >
-                  {name}
-                </a>
-              </li>
-            ))
-          }
+          {mainNavItems.map(({ name, href }) => (
+            <li class="nav-item">
+              <a
+                href={href}
+                class:list={[
+                  "nav-link",
+                  { active: Astro.url.pathname === href },
+                ]}
+              >
+                {name}
+              </a>
+            </li>
+          ))}
           <li class="nav-item desktop-only">
             <NavDropdown label="Our Programs" items={programNavItems} />
           </li>
@@ -82,20 +93,29 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
               aria-controls="programs-dropdown"
             >
               Our Programs
-              <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg
+                class="dropdown-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
                 <polyline points="4 6 8 10 12 6"></polyline>
               </svg>
             </button>
             <ul id="programs-dropdown" class="dropdown-list">
-              {
-                programNavItems.map((item: { text: string; href: string }) => (
-                  <li class="dropdown-item">
-                    <a href={item.href} class="nav-link dropdown-link">
-                      {item.text}
-                    </a>
-                  </li>
-                ))
-              }
+              {programNavItems.map((item: { text: string; href: string }) => (
+                <li class="dropdown-item">
+                  <a href={item.href} class="nav-link dropdown-link">
+                    {item.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </li>
         </ul>
@@ -133,7 +153,9 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
       top: 100%;
       right: 0;
       z-index: -1100;
-      transition: height 0.5s, opacity 0.5s;
+      transition:
+        height 0.5s,
+        opacity 0.5s;
       backdrop-filter: blur(10px);
     }
 
@@ -583,11 +605,11 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
   if (menuToggle && siteHeader && body) {
     menuToggle.addEventListener("click", function () {
       const isActive = siteHeader.classList.contains("active");
-      
+
       menuToggle.classList.toggle("active");
       siteHeader.classList.toggle("active");
       body.classList.toggle("menu-open");
-      
+
       // Update aria-expanded on the toggle button
       menuToggle.setAttribute("aria-expanded", (!isActive).toString());
     });
@@ -625,7 +647,7 @@ const programNavItems = sortedPrograms.map((program: Program) => ({
 
   // Mobile dropdown toggle
   const mobileDropdowns = Array.from(
-    document.querySelectorAll("#site-header .mobile-dropdown")
+    document.querySelectorAll("#site-header .mobile-dropdown"),
   );
   for (const dropdown of mobileDropdowns) {
     const button = dropdown.querySelector(".dropdown-toggle");
