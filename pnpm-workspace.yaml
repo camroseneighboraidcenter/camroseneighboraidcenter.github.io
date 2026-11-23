@@ -2,8 +2,5 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAge: 1440 # 1 day in minutes
-auditConfig:
-  # braces@3.0.3 has no patched release; only reachable via dev-time
-  # stylelint glob handling where patterns are developer-controlled.
-  ignoreGhsas:
-    - GHSA-vfj7-8cjw-p6xm
+overrides:
+  minimatch@>=7.0.0 <11.0.1: ^11.0.1

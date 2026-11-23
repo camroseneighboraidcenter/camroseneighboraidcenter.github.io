@@ -4,7 +4,7 @@
   "name": "camroseneighboraidcenter.ca",
   "description": "Camrose Neighbor Aid Center website",
   "version": "0.0.1",
-  "packageManager": "pnpm@12.9.1",
+  "packageManager": "pnpm@12.23.0",
   "engines": {
     "node": ">=24.0.0"
   },
@@ -19,25 +19,25 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.5",
-    "markdown-it": "^15.0.2",
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13",
+    "markdown-it": "^15.0.3",
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@eslint/js": "^10.0.1",
     "@types/markdown-it": "^14.2.0",
-    "eslint": "^10.12.0",
+    "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.2.1",
-    "knip": "^6.39.0",
-    "postcss-html": "^2.0.0",
-    "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^1.1.0",
-    "stylelint": "^17.16.0",
-    "stylelint-config-standard": "^40.0.0",
+    "knip": "^6.47.0",
+    "postcss-html": "^2.0.1",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "stylelint": "^18.1.0",
+    "stylelint-config-standard": "^41.1.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.71.0"
+    "typescript-eslint": "^8.73.0"
   }
 }
